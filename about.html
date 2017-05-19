@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>About</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+    <div class="w3-top">
+        <div class="w3-bar">
+            <a href="contact.html" class="w3-bar-item w3-button w3-hide-small w3-right">Contact</a>
+            <a href="projects.html" class="w3-bar-item w3-button w3-hide-small w3-right">Projects</a>
+            <a href="index.html" class="w3-bar-item w3-button w3-hide-small w3-right">Home</a>
+            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">&#9776;</a>
+        </div>
+
+        <div id="demo" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium w3-right w3-grey">
+            <a href="index.html" class="w3-bar-item w3-button w3-right">Home</a>
+            <a href="projects.html" class="w3-bar-item w3-button w3-right">Projects</a>
+        </div>
+
+    </div>
+
+
+
+    <div class="w3-container w3-center w3-padding-32">
+        <h1 id="home-h1">About Me</h1>
+        <h2 id="home-h2">A visual timeline of the places I've lived, studied, and worked in.</h2>
+    </div>
+
+    <div class="w3-container w3-content">
+
+        <div class="w3-row-padding">
+
+            <div class="w3-third w3-display-container w3-margin-bottom w3-hover-grayscale">
+                <img src="images/chennai.jpg" style="width:100%" alt="Chennai, India">
+                <div class="w3-display-bottomleft w3-display-hover w3-text-white">
+                    <div class="w3-padding w3-animate-opacity">Chennai, India
+                        <br>6 years</div>
+                </div>
+            </div>
+
+            <div class="w3-third w3-display-container w3-margin-bottom w3-hover-grayscale">
+                <img src="images/newjersey.jpg" style="width:100%" onclick="onClick(this)" alt="New Jersey, USA">
+                <div class="w3-display-bottomleft w3-display-hover w3-text-white">
+                    <div class="w3-padding w3-animate-opacity">New Jersey, USA
+                        <br>1 year</div>
+                </div>
+            </div>
+
+            <div class="w3-third w3-display-container w3-margin-bottom w3-hover-grayscale">
+                <img src="images/cairo.jpg" style="width:100%" alt="Cairo, Egypt">
+                <div class="w3-display-bottomleft w3-display-hover w3-text-white">
+                    <div class="w3-padding w3-animate-opacity">Cairo, Egypt
+                        <br>4 years</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-row-padding w3-section">
+            <div class="w3-third w3-display-container w3-margin-bottom w3-hover-grayscale">
+                <img src="images/istanbul.jpg" style="width:100%" alt="A tablet">
+                <div class="w3-display-topleft w3-display-hover w3-text-white">
+                    <div class="w3-padding w3-animate-opacity">Istanbul, Turkey
+                        <br>3 years</div>
+                </div>
+            </div>
+            <div class="w3-third w3-display-container w3-margin-bottom w3-hover-grayscale">
+                <img src="images/telaviv.jpg" style="width:100%" alt="Tel Aviv, Israel">
+                <div class="w3-display-topleft w3-display-hover w3-text-white">
+                    <div class="w3-padding w3-animate-opacity">Tel Aviv, Israel
+                        <br>1 year</div>
+                </div>
+            </div>
+            <div class="w3-third w3-display-container w3-margin-bottom w3-hover-grayscale">
+                <img src="images/cornell.jpg" style="width:100%" alt="Cornell University">
+                <div class="w3-display-topleft w3-display-hover w3-text-white">
+                    <div class="w3-padding w3-animate-opacity">Cornell University, Ithaca, NY, USA
+                        <br>4 years</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-row-padding w3-section">
+            <div class="w3-third w3-display-container w3-margin-bottom w3-hover-grayscale">
+                <img src="images/ge.jpg" style="width:100%" alt="General Electric">
+                <div class="w3-display-topleft w3-display-hover w3-text-white">
+                    <div class="w3-padding w3-animate-opacity">General Electric, Fairfield, CT, USA
+                        <br>6 months</div>
+                </div>
+            </div>
+            <div class="w3-third w3-display-container w3-margin-bottom w3-hover-grayscale">
+                <img src="images/nashville.jpg" style="width:100%" alt="Nashville">
+                <div class="w3-display-topleft w3-display-hover w3-text-white">
+                    <div class="w3-padding w3-animate-opacity">Cummins, Nashville, TN, USA
+                        <br>1 year</div>
+                </div>
+            </div>
+            <div class="w3-third w3-display-container w3-margin-bottom w3-hover-grayscale">
+                <img src="images/london.jpg" style="width:100%" alt="London">
+                <div class="w3-display-topleft w3-display-hover w3-text-white">
+                    <div class="w3-padding w3-animate-opacity">London, United Kingdom
+                        <br>1 year</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("demo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
+</body>
+
+</html>
