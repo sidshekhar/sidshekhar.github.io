@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="https://use.fontawesome.com/162bc38651.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/tooltipster.bundle.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/tooltipster-sideTip-borderless.min.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script type="text/javascript" src="js/tooltipster.bundle.min.js"></script>
     <script>
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -27,28 +32,50 @@
         ga('create', 'UA-99569573-1', 'auto');
         ga('send', 'pageview');
     </script>
+    <script>
+        $(document).ready(function() {
+            $('.tooltip').tooltipster({
+            	theme: ['tooltipster-borderless', 'tooltipster-borderless-customized'],
+            	side: 'bottom'
+            });
+        });
+    </script>
 </head>
 
 <body>
 
-    <div class="center">
+    <div class="center" style="text-align:center">
         <img alt="Sid Shekhar" src="images/sidguitarpic.jpeg" class="img-circle w3-animate-opacity w3-margin-bottom" />
         <h1 id="home-h1">Sid Shekhar</h1>
-        <h2 id="home-h2">Current MSc. student at UCL</h2>
-
+        <h2 id="home-h2">Current MSc. student at UCL</h2> 
         <nav id="home-nav">
-            <ul id="home_ul">
-                <li class="home_li">
+            <ul class="home_ul">
+                <li class="home-li">
                     <a class="w3-button home-a" href="about.html">About</a>
                 </li>
-                <li class="home_li">
+                <li class="home-li">
                     <a class="w3-button home-a" href="projects.html">Projects</a>
                 </li>
-                <li class="home_li">
+                <li class="home-li">
                     <a class="w3-button home-a" href="contact.html">Contact</a>
                 </li>
-            </ul>
+            </ul> 
         </nav>
+        <hr>
+        <ul class="home_ul">
+            <li class="home-li">
+                <a href="https://www.linkedin.com/in/sidharthshekhar/" target="_blank" class="home-a"> <i class="fa fa-linkedin fa-lg home-icon tooltip" title="LinkedIn" aria-hidden="true"></i></a>
+            </li>
+            <li class="home-li">
+                 <a href="https://github.com/sidshekhar" target="_blank" class="home-a" class="tooltip"> <i class="fa fa-github fa-lg home-icon tooltip" title="Github" aria-hidden="true"></i></a>
+            </li>
+            <li class="home-li">
+                 <a href="https://www.instagram.com/sidshekhar/" target="_blank" class="home-a"> <i class="fa fa-instagram fa-lg home-icon tooltip" title="Instagram" aria-hidden="true"></i></a>
+            </li>
+
+        </ul>
+        
+
     </div>
 
 </body>

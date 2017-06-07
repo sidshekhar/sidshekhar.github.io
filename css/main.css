@@ -85,7 +85,7 @@ img {
     text-rendering: optimizeLegibility;
     border: 0px none rgb(170, 170, 170);
     font: normal normal 300 normal 18.5px / normal "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin: 0px 84px 30px;
+    margin: 0px 84px;
     outline: rgb(170, 170, 170) none 0px;
 }/*#H2_8*/
 
@@ -102,12 +102,20 @@ img {
     outline: rgb(102, 102, 102) none 0px;
 }
 
-#home_ul {
-    margin: 0px;
-    padding: 0px;
+.home-icon{
+    border: 0px none rgb(102, 102, 102);
+    margin: 20px 10px 0px 10px;
+    display: inline-block;
 }
 
-.home_li {
+
+.home_ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none outside none;
+}
+
+.home-li {
     color: rgb(102, 102, 102);
     display: inline-block;
     height: 38px;
@@ -131,6 +139,15 @@ img {
     padding: 7px 15px;
     transition: all 0.4s ease-in-out 0s;
 }
+
+.fa{
+    opacity:1;
+}
+
+.fa:hover {
+  opacity: 0.5
+}
+
 
 .linebreakbutton {
   white-space: normal;
