@@ -28,7 +28,11 @@
     </script>
 
 
-
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.slim.js"
+  integrity="sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg="
+  crossorigin="anonymous"></script>
+ 
     <script src="js/webglearth.js"></script>
     <script>
 var map;
@@ -37,10 +41,13 @@ var londonmarkerimage = "images/london-marker.png"
       function initialize() {
         map = new WE.map('map',{
           center: [51.5074, 0.1278],
-          zoom: 2.0,
+          zoom: 1.9,
           dragging: true,
           scrollWheelZoom: true
 });;
+        if($(window).width() <= 768){
+            map.setZoom(1.0);
+        }
         WE.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png',{
           attribution: '© OpenStreetMap contributors'
         }).addTo(map)
