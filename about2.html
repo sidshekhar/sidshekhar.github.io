@@ -35,11 +35,11 @@ var map;
       function initialize() {
         map = new WE.map('map',{
           center: [51.5074, 0.1278],
-          zoom: 1.7,
+          zoom: 1.0,
           dragging: true,
           scrollWheelZoom: true
 });;
-        WE.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png',{
+        WE.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png',{
           attribution: '© OpenStreetMap contributors'
         }).addTo(map)
 
