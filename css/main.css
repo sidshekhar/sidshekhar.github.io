@@ -25,6 +25,10 @@ img {
     height: auto;
 }
 
+.w3-top{
+  z-index: 100000;
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -65,6 +69,18 @@ img {
     margin: auto;
 }
 
+#cardtitle{
+  font: normal normal bold normal 30px / normal "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: rgb(34, 34, 34);
+    letter-spacing: -1px;
+}
+
+ #cardtext{
+    text-align: left;
+  
+   
+}
+
 #home-h1 {
     color: rgb(34, 34, 34);
     height: 49px;
@@ -76,7 +92,7 @@ img {
     font: normal normal bold normal 40px / normal "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 0px 0px 13px;
     outline: rgb(34, 34, 34) none 0px;
-}/*#H1_7*/
+}
 
 #home-h2 {
     color: rgb(170, 170, 170);
@@ -88,7 +104,7 @@ img {
     font: normal normal 300 normal 18.5px / normal "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 0px 84px;
     outline: rgb(170, 170, 170) none 0px;
-}/*#H2_8*/
+}
 
 
 
@@ -157,3 +173,14 @@ img {
 
 .w3-left, .w3-right, .w3-badge {cursor:pointer}
 .w3-badge {height:13px;width:13px;padding:0}
+
+
+/*@media only screen and (max-device-width: 480px) {
+  .w3-section{
+    float: none;
+  }
+
+  }
+*/
+
+
