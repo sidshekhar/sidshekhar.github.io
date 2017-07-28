@@ -117,15 +117,15 @@ map.setZoom(zoom);
             <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
             <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
             <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
-                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"><!-- --></span>
-                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"><!-- --></span>
-                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"><!-- --></span>
-                 <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(4)"><!-- --></span>
-                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(5)"><!-- --></span>
-                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(6)"><!-- --></span>
-                 <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(7)"><!-- --></span>
-                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(8)"><!-- --></span>
-                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(9)"><!-- --></span>
+                <span class="w3-badge slideindicator w3-transparent w3-border w3-hover-white" onclick="currentDiv(1)"><!-- --></span>
+                <span class="w3-badge slideindicator w3-transparent w3-border w3-hover-white" onclick="currentDiv(2)"><!-- --></span>
+                <span class="w3-badge slideindicator w3-transparent w3-border w3-hover-white" onclick="currentDiv(3)"><!-- --></span>
+                 <span class="w3-badge slideindicator w3-transparent w3-border w3-hover-white" onclick="currentDiv(4)"><!-- --></span>
+                <span class="w3-badge slideindicator w3-transparent w3-border w3-hover-white" onclick="currentDiv(5)"><!-- --></span>
+                <span class="w3-badge slideindicator w3-transparent w3-border w3-hover-white" onclick="currentDiv(6)"><!-- --></span>
+                 <span class="w3-badge slideindicator w3-transparent w3-border w3-hover-white" onclick="currentDiv(7)"><!-- --></span>
+                <span class="w3-badge slideindicator w3-transparent w3-border w3-hover-white" onclick="currentDiv(8)"><!-- --></span>
+                <span class="w3-badge slideindicator w3-transparent w3-border w3-hover-white" onclick="currentDiv(9)"><!-- --></span>
             </div>
         </div>
 
@@ -160,18 +160,25 @@ map.setZoom(zoom);
     }
 
     function currentDiv(n) {
-  showDivs(slideIndex = n);
+        showDivs(slideIndex = n);
     }
 
     function showDivs(n) {
         var i;
         var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("slideindicator");
         if (n > x.length) {slideIndex = 1} 
         if (n < 1) {slideIndex = x.length} ;
         for (i = 0; i < x.length; i++) {
             x[i].style.display = "none"; 
         }
-        x[slideIndex-1].style.display = "block"; 
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" w3-white", "");
+        } 
+        x[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " w3-white"; 
+
+        //Switch slide content
          var slidetitle = document.getElementById("cardtitle")
          var slidetext = document.getElementById("cardtext")
          switch(slideIndex) {
