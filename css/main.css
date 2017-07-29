@@ -166,21 +166,34 @@ img {
 }
 
 
-.linebreakbutton {
+.projecttext {
   white-space: normal;
+  font-size: 16px;
+  text-align: left;
+  margin-left: 10px;
 }
 
+.projecttitle{
+  text-align: left;
+  margin-left: 10px;
+
+}
 
 .w3-left, .w3-right, .w3-badge {cursor:pointer}
 .w3-badge {height:13px;width:13px;padding:0}
 
 
-/*@media only screen and (max-device-width: 480px) {
-  .w3-section{
-    float: none;
+@media only screen and (min-device-width: 480px) {
+  .projectcard{
+    width: 65%;
+    padding: 0;
+  }
+
+  .projectcard img{
+    width: 100%;
   }
 
   }
-*/
+
 
 
