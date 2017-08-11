@@ -179,6 +179,10 @@ img {
 
 }
 
+  .projectcard img {
+    width: 100%;
+  }
+
 .w3-left, .w3-right, .w3-badge {cursor:pointer}
 .w3-badge {height:13px;width:13px;padding:0}
 
@@ -187,10 +191,6 @@ img {
   .projectcard{
     width: 65%;
     padding: 0;
-  }
-
-  .projectcard img{
-    width: 100%;
   }
 
   }
