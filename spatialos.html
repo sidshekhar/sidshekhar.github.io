@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SpatialOS World Creation Tool</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/monokai-sublime.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="shortcut icon" href="globe.ico" type="image/x-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">SpatialOS World Creation Building Blocks</a>
+      </div>
+  </div>
+</nav>
+  
+
+
+<!-- Task Intro Modal-->
+<div class="modal fade" id="intro" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">About this page</h4>
+        </div>
+        <div class="modal-body">
+          <p>This tool is designed to help kickstart brainstorming while creating your own world on SpatialOS.</p> 
+          <p>It offers a few examples of 'worlds' that you could 
+          choose to create and allows you to put together building blocks of <i>potential</i> <a target="_blank" href="https://docs.improbable.io/reference/11.1/getting-started/concepts/entities">entities</a>, <a target="_blank" href="https://docs.improbable.io/reference/11.1/designing/design-components">components</a>, and the relevant <a target="_blank" href="https://docs.improbable.io/reference/11.1/schema/reference">schema</a> code that can serve as a springboard to get started on building your simulation. </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary black-background white" data-dismiss="modal">Got it</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<div class="container-fluid bg-3">    
+  <h3 class="row-heading">I want to create a...</h3><br>
+  <div class="row">
+    <div class="col-sm-3">
+      <div id="city" class="topic card card-1">City</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="humanbody" class="topic card card-1">Human Brain</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="financialmarket" class="topic card card-1">Financial Market</div>
+    </div>
+    <div class="col-sm-3">
+      <div id="solarsystem" class="topic card card-1">Solar System</div>
+    </div>
+  </div>
+</div><br><br><br>
+
+
+
+
+
+<div id="entitycontainer" class="container-fluid bg-3">
+   <h3 id="entities_title" class="row-heading">Possible Entities</h3> <h5 class="row-heading">(See entities documentation <a target="_blank" href="https://docs.improbable.io/reference/11.1/getting-started/concepts/entities">here</a>)</h5><br>
+
+  <div id="cityEntities" class="row">
+    <div class="col-sm-3">
+      <div id="humanmale" class="entity card card-1">Human Male</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="humanfemale" class="entity card card-1">Human Female</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="building" class="entity card card-1">Building</div>
+    </div>
+    <div class="col-sm-3">
+      <div id="trafficlight" class="entity card card-1">Traffic Light</div>
+    </div>
+  </div>
+
+  <div id="humanbodyEntities" class="row">
+    <div class="col-sm-3">
+      <div id="opticnerve" class="entity card card-1">Optic Nerve</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="medulaoblongata" class="entity card card-1">Medulla Oblongata</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="thalamus" class="entity card card-1">Thalamus</div>
+    </div>
+    <div class="col-sm-3">
+      <div id="pinealgland" class="entity card card-1">Pineal gland</div>
+    </div>
+  </div>
+
+  <div id="financialmarketEntities" class="row">
+    <div class="col-sm-3">
+      <div id="stock" class="entity card card-1">Stock</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="commodity" class="entity card card-1">Commodity</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="company" class="entity card card-1">Company</div>
+    </div>
+    <div class="col-sm-3">
+      <div id="trader" class="entity card card-1">Trader</div>
+    </div>
+  </div>
+
+  <div id="solarsystemEntities" class="row">
+    <div class="col-sm-3">
+      <div id="asteroid" class="entity card card-1">Asteroid</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="planet" class="entity card card-1">Planet</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="sun" class="entity card card-1">Sun</div>
+    </div>
+    <div class="col-sm-3">
+      <div id="satellite" class="entity card card-1">Satellite</div>
+    </div>
+  </div>
+
+</div><br><br><br>
+
+
+
+
+
+
+
+
+<div id="componentcontainer" class="container-fluid bg-3">
+   <h3 id="components_title" class="row-heading">Possible Components</h3> <h5 class="row-heading">(See components documentation <a target="_blank" href="https://docs.improbable.io/reference/11.1/designing/design-components">here</a>)</h5><br>
+  <div id="humanmaleComponents" class="row">
+    <div class="col-sm-3">
+      <div id="position_male" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="age_male" class="component card card-1">Age</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="active" class="component card card-1">Active</div>
+    </div>
+    <div class="col-sm-3">
+      <div id="wealth_male" class="component card card-1">Wealth</div>
+    </div>
+  </div>
+
+  <div id="humanfemaleComponents" class="row">
+    <div class="col-sm-3">
+      <div id="position_female" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="wealth_female" class="component card card-1">Wealth</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="age_female" class="component card card-1">Age</div>
+    </div>
+    <div class="col-sm-3">
+      <div id="parent" class="component card card-1">Parent</div>
+    </div>
+  </div>
+
+  <div id="buildingComponents" class="row">
+    <div class="col-sm-3">
+      <div id="position_building" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="flammable_building" class="component card card-1">Flammable</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="height_building" class="component card card-1">Height</div>
+    </div>
+    <div class="col-sm-3">
+      <div id="occupancy_building" class="component card card-1">Occupancy</div>
+    </div>
+  </div>
+
+   <div id="trafficlightComponents" class="row">
+    <div class="col-sm-3">
+      <div id="position_trafficlight" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="lights" class="component card card-1">Lights</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="depreciable" class="component card card-1">Depreciable</div>
+    </div>
+  </div>
+
+
+
+
+  <div id="opticnerveComponents" class="row">
+    <div class="col-sm-3">
+      <div id="position_opticnerve" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="neurons" class="component card card-1">Neurons</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="firing" class="component card card-1">Firing</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="damaged_opticnerve" class="component card card-1">Damaged</div>
+    </div>
+  </div>
+
+  <div id="medulaoblongataComponents" class="row">
+    <div class="col-sm-3">
+      <div id="position_medulaoblongata" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="ventilated" class="component card card-1">Ventilated</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="reflex" class="component card card-1">Reflex</div>
+    </div>
+  </div>
+
+
+<div id="thalamusComponents" class="row">
+    <div class="col-sm-3">
+      <div id="position_thalamus" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="relay" class="component card card-1">Relay</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="neuronalprocessing" class="component card card-1">Neuronal Processing</div>
+    </div>
+  </div>
+
+  <div id="pinealglandComponents" class="row">
+    <div class="col-sm-3">
+      <div id="position_pinealgland" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="sleepmodulation" class="component card card-1">Sleep Modulation</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="melatoninproduction" class="component card card-1">Melatonin Production</div>
+    </div>
+  </div>
+
+
+
+
+  <div id="stockComponents" class="row">
+    <div class="col-sm-3">
+      <div id="position_stock" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="listedcountry" class="component card card-1">Listed Country</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="marketcapitalization" class="component card card-1">Market Capitalization</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="tickersymbol" class="component card card-1">Ticker Symbol</div>
+    </div>
+  </div>
+
+
+  <div id="commodityComponents" class="row">
+    <div class="col-sm-3">
+      <div id="positon_commodity" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="name_commodity" class="component card card-1">Name</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="value_commodity" class="component card card-1">Value</div>
+    </div>
+  </div>
+
+
+  <div id="companyComponents" class="row">
+    <div class="col-sm-3">
+      <div id="positon_company" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="sector" class="component card card-1">Sector</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="grossrevenue" class="component card card-1">Gross Revenue</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="netprofit" class="component card card-1">Net Profit</div>
+    </div>
+  </div>
+
+  <div id="traderComponents" class="row">
+    <div class="col-sm-3">
+      <div id="positon_trader" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="employer" class="component card card-1">Employer</div>
+    </div>
+  </div>
+
+
+
+
+  <div id="asteroidComponents" class="row">
+    <div class="col-sm-3">
+      <div id="positon_asteroid" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="asteroid_weight" class="component card card-1">Weight</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="speed" class="component card card-1">Velocity</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="cluster" class="component card card-1">Cluster</div>
+    </div>
+  </div>
+
+    <div id="planetComponents" class="row">
+    <div class="col-sm-3">
+      <div id="positon_planet" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="mass" class="component card card-1">Mass</div>
+    </div>
+  </div>
+
+  <div id="sunComponents" class="row">
+    <div class="col-sm-3">
+      <div id="positon_sun" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="temperature_sun" class="component card card-1">Temperature</div>
+    </div>
+  </div>
+
+  <div id="satelliteComponents" class="row">
+    <div class="col-sm-3">
+      <div id="positon_satellite" class="component card card-1">Position</div>
+    </div>
+    <div class="col-sm-3"> 
+      <div id="countryaffiliation" class="component card card-1">Country Affiliation</div>
+    </div>
+  </div>
+
+
+
+</div><br><br><br>
+
+
+
+
+<div class="finalcontainer container-fluid bg-3">    
+  <h3 id="schema_title" class="row-heading">Component Schema Code Snippet</h3> <h5 class="row-heading">(See Schemalang reference <a target="_blank" href="https://docs.improbable.io/reference/11.1/schema/reference">here</a>)</h5><br>
+  <div class="row">
+
+<pre id="position_schema"><code class="language-protobuf">type Coordinates {
+  double x = 1;
+  double y = 2;
+  double z = 3;
+}
+
+component Position {
+  id = 54;
+  Coordinates coords = 1;
+}
+</code></pre>
+
+
+
+<pre id="age_schema"><code class="language-protobuf">package improbable.example;
+
+component Age {
+  id = 1222;
+  uint32 current_age= 24;
+  uint32 max_age = 99;
+}
+</code></pre>
+
+
+<pre id="active_schema"><code class="language-protobuf">package improbable.example;
+
+component Active {
+  id = 1239;
+  bool is_moving = 1;
+}
+</code></pre>
+
+
+<pre id="wealth_schema"><code class="language-protobuf">package improbable.example;
+
+component Wealth {
+  id = 1324;
+  uint32 amount = 10000;
+}
+</code></pre>
+
+
+
+<pre id="parent_schema"><code class="language-protobuf">package improbable.example;
+
+component Parent {
+  id = 115;
+  bool is_parent = 1;
+}
+</code></pre>
+
+
+
+<pre id="flammable_schema"><code class="language-protobuf">package improbable.example;
+  
+type StartFire {
+  int64 heat = 30;
+}
+
+
+component Flammable {
+  id = 1325;
+  bool is_on_fire = 1;
+  event StartFire lit;
+}
+</code></pre>
+
+
+<pre id="height_schema"><code class="language-protobuf">package improbable.example;
+
+component Height {
+  id = 1336;
+  uint32 feet = 200;
+}
+</code></pre>
+
+
+
+<pre id="occupancy_schema"><code class="language-protobuf">package improbable.example;
+
+component Occupancy {
+  id = 1931;
+  uint32 number_of_occupants = 50;
+  bool is_occupied = 1;
+}
+</code></pre>
+
+
+<pre id="lights_schema"><code class="language-protobuf">package improbable.example;
+
+enum Color {
+  RED = 0;
+  GREEN = 1;
+  AMBER = 2;
+}
+
+component Lights {
+  id = 1022;
+  bool is_on = 1;
+  Color color = 1;
+}
+</code></pre>
+
+
+<pre id="depreciable_schema"><code class="language-protobuf">package improbable.example;
+
+component Depreciable {
+  id = 4351;
+  uint32 amount_of_depreciation = 80;
+  bool is_depreciable = 1;
+}
+</code></pre>
+
+
+<pre id="neurons_schema"><code class="language-protobuf">package improbable.example;
+
+component Neurons {
+  id = 4151;
+  uint32 current_number = 200000;
+  uint32 max_number = 7000000;
+}
+</code></pre>
+
+
+<pre id="firing_schema"><code class="language-protobuf">package improbable.example;
+
+component Firing {
+  id = 4490;
+  bool is_firing = 0;
+}
+</code></pre>
+
+
+<pre id="damaged_schema"><code class="language-protobuf">package improbable.example;
+
+type DamageRequest {
+  uint32 amount = 1;
+}
+ 
+type DamageResponse {}
+ 
+component Damaged {
+  id = 1234;
+  bool is_damaged = 1;
+  command DamageResponse damage(DamageRequest);
+}
+</code></pre>
+
+
+<pre id="ventilated_schema"><code class="language-protobuf">package improbable.example;
+
+component Ventilated {
+  id = 4490;
+  bool is_ventilated = 0;
+  uint32 ventilation_level = 22;
+}
+</code></pre>
+
+
+<pre id="reflex_schema"><code class="language-protobuf">package improbable.example;
+
+component Reflex {
+  id = 7829;
+  bool is_reflexive = 1;
+}
+</code></pre>
+
+
+<pre id="relay_schema"><code class="language-protobuf">package improbable.example;
+
+component Relay {
+  id = 8230;
+  bool is_passing_data = 0;
+  float signal_strength = 128.12;
+}
+</code></pre>
+
+
+<pre id="neuronalprocessing_schema"><code class="language-protobuf">package improbable.example;
+
+component NeuronalProcessing {
+  id = 8230;
+  bool currently_processing = 1;
+}
+
+</code></pre>
+
+
+<pre id="sleepmodulation_schema"><code class="language-protobuf">package improbable.example;
+  
+type Regulate {
+  int64 time = 1;
+}
+ 
+component SleepModulation {
+  id = 1234;
+  bool is_modulating = 1;
+  event Regulate initiated;
+}
+
+</code></pre>
+
+
+
+<pre id="melatoninproduction_schema"><code class="language-protobuf">package improbable.example;
+
+component MelatoninProduction {
+  id = 1219;
+  bool currently_producing = 1;
+  uint32 current_production_level = 212;
+  uint32 max_production_level = 500;
+}
+
+</code></pre>
+
+
+
+<pre id="listedcountry_schema"><code class="language-protobuf">package improbable.example;
+
+component ListedCountry {
+  id = 9927;
+  string country = "United Kingdom";
+}
+
+</code></pre>
+
+
+<pre id="marketcapitalization_schema"><code class="language-protobuf">package improbable.example;
+
+component MarketCapitalization {
+  id = 4444;
+  uint32 country = 921297;
+}
+
+</code></pre>
+
+
+
+<pre id="tickersymbol_schema"><code class="language-protobuf">package improbable.example;
+
+component TickerSymbol {
+  id = 1123;
+  string symbol = "AAPL";
+}
+
+</code></pre>
+
+
+<pre id="name_schema"><code class="language-protobuf">package improbable.example;
+
+component Name {
+  id = 9927;
+  string commodity = "Gold";
+}
+
+</code></pre>
+
+
+<pre id="value_schema"><code class="language-protobuf">package improbable.example;
+
+component Value {
+  id = 100323;
+  uint32 price_per_kg = 1000;
+}
+
+</code></pre>
+
+
+<pre id="sector_schema"><code class="language-protobuf">package improbable.example;
+
+component Sector {
+  id = 53123;
+  string industry_sector = "Metals";
+}
+
+</code></pre>
+
+<pre id="grossrevenue_schema"><code class="language-protobuf">package improbable.example;
+
+component GrossRevenue {
+  id = 53123;
+  uint32 revenue_current_year = 12312;
+  uint32 revenue_prior_year = 231152;
+}
+
+</code></pre>
+
+<pre id="netprofit_schema"><code class="language-protobuf">package improbable.example;
+
+component GrossProfit {
+  id = 23143;
+  uint32 profit_current_year = 2213;
+  uint32 profit_prior_year = 3232;
+}
+
+</code></pre>
+
+<pre id="employer_schema"><code class="language-protobuf">package improbable.example;
+
+component Employer {
+  id = 86262;
+  string employer = "Barclays Bank";
+}
+
+</code></pre>
+
+<pre id="weight_schema"><code class="language-protobuf">package improbable.example;
+
+component Weight {
+  id = 817361;
+  uint32 weight = 231212;
+}
+
+</code></pre>
+
+<pre id="velocity_schema"><code class="language-protobuf">package improbable.example;
+
+component Velocity {
+  id = 817361;
+  uint32 speed = 211;
+}
+
+</code></pre>
+
+<pre id="cluster_schema"><code class="language-protobuf">package improbable.example;
+
+component Cluster {
+  id = 209809;
+  bool is_cluster = 1;
+  int64 number_in_cluster = 30;
+}
+
+</code></pre>
+
+
+<pre id="mass_schema"><code class="language-protobuf">package improbable.example;
+
+component Mass {
+  id = 209809;
+  uint32 mass = 213121;
+}
+
+</code></pre>
+
+
+<pre id="temperature_schema"><code class="language-protobuf">package improbable.example;
+
+component Temperature {
+  id = 209809;
+  uint32 temperature_sun = 75283;
+}
+
+</code></pre>
+
+
+<pre id="countryaffiliation_schema"><code class="language-protobuf">package improbable.example;
+
+component CountryAffiliation {
+  id = 209809;
+  string country = "Barbados";
+}
+
+</code></pre>
+
+
+
+
+
+
+
+  </div>
+</div><br><br>
+
+
+
+
+
+
+
+<footer class="finalcontainer container-fluid text-center">
+  <p>Made by <a target="_blank" href="https://www.sidshekhar.com/">Sid Shekhar</a></p> 
+  <ul class="home_ul">
+            <li class="home-li">
+                <a href="https://www.linkedin.com/in/sidharthshekhar/" target="_blank" class="home-a"> <i class="fa fa-linkedin fa-lg home-icon" title="LinkedIn" aria-hidden="true"></i></a>
+            </li>
+            <li class="home-li">
+                 <a href="https://github.com/sidshekhar" target="_blank" class="home-a"> <i class="fa fa-github fa-lg home-icon" title="Github" aria-hidden="true"></i></a>
+            </li>
+            <li class="home-li">
+                 <a href="https://twitter.com/sidshekhar24" target="_blank" class="home-a"> <i class="fa fa-twitter fa-lg home-icon" title="Twitter" aria-hidden="true"></i></a>
+            </li>
+
+        </ul>
+  
+</footer>
+
+
+
+
+<script async src="https://use.fontawesome.com/162bc38651.js"></script>
+<script src="js/highlightjs.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/smoothscroll.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/highlightjs-line-numbers.min.js" type="text/javascript" charset="utf-8"></script>
+<script>
+      hljs.initHighlightingOnLoad();
+      // hljs.initLineNumbersOnLoad();
+    </script>
+<script src="js/functionality.js" type="text/javascript" charset="utf-8" async defer></script>
+<!-- Place this tag in your head or just before your close body tag. -->
+</body>
+</html>

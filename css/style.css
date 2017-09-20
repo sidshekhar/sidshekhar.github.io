@@ -1,0 +1,193 @@
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+/* Add a gray background color and some padding to the footer */
+
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+}
+.modal-title,
+.modal-body {
+    text-align: center;
+}
+.modal-body {
+    font-size: 15px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+.btn:hover {
+    opacity: 0.8;
+    background-color: #2A2A2A;
+}
+.navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {
+    float: none;
+    font-size: 24px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    letter-spacing: 0.5px;
+}
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+#entitycontainer,
+#componentcontainer,
+.finalcontainer {
+    opacity: 0;
+}
+.home-a {
+    color: black;
+    display: inline-block;
+    text-align: center;
+    font: normal normal 300 normal 14px / 24px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    list-style: none outside none;
+    outline: rgb(75, 0, 130) none 0px;
+    padding: 7px 15px;
+    transition: all 0.4s ease-in-out 0s;
+}
+.home_ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none outside none;
+}
+.home-li {
+    color: rgb(102, 102, 102);
+    display: inline-block;
+    height: 38px;
+    text-align: center;
+    text-decoration: none solid rgb(102, 102, 102);
+    width: 50px;
+    border: 0px none rgb(102, 102, 102);
+    font: normal normal 300 normal 14px / 24px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    list-style: none outside none;
+    outline: rgb(102, 102, 102) none 0px;
+}
+.card {
+    background: #fff;
+    border-radius: 3px;
+    display: inline-block;
+    height: 100px;
+    /*  margin: 25px;
+*/
+    
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 95px;
+    cursor: pointer;
+}
+.card-1 {
+    box-shadow: 0 5px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+.card-1:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.row-heading {
+    margin-left: 1rem;
+    display: inline-block;
+}
+h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+}
+h5 {
+    color: #BFBFBF;
+    height: 10px;
+    font-weight: 400;
+}
+a {
+    color: grey;
+}
+.black-background {
+    background-color: #000000;
+}
+.white {
+    color: #ffffff;
+}
+#cityEntities,
+#humanbodyEntities,
+#financialmarketEntities,
+#solarsystemEntities,
+#humanmaleComponents,
+#humanfemaleComponents,
+#buildingComponents,
+#trafficlightComponents,
+#pinealglandComponents,
+#thalamusComponents,
+#medulaoblongataComponents,
+#opticnerveComponents,
+#traderComponents,
+#companyComponents,
+#commodityComponents,
+#stockComponents,
+#satelliteComponents,
+#sunComponents,
+#planetComponents,
+#asteroidComponents,
+#position_schema,
+#age_schema,
+#active_schema,
+#wealth_schema,
+#parent_schema,
+#flammable_schema,
+#occupancy_schema,
+#lights_schema,
+#depreciable_schema,
+#neurons_schema,
+#firing_schema,
+#damaged_schema,
+#ventilated_schema,
+#reflex_schema,
+#relay_schema,
+#neuronalprocessing_schema,
+#sleepmodulation_schema,
+#melatoninproduction_schema,
+#listedcountry_schema,
+#marketcapitalization_schema,
+#tickersymbol_schema,
+#height_schema,
+#name_schema,
+#value_schema,
+#sector_schema,
+#grossrevenue_schema,
+#netprofit_schema,
+#employer_schema,
+#weight_schema,
+#velocity_schema,
+#cluster_schema,
+#mass_schema,
+#temperature_schema,
+#countryaffiliation_schema {
+    display: none;
+}
+table {
+    font-size: 18px;
+    border-collapse: collapse;
+    width: 50%;
+    margin-left: 25px;
+}
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+pre {
+    padding: 0px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+.active {
+    color: #fff;
+    background-color: #00c5f4;
+    background-image: linear-gradient(20deg, #9781f4, #00c5f4);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
