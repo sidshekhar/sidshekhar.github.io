@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title }} | Sid Shekhar</title>
+    <meta name="author" content="Sid Shekhar">
+    <meta name="description" content="{{ page.description }}">
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{ page.title }} | Sid Shekhar" />
+    {% if page.book_image %}
+      <meta property="og:image" content="/images/{{page.book_image}}" />
+    {% elsif page.header_image %}
+      <meta property="og:image" content="/images/{{page.header_image}}" />
+    {% endif %}
+    <!-- <link rel="icon" 
+          type="image/png" 
+          href="/images/favicon.png"> -->
+
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="/stylesheets/css/base.css">
+    <link rel="stylesheet" href="/stylesheets/css/skeleton.css">
+    <link rel="stylesheet" href="/stylesheets/css/typography.css">
+    <link rel="stylesheet" href="/stylesheets/css/layout.css">
+    <link rel="stylesheet" href="/stylesheets/css/custom.css">
+    <link rel="stylesheet" href="/stylesheets/css/syntax.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="three columns sidebar">
+            <nav>
+                <h3 id="logo"><a href="/">Sid Shekhar</a></h3>
+                <ul>
+                    <li><a target="_blank" href="https://twitter.com/sidshekhar24">twitter</a></li>
+                    <li><a target="_blank" href="https://www.linkedin.com/in/sidshekhar/">linkedin</a></li>
+                </ul>
+            </nav>
+            &nbsp;
+        </div>
+
+        <div class="twelve columns offset-by-one content">
+          <h3>{{ page.title }}</h3>
+          <br>
+          {{ content }}
+        </div>
+    </div>
+</body>

@@ -1,2 +1,3 @@
-# sidshekhar.github.io
-personal website
+sidshekhar.com
+===================
+sidshekhar.com
