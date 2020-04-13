@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+
+img {
+  max-width: 100%;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 32px;
+}
+
+p {
+  line-height: 1.6;
+}
+
+#maincontent {
+  max-width: 42em;
+  margin: 15 auto;
+  padding: 15px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  /* float: left; */
+  padding-bottom: 10px;
+}
+
+li a {
+  /* display: block; */
+  border-bottom: 2px dashed #6246ea;
+  text-align: center;
+  /* padding-left: 16px; */
+  margin: 10px;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #d1d1e9;
+  border-bottom: 2px solid #6246ea;
+}
+
+/*HOVER POPUP*/
+@media only screen and (min-width: 768px) {
+  #popup a,
+  #popup a:visited {
+    position: relative;
+    text-decoration: none;
+    font-weight: bold;
+    color: #6246ea;
+    background-color: #f4f2ff;
+  }
+
+  #popup a span {
+    display: none;
+  }
+
+  /* the IE correction rule */
+  #popup a:hover {
+    color: #f00;
+    text-indent: 0; /* added the default value */
+  }
+
+  #popup a:hover span {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 170px;
+    width: 320px;
+    margin: 0px;
+    padding: 10px;
+    color: #335500;
+    background-color: yellow;
+    font-weight: normal;
+    text-align: left;
+    border: 1px solid #666;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #popup a span {
+    display: none;
+  }
+  #popup a,
+  #popup a:visited {
+    position: relative;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
