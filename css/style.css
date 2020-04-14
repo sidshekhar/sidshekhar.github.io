@@ -10,6 +10,15 @@ body {
   /* background-color: #fffffe; */
 }
 
+a{
+  text-decoration: none;
+  border-bottom: 2px dotted #6246ea;
+}
+
+.special-link{
+  border: none;
+}
+
 h2 {
   font-weight: bold;
   font-size: 32px;
@@ -39,7 +48,7 @@ li {
 
 li a {
   /* display: inline-block; */
-  border-bottom: 2px dotted #6246ea;
+  /* border-bottom: 2px dotted #6246ea; */
   text-align: left;
   margin: 10px;
   text-decoration: none;
@@ -80,7 +89,7 @@ a:hover {
     margin: 0px;
     padding: 10px;
     color: #335500;
-    background-color: yellow;
+    background-color: #ffffff;
     font-weight: normal;
     text-align: left;
     border: 1px solid #666;
@@ -96,5 +105,7 @@ a:hover {
     position: relative;
     text-decoration: none;
     font-weight: bold;
+    color: #6246ea;
+    background-color: #f4f2ff;
   }
 }
