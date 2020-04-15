@@ -10,13 +10,13 @@ body {
   /* background-color: #fffffe; */
 }
 
-a{
+a {
   text-decoration: none;
+  color: #6246ea;
   border-bottom: 2px dotted #6246ea;
-  color: #6246ea
 }
 
-.special-link{
+.special-link {
   border: none;
 }
 
@@ -56,7 +56,8 @@ li a {
 }
 
 a:hover {
-  background-color: #d1d1e9;
+  background-color: #f4f2ff;
+  color: rgb(98, 1, 255);
   border-bottom: 2px solid #6246ea;
 }
 
@@ -69,6 +70,7 @@ a:hover {
     font-weight: bold;
     color: #6246ea;
     background-color: #f4f2ff;
+    padding: 0px 1px 0px 1px
   }
 
   #popup a span {
@@ -77,7 +79,7 @@ a:hover {
 
   /* the IE correction rule */
   #popup a:hover {
-    color: #f00;
+    color: rgb(98, 1, 255);
     text-indent: 0; /* added the default value */
   }
 
@@ -89,7 +91,7 @@ a:hover {
     width: 320px;
     margin: 0px;
     padding: 10px;
-    color: #335500;
+    color: #6246ea;
     background-color: #ffffff;
     font-weight: normal;
     text-align: left;
