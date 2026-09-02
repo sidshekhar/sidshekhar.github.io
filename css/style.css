@@ -498,28 +498,32 @@ main > section + section {
 }
 .contact ul {
   display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
+  margin-top: 1.25rem;
 }
 .contact li a {
-  display: inline-block;
-  padding: 0.5rem 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--border);
-  border-radius: 999px;
-  text-decoration: none;
+  border-radius: 50%;
   color: var(--fg);
   background: var(--bg-elev);
-  font-size: 0.9375rem;
+  transition: border-color 0.15s, color 0.15s, transform 0.15s;
 }
 .contact li a:hover {
   border-color: var(--accent);
   color: var(--accent);
   background: var(--bg-elev);
+  transform: translateY(-1px);
 }
-.contact .muted {
-  margin-top: 1rem;
-  font-size: 0.9375rem;
+.contact svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 /* ---------- Footer ---------- */
