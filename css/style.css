@@ -307,6 +307,7 @@ main > section + section {
 }
 .chapter .cards {
   margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
 }
 .more {
   display: inline-block;
