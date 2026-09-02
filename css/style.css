@@ -498,31 +498,23 @@ main > section + section {
 }
 .contact ul {
   display: flex;
-  gap: 0.75rem;
+  gap: 1.25rem;
   flex-wrap: nowrap;
   margin-top: 1.25rem;
 }
 .contact li a {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--border);
-  border-radius: 50%;
   color: var(--fg);
-  background: var(--bg-elev);
-  transition: border-color 0.15s, color 0.15s, transform 0.15s;
+  transition: color 0.15s, transform 0.15s;
 }
 .contact li a:hover {
-  border-color: var(--accent);
   color: var(--accent);
-  background: var(--bg-elev);
+  background: none;
   transform: translateY(-1px);
 }
 .contact svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   fill: currentColor;
 }
 
