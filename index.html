@@ -1,290 +1,193 @@
-<html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-    <meta http-equiv="X-UA-Compatible" content="IE=8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta content="en-us" http-equiv="Content-Language" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="images/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="images/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="images/favicon-16x16.png"
-    />
-    <link rel="manifest" href="images/site.webmanifest" />
-    <title>Sid Shekhar</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=UA-99569573-1"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f4f1">
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');var t;
+    try{t=localStorage.getItem('theme')}catch(e){}
+    if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+    d.dataset.theme=t;})();
+  </script>
+  <title>Sid Shekhar</title>
+  <meta name="description" content="Sid Shekhar — co-founder of Gina, an AI agent with its own wallet. Previously led Blockchain Research at Coinbase and co-founded TokenAnalyst.">
+  <link rel="canonical" href="https://www.sidshekhar.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sid Shekhar">
+  <meta property="og:description" content="Co-founder of Gina, an AI agent with its own wallet. Previously Coinbase Blockchain Research and TokenAnalyst.">
+  <meta property="og:url" content="https://www.sidshekhar.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <script src="/js/site.js" defer></script>
+</head>
+<body>
+  <!-- header:start -->
+  <header class="site-header container">
+    <a class="wordmark label" href="/">Sid Shekhar</a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/" aria-current="page">Home</a>
+      <a href="/gina/">Gina</a>
+      <a href="/coinbase/">Coinbase</a>
+      <a href="/tokenanalyst/">TokenAnalyst</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </nav>
+  </header>
+  <!-- header:end -->
 
-      gtag("config", "UA-99569573-1");
-    </script>
-  </head>
-  <body>
-    <div id="maincontent">
-      <h2>Hi there 👋🏽</h2>
+  <main class="container">
+    <section class="intro reveal">
+      <h1>Hi, I'm Sid 👋🏽</h1>
+      <p>
+        I'm the co-founder of <a href="https://www.askgina.ai/" target="_blank" rel="noopener">Gina</a>,
+        an AI agent with its own wallet. Tell her what you want in plain language and she researches,
+        trades, monitors and automates it for you across 12+ blockchains, prediction markets, perpetuals,
+        and now stocks. Before that I led the Blockchain Research team at
+        <a href="/coinbase/">Coinbase</a>, and before that I co-founded
+        <a href="/tokenanalyst/">TokenAnalyst</a>, a London blockchain analytics startup that Coinbase acquired.
+      </p>
+      <p>
+        I'm an alum of Cornell and UCL and have lived, worked and studied in 🇬🇧 🇺🇸 🇮🇳 🇮🇱 🇹🇷 and 🇪🇬.
+      </p>
+      <dl class="meta">
+        <div><dt class="label">Name</dt><dd>Sid Shekhar</dd></div>
+        <div><dt class="label">Now</dt><dd>Building <a href="https://www.askgina.ai/" target="_blank" rel="noopener">Gina</a></dd></div>
+      </dl>
+    </section>
 
-      <br />
-      <p>
-        My name is Sid Shekhar and I'm currently building
-        <a target="_blank" href="https://www.askgina.ai/">Gina</a> - an AI
-        companion in your wallet that makes transacting onchain easier. See here
-        for a
-        <a target="_blank" href="https://www.youtube.com/watch?v=XEFNsa06Kes&t"
-          >demo</a
-        >
-        of Gina in action.
-        <br />
-        <br />
-        Previously I led the Blockchain Research team at
-        <a target="_blank" href="https://www.coinbase.com/">Coinbase</a> where I
-        regularly shared insights on Web 3 & DeFi on a weekly institutional
-        markets call that can be found on the
-        <a
-          target="_blank"
-          href="https://www.coinbase.com/institutional/research-insights/media/market-calls"
-          >Web</a
-        >
-        and on
-        <a
-          target="_blank"
-          href="https://open.spotify.com/show/6ou0VOA8V5TfasroWARWm2?si=3ab6a54016074447"
-          >Spotify</a
-        >.
-        <br />
-        <br />
-        Additionally in a previous life, I co-founded
-        <span id="popup">
-          <a
-            class="special-link"
-            target="_blank"
-            href="https://www.tokenanalyst.io/"
-            >TokenAnalyst<span
-              ><img
-                src="images/tokenanalyst.gif"
-                alt="www.tokenanalyst.io" /></span></a
-        ></span>
-        , a London-based blockchain analytics startup (acq Coinbase). Our work
-        was covered by
-        <a
-          target="_blank"
-          href="https://www.bloomberg.com/news/articles/2019-08-15/bitcoin-drop-not-likely-triggered-by-scam-dump-researcher-says"
-          >Bloomberg</a
-        >,
-        <a
-          target="_blank"
-          href="https://www.businessinsider.com/bitcoin-spike-led-by-market-whales-tokenanalyst-2019-4?r=US&IR=T"
-          >Business Insider</a
-        >, and
-        <a
-          target="_blank"
-          href="https://finimize.com/content/coinbase-how-to-earn-passive-income-on-crypto"
-          >more</a
-        >. I'm an alum of Cornell and UCL and have lived, worked, and studied in
-        🇬🇧 🇺🇸 🇮🇳 🇮🇱 🇹🇷 and 🇪🇬.
-      </p>
-      <br />
-      <h3>Writing</h3>
+    <section class="timeline" aria-label="Career timeline">
+      <span class="label">Timeline</span>
+
+      <article class="chapter chapter--current reveal">
+        <div class="chapter__year"><span>2024</span><span>now</span></div>
+        <div class="chapter__body">
+          <h2 class="chapter__title"><a href="/gina/">Gina</a> <span class="badge">Current</span></h2>
+          <p class="chapter__role">Co-founder</p>
+          <p class="chapter__blurb">
+            Agentic wallet infrastructure. Gina is an AI agent equipped with its own wallet: describe a
+            strategy and she executes, monitors and automates it 24/7 across 12+ blockchains, all of
+            Polymarket, every Hyperliquid perp, and now stocks, commodities and indices.
+          </p>
+          <ul class="cards">
+            <li class="reveal">
+              <a class="card" href="https://www.youtube.com/watch?v=XEFNsa06Kes" target="_blank" rel="noopener">
+                <img class="card__thumb" src="https://img.youtube.com/vi/XEFNsa06Kes/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+                <span class="card__body"><span class="label">Video</span><span class="card__title">Introducing Gina</span></span>
+              </a>
+            </li>
+            <li class="reveal" style="--d: 80ms">
+              <a class="card" href="https://www.youtube.com/watch?v=9PDEBBc9rUY" target="_blank" rel="noopener">
+                <img class="card__thumb" src="https://img.youtube.com/vi/9PDEBBc9rUY/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+                <span class="card__body"><span class="label">Talk · ETHCC 2025</span><span class="card__title">How to talk to your wallet</span></span>
+              </a>
+            </li>
+            <li class="reveal" style="--d: 160ms">
+              <a class="card card--text" href="https://paragraph.com/@askgina/from-conversation-to-execution-lessons-learned-evaluating-6-llms-for-gina" target="_blank" rel="noopener">
+                <span class="card__body"><span class="label">Article · Paragraph</span><span class="card__title">From conversation to execution: lessons learned evaluating 6 LLMs for Gina</span></span>
+              </a>
+            </li>
+          </ul>
+          <a class="more" href="/gina/">See all from Gina →</a>
+        </div>
+      </article>
+
+      <article class="chapter reveal">
+        <div class="chapter__year"><span>2020</span><span>2024</span></div>
+        <div class="chapter__body">
+          <h2 class="chapter__title"><a href="/coinbase/">Coinbase</a></h2>
+          <p class="chapter__role">Led Blockchain Research</p>
+          <p class="chapter__blurb">
+            Built and led the Blockchain Research team, publishing onchain analysis on Layer 2s, ETH 2.0
+            and DeFi, and hosted a weekly institutional markets call on Web3 and DeFi.
+          </p>
+          <ul class="cards">
+            <li class="reveal">
+              <a class="card" href="https://www.youtube.com/watch?v=8EOAwmXUs3Q" target="_blank" rel="noopener">
+                <img class="card__thumb" src="https://img.youtube.com/vi/8EOAwmXUs3Q/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+                <span class="card__body"><span class="label">Talk · ETHCC 2023</span><span class="card__title">Trends in liquidity provisioning behavior across DEXs</span></span>
+              </a>
+            </li>
+            <li class="reveal" style="--d: 80ms">
+              <a class="card card--text" href="https://www.coinbase.com/blog/examining-layer-2-usage-using-onchain-data" target="_blank" rel="noopener">
+                <span class="card__body"><span class="label">Article · Coinbase</span><span class="card__title">Examining Layer 2 activity using onchain data</span></span>
+              </a>
+            </li>
+            <li class="reveal" style="--d: 160ms">
+              <a class="card card--text" href="https://eth2data.github.io/" target="_blank" rel="noopener">
+                <span class="card__body"><span class="label">Article</span><span class="card__title">ETH 2.0 data deep dive</span></span>
+              </a>
+            </li>
+          </ul>
+          <a class="more" href="/coinbase/">See all from Coinbase →</a>
+        </div>
+      </article>
+
+      <article class="chapter reveal">
+        <div class="chapter__year"><span>2017</span><span>2020</span></div>
+        <div class="chapter__body">
+          <h2 class="chapter__title"><a href="/tokenanalyst/">TokenAnalyst</a></h2>
+          <p class="chapter__role">Co-founder · London · Acquired by Coinbase</p>
+          <p class="chapter__blurb">
+            Co-founded a blockchain analytics startup that turned raw onchain data into signals for
+            traders and institutions. Covered by Bloomberg and Business Insider, acquired by Coinbase
+            in 2020.
+          </p>
+          <ul class="cards">
+            <li class="reveal">
+              <a class="card" href="/tokenanalyst/">
+                <img class="card__thumb" src="/images/tokenanalyst.gif" alt="" loading="lazy" width="320" height="180">
+                <span class="card__body"><span class="label">Product</span><span class="card__title">TokenAnalyst platform</span></span>
+              </a>
+            </li>
+            <li class="reveal" style="--d: 80ms">
+              <a class="card card--text" href="https://www.bloomberg.com/news/articles/2019-08-15/bitcoin-drop-not-likely-triggered-by-scam-dump-researcher-says" target="_blank" rel="noopener">
+                <span class="card__body"><span class="label">Press · Bloomberg</span><span class="card__title">Bitcoin drop not likely triggered by scam dump, researcher says</span></span>
+              </a>
+            </li>
+            <li class="reveal" style="--d: 160ms">
+              <a class="card" href="https://www.youtube.com/watch?v=OtodaT1mZJU" target="_blank" rel="noopener">
+                <img class="card__thumb" src="https://img.youtube.com/vi/OtodaT1mZJU/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
+                <span class="card__body"><span class="label">Talk</span><span class="card__title">How we use data science at TokenAnalyst</span></span>
+              </a>
+            </li>
+          </ul>
+          <a class="more" href="/tokenanalyst/">See all from TokenAnalyst →</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="contact reveal" id="contact">
+      <h2>Get in touch</h2>
       <ul>
-        <li>
-          <a
-            class="active"
-            target="_blank"
-            href="https://paragraph.com/@askgina/from-conversation-to-execution-lessons-learned-evaluating-6-llms-for-gina"
-            >Lessons learned from evaluating 6 LLMs for Gina</a
-          >
-        </li>
-        <li>
-          <a
-            class="active"
-            target="_blank"
-            href="https://paragraph.xyz/@castaway/quantifying-vibes"
-            >Quantifying Vibes: A data driven look into the gestation of a
-            social network</a
-          >
-        </li>
-        <li>
-          <a
-            class="active"
-            target="_blank"
-            href="https://www.coinbase.com/blog/examining-layer-2-usage-using-onchain-data"
-            >Examining Layer 2 Activity using Onchain Data</a
-          >
-        </li>
-        <li>
-          <a class="active" target="_blank" href="https://eth2data.github.io/"
-            >ETH 2.0 Data Deep Dive</a
-          >
-        </li>
-        <li>
-          <a
-            class="active"
-            target="_blank"
-            href="https://medium.com/tokenanalyst/under-the-hood-of-the-world-computer-caf957fb8a4c"
-            >Under the hood of the world computer</a
-          >
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://medium.com/tokenanalyst/measuring-maker-dai-stability-f74c23108128"
-            >Measuring Maker-Dai Stability</a
-          >
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://medium.com/tokenanalyst/jackpot-a-fomo3d-adventure-793f6e94dc75"
-            >Jackpot - A Fomo3D Adventure</a
-          >
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://medium.com/tokenanalyst/dissecting-blocks-bf218cdff39d"
-            >Dissecting Blocks</a
-          >
-        </li>
+        <li><a href="https://farcaster.xyz/sidshekhar" target="_blank" rel="noopener">Farcaster</a></li>
+        <li><a href="https://twitter.com/sidshekhar24" target="_blank" rel="noopener">X / Twitter</a></li>
+        <li><a href="https://www.linkedin.com/in/sidshekhar/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://t.me/sidshekhar" target="_blank" rel="noopener">Telegram</a></li>
       </ul>
-      <br />
-      <h3>Presentations</h3>
-      <ul>
-        <li>
-          <a
-            href="https://www.youtube.com/watch?v=9PDEBBc9rUY"
-            target="_blank"
-            rel="noopener"
-            >ETHCC 2025: How to talk to your wallet
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.youtube.com/watch?v=IXYQeB_SWa4&t=56s"
-            target="_blank"
-            rel="noopener"
-            >Simplifying Crypto with Agents - Podcast with Autonolas
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.youtube.com/watch?v=Bq6MQToFAZQ&t=122s"
-            target="_blank"
-            rel="noopener"
-            >Startupradar Podcast
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.youtube.com/watch?v=8EOAwmXUs3Q"
-            target="_blank"
-            rel="noopener"
-            >ETH CC 2023: Trends in liquidity provisioning behavior across DEXs
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.youtube.com/embed/ry1lis558tQ"
-            target="_blank"
-            rel="noopener"
-            >Examining User Bridging Behavior using On-chain Analytics
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.youtube.com/embed/MH-tmcpp24U"
-            target="_blank"
-            rel="noopener"
-            >Analyzing DeFi Trading Strategies On-chain
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.youtube.com/embed/OtodaT1mZJU"
-            target="_blank"
-            rel="noopener"
-            >How we use data science at TokenAnalyst</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.youtube.com/embed/r6khirZWFfk"
-            target="_blank"
-            rel="noopener"
-            >Classifying Transactions on the Blockchain</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.youtube.com/embed/RXH0TiJ3RnI"
-            target="_blank"
-            rel="noopener"
-            >Intelligent Investing using On-Chain Data (Webinar)</a
-          >
-        </li>
-        <li>
-          <a
-            href="https://www.stitcher.com/podcast/quantlayer-crypto-podcast/e/60071071"
-            target="_blank"
-            rel="noopener"
-            >Intro to on-chain analysis (Podcast)</a
-          >
-        </li>
-      </ul>
-      <br />
-      <h3>Get in touch</h3>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            rel="noopener"
-            href="https://warpcast.com/sidshekhar"
-            >Farcaster</a
-          >
-        </li>
-        <li>
-          <a
-            target="_blank"
-            rel="noopener"
-            href="https://twitter.com/sidshekhar24"
-            >Twitter</a
-          >
-        </li>
-        <li>
-          <a
-            target="_blank"
-            rel="noopener"
-            href="https://www.linkedin.com/in/sidshekhar/"
-            >LinkedIn</a
-          >
-        </li>
-        <li>
-          <a target="_blank" rel="noopener" href="https://t.me/sidshekhar"
-            >Telegram</a
-          >
-        </li>
-      </ul>
-      <p>
-        The best way to get in touch is to drop me a DM on Farcaster or Twitter.
-      </p>
-    </div>
-  </body>
+      <p class="muted">The best way to reach me is a DM on Farcaster or X.</p>
+    </section>
+  </main>
+
+  <!-- footer:start -->
+  <footer class="site-footer container">
+    <span>© 2026 Sid Shekhar</span>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/gina/">Gina</a>
+      <a href="/coinbase/">Coinbase</a>
+      <a href="/tokenanalyst/">TokenAnalyst</a>
+    </nav>
+  </footer>
+  <!-- footer:end -->
+</body>
 </html>
