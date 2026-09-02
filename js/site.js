@@ -70,6 +70,31 @@
     });
   }
 
+  /* ---------- Timeline progress line ---------- */
+  var chapters = document.querySelectorAll(".chapter");
+  if (chapters.length) {
+    var ticking = false;
+    function updateTimeline() {
+      ticking = false;
+      var anchor = window.innerHeight * 0.55; // the line fills up to this point in the viewport
+      chapters.forEach(function (ch) {
+        var r = ch.getBoundingClientRect();
+        var f = Math.max(0, Math.min(1, (anchor - r.top) / r.height));
+        ch.style.setProperty("--fill", (f * 100).toFixed(1) + "%");
+        ch.classList.toggle("is-passed", f > 0);
+      });
+    }
+    function requestTimeline() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateTimeline);
+      }
+    }
+    window.addEventListener("scroll", requestTimeline, { passive: true });
+    window.addEventListener("resize", requestTimeline);
+    updateTimeline();
+  }
+
   /* ---------- Click-to-load YouTube embed ---------- */
   document.querySelectorAll(".yt[data-id]").forEach(function (box) {
     var link = box.querySelector(".yt__link");

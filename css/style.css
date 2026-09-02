@@ -227,10 +227,24 @@ main > section + section {
   grid-row: 1 / -1;
   justify-self: center;
   width: 2px;
-  background: var(--border);
+  /* --fill is set by site.js as the visitor scrolls; without JS it stays a plain track */
+  background: linear-gradient(
+    to bottom,
+    var(--accent) 0,
+    var(--accent) var(--fill, 0%),
+    var(--border) var(--fill, 0%),
+    var(--border) 100%
+  );
 }
 .chapter:last-of-type::before {
-  background: linear-gradient(var(--border) 55%, transparent);
+  -webkit-mask-image: linear-gradient(#000 55%, transparent);
+  mask-image: linear-gradient(#000 55%, transparent);
+}
+.chapter::after {
+  transition: background-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.chapter.is-passed::after {
+  background: var(--accent);
 }
 .chapter::after {
   content: "";
