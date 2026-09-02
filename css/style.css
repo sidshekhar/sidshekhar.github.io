@@ -594,9 +594,6 @@ main > section + section {
 }
 
 /* ---------- Framed static media (e.g. TokenAnalyst gif) ---------- */
-.frame {
-  max-width: 40rem;
-}
 .frame img {
   width: 100%;
 }
