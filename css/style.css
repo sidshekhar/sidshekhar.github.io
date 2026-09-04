@@ -323,10 +323,38 @@ main > section + section {
   margin-top: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
 }
+/* Ghost pill rather than a filled button: there are eight of these across the
+   site, and eight solid CTAs would shout over the content. The mono-uppercase
+   treatment matches .label, so it reads as a control without the volume. */
 .more {
-  display: inline-block;
-  margin-top: 1.25rem;
-  font-size: 0.9375rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.5rem 0.9375rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-elev);
+  color: var(--fg-muted);
+  font: 500 0.75rem/1 var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s, background-color 0.15s;
+}
+.more::after {
+  content: "→";
+  font-size: 0.875rem;
+  line-height: 1;
+  transition: transform 0.15s var(--ease);
+}
+.more:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+.more:hover::after {
+  transform: translateX(3px);
 }
 
 @media (max-width: 640px) {
@@ -500,6 +528,8 @@ main > section + section {
   .card,
   .theme-toggle,
   .yt__play,
+  .more,
+  .more::after,
   body {
     transition: none;
   }
