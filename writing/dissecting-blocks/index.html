@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f4f1">
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');var t;
+    try{t=localStorage.getItem('theme')}catch(e){}
+    if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+    d.dataset.theme=t;})();
+  </script>
+  <title>Dissecting Blocks — Sid Shekhar</title>
+  <meta name="description" content="The case for why examining who is transacting on-chain — not just how much — is the key to fundamentally understanding and valuing cryptoassets.">
+  <meta name="author" content="Sid Shekhar">
+  <link rel="canonical" href="https://www.sidshekhar.com/writing/dissecting-blocks/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Dissecting Blocks — Sid Shekhar">
+  <meta property="og:description" content="The case for why examining who is transacting on-chain — not just how much — is the key to fundamentally understanding and valuing cryptoassets.">
+  <meta property="og:url" content="https://www.sidshekhar.com/writing/dissecting-blocks/">
+  <meta property="og:site_name" content="Sid Shekhar">
+  <meta property="og:image" content="https://www.sidshekhar.com/images/writing/dissecting-blocks/01-1-rtdseler-gwmemhjsbyp5a.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@sidshekhar24">
+  <link rel="alternate" type="application/rss+xml" title="Sid Shekhar — Writing" href="https://www.sidshekhar.com/rss.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css?v=w3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <script src="/js/site.js?v=w3" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Dissecting Blocks","description":"The case for why examining who is transacting on-chain — not just how much — is the key to fundamentally understanding and valuing cryptoassets.","datePublished":"2018-03-08","dateModified":"2018-03-08","author":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"publisher":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sidshekhar.com/writing/dissecting-blocks/"},"url":"https://www.sidshekhar.com/writing/dissecting-blocks/","keywords":"ethereum, on-chain data, valuation","wordCount":1164,"image":"https://www.sidshekhar.com/images/writing/dissecting-blocks/01-1-rtdseler-gwmemhjsbyp5a.png"}</script>
+</head>
+<body>
+  <!-- header:start -->
+  <header class="site-header container">
+    <a class="wordmark label" href="/">Sid Shekhar</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+  </header>
+  <!-- header:end -->
+
+  <main class="container">
+    <article class="post">
+      <header class="post__head reveal">
+        <a class="post__back label" href="/writing/">← Writing</a>
+        <h1>Dissecting Blocks</h1>
+        <p class="post__sub">A look into the fascinating world of on-chain data</p>
+        <p class="post__meta label">
+          <time datetime="2018-03-08">Mar 8, 2018</time>
+          <span aria-hidden="true">·</span>
+          <span>5 min read</span>
+        </p>
+      </header>
+
+      <!-- No .reveal here: the article body is the content, it should never be
+           gated behind JS or a scroll animation. -->
+      <div class="post__body">
+      <figure class="post__figure"><img src="/images/writing/dissecting-blocks/01-1-rtdseler-gwmemhjsbyp5a.png" alt="The ubiquitous cryptocurrency price chart" loading="lazy" decoding="async"><figcaption>Source: TradingView</figcaption></figure>
+      <p>The ubiquitous price chart. Over the past year, variations of the image above have become a mainstay on the screens of millions of rabid cryptocurrency investors. Price is the guiding beacon that the majority of investors in crypto live and die by today.</p>
+      <p>When wild upswings or downswings in price occur, as happens quite frequently, it is often simply chalked up to market sentiment or periodic swings in demand.</p>
+      <p>In this piece, we will make the case for why examining <em>who</em> is transacting on-chain is the key to fundamentally understanding and valuing cryptoassets. We will focus on the Ethereum blockchain and go over some of the nuances involved in interpreting on-chain data.</p>
+      <h2 id="on-chain-data">On-chain data?</h2>
+      <p>First off, what do we mean by <strong>on-chain</strong> data? To put it succinctly: all data that is natively stored on the blockchain. This data includes (but is not limited to):</p>
+      <ul><li>Details of every block (timestamp, gas price, miner, block size etc.)</li><li>Details of every transaction (the 'from' and 'to' addresses, the amount transferred in the transaction etc.)</li><li>Smart contract invocation and usage</li></ul>
+      <h3 id="why-is-this-information-interesting">Why is this information interesting?</h3>
+      <p>Of late, many thinkers in the burgeoning field of <em>cryptoeconomics</em> have proposed theoretical frameworks to fundamentally value cryptoassets — whether it is the application of the equation of exchange <a href="https://medium.com/@cburniske/cryptoasset-valuations-ac83479ffca7" target="_blank" rel="noopener">(MV = PQ)</a> to cryptoassets by Chris Burniske, an <a href="https://medium.com/blockchannel/on-value-velocity-and-monetary-theory-a-new-approach-to-cryptoasset-valuations-32c9b22e3b6f" target="_blank" rel="noopener">alternative interpretation</a> of token velocity by Alex Evans and the <a href="https://medium.com/newtown-partners/velocity-of-tokens-26b313303b77" target="_blank" rel="noopener">levers that influence it</a> by James Kilroe, or the popular <a href="https://coinmetrics.io/nvt/" target="_blank" rel="noopener">Network Value to Transactions</a> (NVT) ratio championed by the excellent <a href="https://coinmetrics.io/" target="_blank" rel="noopener">coinmetrics</a> team and by <a href="http://charts.woobull.com/bitcoin-nvt-ratio/" target="_blank" rel="noopener">Woobull</a>.</p>
+      <blockquote><p>Many of these different valuation methodologies use on-chain transaction volume as a proxy for the network utility of a given cryptoasset.</p></blockquote>
+      <p>In other words, the on-chain transaction volume is being used to judge whether a given cryptoasset is actually being used.</p>
+      <blockquote><p>We believe we can go one level deeper.</p></blockquote>
+      <p>Instead of just crudely measuring the overall usage of a cryptoasset network, we think we can use on-chain transaction data to figure out <em>who</em> are the entities that are actually using a given cryptoasset.</p>
+      <p>This allows us to examine and learn from their on-chain transaction patterns — leading to deeper and more nuanced insights to fundamentally value the cryptoasset in question.</p>
+      <h2 id="classifying-addresses">Classifying addresses</h2>
+      <p>Wait a minute… isn't information about &quot;who&quot; is transacting hidden on the blockchain? Isn't that the whole point of <a href="https://en.wikipedia.org/wiki/Public-key_cryptography" target="_blank" rel="noopener">public-key</a> cryptography?</p>
+      <p>Yes and yes.</p>
+      <blockquote><p>We found a little quirk though.</p></blockquote>
+      <p>When one steps back and examines every Ethereum address (unique user account) and their respective on-chain transactions in aggregate — one begins to see distinct clusters of addresses that exhibit remarkably similar transaction patterns and on-chain behavior.</p>
+      <p>Our intuition tells us that each of these clusters of addresses generally belongs to certain types of entities.</p>
+      <figure class="post__figure"><img src="/images/writing/dissecting-blocks/02-1-dog0fgm5pyrlpuomwkfixg.png" alt="Classifying addresses into entity types" loading="lazy" decoding="async"><figcaption>Classifying addresses (icons made by Eucalyp from flaticon.com)</figcaption></figure>
+      <p>Based on the patterns we saw, we made some inferences of specific entities that could be represented by these clusterings:</p>
+      <ul><li><strong>Exchange-related addresses</strong>: Centralized cryptocurrency exchanges that generally have thousands of &quot;hot wallets&quot; that are used interchangeably to manage exchange operations and customer transactions.</li><li><strong>&quot;Bot&quot; and &quot;burner&quot; addresses</strong>: Addresses that either display an &quot;automated&quot; transaction pattern — such as repetitive, similar transactions to and from the same recipient — or are clearly one-time-use &quot;burner&quot; addresses that only ever have one incoming and outgoing transaction.</li><li><strong>Human-operated or &quot;other&quot; addresses</strong>: A catch-all bucket of addresses that generally display more irregular transaction patterns and show more variance in on-chain transactional relationships — hinting at an actual human being behind the address in question.</li></ul>
+      <h2 id="what-does-this-enable">What does this enable?</h2>
+      <p>Typically, the performance of traditional internet companies is measured by web analytics and user demographics that serve as benchmarks for how well a website is doing compared to its peers.</p>
+      <p>When it comes to the world of crypto, aggregating addresses and classifying them into distinct entity types enables similarly nuanced analysis into the makeup of a given cryptoasset's ecosystem.</p>
+      <p>For example, we can get a better picture of <strong>network strength</strong> by analyzing whether a given token is actually being utilized for its intended use-case by <em>humans</em> or simply being speculated on by a large <a href="https://blog.cyber.fund/huge-ethereum-mixer-6cf98680ee6c" target="_blank" rel="noopener">botnet</a>.</p>
+      <figure class="post__figure"><img src="/images/writing/dissecting-blocks/03-1-yeqpfebw71t6etqyaf6-wq.jpg" alt="Breakdown of address types transacting with a token" loading="lazy" decoding="async"></figure>
+      <p>This could prove especially useful for &quot;apples-to-apples&quot; comparisons between decentralized applications (dApps) within the same &quot;category&quot;. For example, one could make a comparison between prediction market tokens <a href="https://gnosis.pm/" target="_blank" rel="noopener">Gnosis</a> and <a href="http://www.augur.net/" target="_blank" rel="noopener">Augur</a>, or on a lighter note, between 'digital collectible' games such as <a href="https://www.cryptokitties.co/" target="_blank" rel="noopener">CryptoKitties</a> and <a href="https://cryptofighters.io/" target="_blank" rel="noopener">CryptoFighters</a>.</p>
+      <p>When we drill down into address transaction patterns and are able to loosely (or specifically) identify distinct entities like the token team, exchanges, or &quot;whales&quot; (individual entities transacting with large sums of money on-chain), we are also able to get a view of how centralized a token's ownership is.</p>
+      <figure class="post__figure"><img src="/images/writing/dissecting-blocks/04-1-ct9aqikfdhy7zo7g-whifg.png" alt="Token ownership split between team, whales and other holders" loading="lazy" decoding="async"><figcaption>Data via TokenAnalyst</figcaption></figure>
+      <p>You can see above that the token team and &quot;whale&quot; addresses hold significant amounts of the token in question. This could potentially mean significant price volatility if a few key players decided to liquidate their position.</p>
+      <h2 id="nuanced-interpretation-required">Nuanced interpretation required</h2>
+      <p>While diving deeper into on-chain data to better understand cryptoasset usage is surely an exciting challenge, it is useful to caveat a few of the points made above to illustrate the nuances involved with accurately interpreting and analyzing this data:</p>
+      <ul><li>Currently, it is unfeasible to know <em>for certain</em> whether a given address is a specific type of entity or not. The best we can do right now is arrive at a reasonable heuristic. However, even general estimates of usership can lead to useful insights that allow you better evaluate and compare cryptoassets.</li><li>On-chain transaction volumes and counts can sometimes be <a href="https://coinmetrics.io/difficulty-estimating-chain-transaction-volume/" target="_blank" rel="noopener">misleading</a> when taken at face value as any individual entity (a human, an exchange, etc) can own multiple addresses. Thus a lot of on-chain activity may simply be the shuffling of tokens within a given individual's own set of addresses.</li><li>A lot of exchange trading volume is often not reflected on-chain. Many exchanges, for example, internally debit or credit client wallets without actually invoking a transaction on the blockchain.</li><li>We believe on-chain data is a main dish that's part of a bigger data buffet that one should consume when fundamentally evaluating cryptoassets. Off-chain data on protocol differences (<a href="https://en.wikipedia.org/wiki/Proof-of-work_system" target="_blank" rel="noopener">PoW</a> or <a href="https://en.wikipedia.org/wiki/Proof-of-stake" target="_blank" rel="noopener">PoS</a>), token supply structures, <a href="https://medium.com/startup-grind/understanding-the-difference-between-coins-utility-tokens-and-tokenized-securities-a6522655fb91" target="_blank" rel="noopener">token types</a>, and <a href="https://thecontrol.co/digital-collectibles-a-new-category-of-tokens-emerging-fb991c1dff6a" target="_blank" rel="noopener">token category</a> should be taken into account to provide context to on-chain data on a given cryptoasset.</li></ul>
+      <h2 id="about-us">About us</h2>
+      <p>In an industry filled with scammy ICOs and rampant pump and dump schemes, Jai and I came together to work on <strong>TokenAnalyst</strong> with the goal of bringing more transparency into what's happening on the blockchain itself.</p>
+      <p>We are actively working on parsing and analyzing every block on Ethereum (with plans to add more blockchains).</p>
+      <p>In future posts, we will walk through our on-chain data analysis process and do deep-dives into specific transactional patterns and insights we uncover.</p>
+      </div>
+
+      <p class="post__origin muted">Originally published on <a href="https://medium.com/tokenanalyst/dissecting-blocks-bf218cdff39d" target="_blank" rel="noopener">the TokenAnalyst blog on Medium</a>.</p>
+    </article>
+
+    <section class="post__more reveal" aria-label="More writing">
+      <span class="label">More writing</span>
+      <ul class="post__more-list">
+        <li>
+          <a href="/writing/maximizing-ev-2026-world-cup/">
+            <span class="post__more-title">104 matches. 48 teams. 39 days. How to maximize EV from the 2026 World Cup.</span>
+            <time class="label" datetime="2026-06-12">Jun 12, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/18-months-building-agents-with-real-money/">
+            <span class="post__more-title">Lessons from 18 months of building agents that handle real money (at scale)</span>
+            <time class="label" datetime="2026-03-30">Mar 30, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/evaluating-6-llms-for-gina/">
+            <span class="post__more-title">From conversation to execution: lessons learned evaluating 6+ LLMs for Gina</span>
+            <time class="label" datetime="2025-02-14">Feb 14, 2025</time>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- footer:start -->
+  <footer class="site-footer container">
+    <span>© 2026 Sid Shekhar</span>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/writing/">Writing</a>
+      <a href="/gina/">Gina</a>
+      <a href="/coinbase/">Coinbase</a>
+      <a href="/tokenanalyst/">TokenAnalyst</a>
+      <a href="/rss.xml">RSS</a>
+    </nav>
+  </footer>
+  <!-- footer:end -->
+</body>
+</html>

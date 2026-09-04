@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f4f1">
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');var t;
+    try{t=localStorage.getItem('theme')}catch(e){}
+    if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+    d.dataset.theme=t;})();
+  </script>
+  <title>From conversation to execution: lessons learned evaluating 6+ LLMs for Gina — Sid Shekhar</title>
+  <meta name="description" content="We evaluated six-plus LLMs on real user tasks in Gina — market data lookups, chart generation and on-chain swaps — measuring speed, tool-calling accuracy, transaction success and UX.">
+  <meta name="author" content="Sid Shekhar">
+  <link rel="canonical" href="https://www.sidshekhar.com/writing/evaluating-6-llms-for-gina/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="From conversation to execution: lessons learned evaluating 6+ LLMs for Gina — Sid Shekhar">
+  <meta property="og:description" content="We evaluated six-plus LLMs on real user tasks in Gina — market data lookups, chart generation and on-chain swaps — measuring speed, tool-calling accuracy, transaction success and UX.">
+  <meta property="og:url" content="https://www.sidshekhar.com/writing/evaluating-6-llms-for-gina/">
+  <meta property="og:site_name" content="Sid Shekhar">
+  <meta property="og:image" content="https://www.sidshekhar.com/images/writing/evaluating-6-llms-for-gina/01-603034ec8a9446fe02403455794df671.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@sidshekhar24">
+  <link rel="alternate" type="application/rss+xml" title="Sid Shekhar — Writing" href="https://www.sidshekhar.com/rss.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css?v=w3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <script src="/js/site.js?v=w3" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"From conversation to execution: lessons learned evaluating 6+ LLMs for Gina","description":"We evaluated six-plus LLMs on real user tasks in Gina — market data lookups, chart generation and on-chain swaps — measuring speed, tool-calling accuracy, transaction success and UX.","datePublished":"2025-02-14","dateModified":"2025-02-14","author":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"publisher":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sidshekhar.com/writing/evaluating-6-llms-for-gina/"},"url":"https://www.sidshekhar.com/writing/evaluating-6-llms-for-gina/","keywords":"ai, llms, tool-calling, gina","wordCount":1357,"image":"https://www.sidshekhar.com/images/writing/evaluating-6-llms-for-gina/01-603034ec8a9446fe02403455794df671.png"}</script>
+</head>
+<body>
+  <!-- header:start -->
+  <header class="site-header container">
+    <a class="wordmark label" href="/">Sid Shekhar</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+  </header>
+  <!-- header:end -->
+
+  <main class="container">
+    <article class="post">
+      <header class="post__head reveal">
+        <a class="post__back label" href="/writing/">← Writing</a>
+        <h1>From conversation to execution: lessons learned evaluating 6+ LLMs for Gina</h1>
+        
+        <p class="post__meta label">
+          <time datetime="2025-02-14">Feb 14, 2025</time>
+          <span aria-hidden="true">·</span>
+          <span>6 min read</span>
+        </p>
+      </header>
+
+      <!-- No .reveal here: the article body is the content, it should never be
+           gated behind JS or a scroll animation. -->
+      <div class="post__body">
+      <h2 id="context">Context</h2>
+      <p>Every day, there's a <a href="https://www.bbc.co.uk/news/articles/c5yv5976z9po" target="_blank" rel="noopener">shiny</a> new large language model (LLM) claiming to outperform the rest. For users, choosing the right model for a specific use case can feel like flying blind in a storm of hype around the latest new thing. The state of things is such that even the model drop down list in the base ChatGPT app now has <em>7</em> different models to choose from.</p>
+      <figure class="post__figure"><img src="/images/writing/evaluating-6-llms-for-gina/01-603034ec8a9446fe02403455794df671.png" alt="The ChatGPT model picker showing seven different models" loading="lazy" decoding="async"></figure>
+      <p>The stakes are even higher when you move beyond mere text generation and want your AI to perform useful tasks - especially on the blockchain. At <strong><a href="https://www.askgina.ai/" target="_blank" rel="noopener">Ask Gina</a></strong>, we're building a new kind of wallet interface that has a personal AI agent (Gina) built in. Our users can simply ask, <em>&quot;What's hot today?&quot;</em> or <em>&quot;Swap 10% of my USDC into AERO on Base.&quot;</em> and in seconds, Gina fetches the right information and handles all aspects of the on-chain transaction.</p>
+      <p>But going from an LLM to a crypto-savvy agent embedded in a wallet (with the ability to call web APIs, fetch market data, and execute transactions) isn't trivial. Through the process of building Gina, we tested multiple models, integrated them with various crypto tools, measured performance, and documented our findings. Below, we'll share some findings from real-world data - and a few key takeaways we've learned about picking a model that can do more than just chat.</p>
+      <h2 id="tool-calling-and-why-it-matters">Tool-calling and why it matters</h2>
+      <p>First a bit of context on &quot;tool-calling&quot;. When large language models are restricted to just generating text, they're limited in how &quot;agentic&quot; they can be. For an agent to perform <em>actions</em> - like pulling real-time data, booking tickets, or facilitating payments - it needs to leverage <strong>tool calling</strong>. Think of tools as extensions of the LLM's capabilities, allowing it to interface with APIs or blockchain smart contracts.</p>
+      <p>A great metaphor we've heard in the wild is to think of tools like giving an extra pair of &quot;hands&quot; for an agent to do more things. The more hands we have the more tasks we can handle with them.</p>
+      <p>Not <a href="https://api-docs.deepseek.com/guides/function_calling" target="_blank" rel="noopener">all models</a> have native support for tool calling (for ex: the Deepseek API doesn't yet), and even among those that do, performance can vary wildly. This is why it's crucial to test both:</p>
+      <ol><li>how well the model recognizes the right tool to call for the job at hand, and</li><li>the quality and accuracy of the output or transaction it produces.</li></ol>
+      <h2 id="our-setup-gina-in-action">Our setup: Gina in action</h2>
+      <p>We ran trials for each model on Gina and their performance on tasks that utilize tool-calling like:</p>
+      <ul><li>Fetching market data (using a market data API call),</li><li>Generating charts (using a charting API call), and</li><li>Executing on-chain swaps (using RPCs to execute transaction calldata).</li></ul>
+      <h3 id="data-collection">Data collection</h3>
+      <p>We built a testing suite that records:</p>
+      <ul><li>The <strong>task</strong> (e.g., &quot;What's hot?&quot;, &quot;Chart me PEPE&quot;, &quot;Swap 1 USDC into AERO&quot;),</li><li>The <strong>model used</strong> (e.g., GPT 4o, Claude 3.5 Sonnet, Gemini 2.0 Flash Beta, o3-mini),</li><li>The <strong>time taken</strong> to produce a final output,</li><li>And a rating of <strong>accuracy/relevance.</strong> This rating is an interpretation of sometimes subjective results for a given task but it is a preliminary indication of where we're at currently.</li></ul>
+      <p>Below are the results from an average of multiple trials we ran this past week:</p>
+      <figure class="post__figure"><img src="/images/writing/evaluating-6-llms-for-gina/02-52da0aaf7ce02db5e3e111bb0f0f9b38.png" alt="Results table comparing models on speed, accuracy and transaction success" loading="lazy" decoding="async"></figure>
+      <h2 id="observations-takeaways">Observations &amp; takeaways</h2>
+      <p>Our testing revealed insights across multiple categories — <em>speed, accuracy, transaction success, tool compatibility, and user experience</em>.</p>
+      <p>Below are some takeaways we had from a subjective lens:</p>
+      <h3 id="1-speed-vs-completeness">1. Speed vs. completeness</h3>
+      <p><strong>Gemini 2.0 Flash</strong> often provides the fastest &quot;time to first token (letter or word shown)&quot; and renders visual results quickly, a clear advantage for impatient users. However, due to minimal text exposition, there's sometimes less clarity about <em>how</em> it chose to solve a task.</p>
+      <p><strong>Claude 3.5 Sonnet</strong> can be slower overall but is also more comprehensive - it often makes multiple tool calls, fetches additional context, and tends toward robust explanations. This is an example of <em>tool ordering and handover</em> done well, but at the cost of added latency.</p>
+      <h3 id="2-accuracy-relevance">2. Accuracy &amp; relevance</h3>
+      <p>Wrapped tokens remain a recurring confusion for certain models, highlighting how tool optimization with correct prompt scaffolding and correct token metadata selection matter. If a model doesn't hand over the right query to fetch market data for (e.g., mixing up WETH vs. ETH), it can produce inaccurate results for metrics like TVL, volume etc.</p>
+      <p><strong>GPT 4o</strong> tends to be especially thorough in checking user balances before execution — boosting its average success rate on transaction execution in general. This thoroughness reflects better <strong>tool ordering</strong> (e.g., <em>first check portfolio, then proceed</em>) and is part of why it excels at more complicated transactions.</p>
+      <h3 id="3-transaction-success-consistency">3. Transaction success consistency</h3>
+      <p>For simple swaps, nearly all models that properly invoked our &quot;execute transaction&quot; tool succeeded — except <strong>Gemini 2.0 Flash</strong>, which stumbled when multiple tool calls were needed. This suggests potential gaps in <em>tool handover</em> (switching from quote fetching to swap execution).</p>
+      <p><strong>Claude 3.5 Sonnet</strong> occasionally saw transactions revert for multi-step operations (like a swap + bridging). Meanwhile, <strong>GPT 4o</strong> and <strong>o3-mini</strong> properly sequenced their calls and completed these tasks, demonstrating stronger <em>tool ordering &amp; handover</em> capabilities and higher average success rates for complex operations.</p>
+      <h3 id="4-chaining-tools-observability">4. Chaining tools &amp; observability</h3>
+      <p>Many of the tasks in our tests require chaining multiple calls (e.g., figuring out the right asset/token contract, retrieving market data for the right pair, generating a chart, then placing a swap). If the model doesn't optimize or observe tool outputs properly — for instance, if it overlooks an error or fails to confirm available balances — it can lead to timeouts or failed transactions.</p>
+      <p>Observability is key: a model that clearly displays or logs each call's outcome (like &quot;Balance check: success&quot;) is easier to debug and improve. Reasoning models like <strong>o3-mini</strong> and good old <strong>Claude 3.5 Sonnet</strong> continue to lead in this regard.</p>
+      <h3 id="5-user-experience-streaming-text-readability">5. User experience: streaming text &amp; readability</h3>
+      <p>As mentioned above, across models, the time to first token can vary. However, after the first bit of text is rendered, some models stream text slowly, which can frustrate users waiting for an immediate response (<strong>GPT 4o</strong>). Others might chunk or batch the output, leading to a faster perceived experience (<strong>o3-mini</strong>).</p>
+      <p>Formatting remains a major differentiator. Models that produce concise bullet points, short summaries, or relevant headings score higher on <strong>readability</strong> — especially on mobile. This not only improves <strong>observability</strong> for end-users but can also highlight where errors might have occurred in the tool chain.</p>
+      <h2 id="what-does-this-mean-in-practice">What does this mean in practice</h2>
+      <p>If you're building an AI agent that needs to do more than chat — like interacting with APIs, pulling real-time data, or executing blockchain transactions — choosing the right model can make or break your product. Our experience building Gina to satisfy crypto-specific tasks highlights a few key lessons:</p>
+      <ul><li><strong>It's not always about the &quot;best&quot; LLM in isolation</strong> — it's about the one that plays nicest with your tool stack. Different models for different tools.</li><li><strong>Speed, reliability, and the ability to handle multi-step tasks</strong> are just as critical as raw language quality.</li><li><strong>Real-world tests</strong> (like bridging assets or fetching legitimate market data) expose nuance that simple text <a href="https://lmarena.ai/?leaderboard" target="_blank" rel="noopener">benchmarks</a> often miss.</li></ul>
+      <figure class="post__figure"><video src="/images/writing/evaluating-6-llms-for-gina/03-827ce5c84ea73a1f2f6d18dee5068e50.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Gina executing a multi-step on-chain task"></video></figure>
+      <p>A practical challenge to consider is simply the cost of running comprehensive model evaluations in production. Running a thorough test suite across multiple models for each code deployment can quickly become expensive, especially when testing complex multi-step operations. This is still an ongoing field of discovery of what is best practice across the AI field in general.</p>
+      <p>We hope our data and learnings help you make more informed decisions when integrating LLMs into your workflows. As new models emerge, we'll keep testing and sharing updates. Feel free to shoot us a message — you can DM <a href="https://warpcast.com/askgina.eth" target="_blank" rel="noopener">@askgina.eth</a> or one of the Gina squad: <a href="https://warpcast.com/sidshekhar" target="_blank" rel="noopener">@sidshekhar</a>, <a href="https://warpcast.com/ericjuta" target="_blank" rel="noopener">@ericjuta</a> on Farcaster or X.</p>
+      <p>And of course, as a friendly reminder, Gina is now live for early beta — sign up at <a href="https://www.askgina.ai/" target="_blank" rel="noopener">askgina.ai</a> for early trial access.</p>
+      </div>
+
+      <p class="post__origin muted">Originally published on <a href="https://paragraph.com/@askgina/from-conversation-to-execution-lessons-learned-evaluating-6-llms-for-gina" target="_blank" rel="noopener">the Ask Gina blog</a>.</p>
+    </article>
+
+    <section class="post__more reveal" aria-label="More writing">
+      <span class="label">More writing</span>
+      <ul class="post__more-list">
+        <li>
+          <a href="/writing/maximizing-ev-2026-world-cup/">
+            <span class="post__more-title">104 matches. 48 teams. 39 days. How to maximize EV from the 2026 World Cup.</span>
+            <time class="label" datetime="2026-06-12">Jun 12, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/18-months-building-agents-with-real-money/">
+            <span class="post__more-title">Lessons from 18 months of building agents that handle real money (at scale)</span>
+            <time class="label" datetime="2026-03-30">Mar 30, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/7-years-in-crypto/">
+            <span class="post__more-title">7 Years in Crypto</span>
+            <time class="label" datetime="2024-08-22">Aug 22, 2024</time>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- footer:start -->
+  <footer class="site-footer container">
+    <span>© 2026 Sid Shekhar</span>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/writing/">Writing</a>
+      <a href="/gina/">Gina</a>
+      <a href="/coinbase/">Coinbase</a>
+      <a href="/tokenanalyst/">TokenAnalyst</a>
+      <a href="/rss.xml">RSS</a>
+    </nav>
+  </footer>
+  <!-- footer:end -->
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f4f1">
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');var t;
+    try{t=localStorage.getItem('theme')}catch(e){}
+    if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+    d.dataset.theme=t;})();
+  </script>
+  <title>Quantifying Vibes — Sid Shekhar</title>
+  <meta name="description" content="A data-driven look at what makes Farcaster engaging — question askers, reply guys, long-form lovers, tippers and builders, measured across a week of open cast data.">
+  <meta name="author" content="Sid Shekhar">
+  <link rel="canonical" href="https://www.sidshekhar.com/writing/quantifying-vibes/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Quantifying Vibes — Sid Shekhar">
+  <meta property="og:description" content="A data-driven look at what makes Farcaster engaging — question askers, reply guys, long-form lovers, tippers and builders, measured across a week of open cast data.">
+  <meta property="og:url" content="https://www.sidshekhar.com/writing/quantifying-vibes/">
+  <meta property="og:site_name" content="Sid Shekhar">
+  <meta property="og:image" content="https://www.sidshekhar.com/images/writing/quantifying-vibes/01-10fb2e01c856d9b3a08a98bc367b4b3e.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@sidshekhar24">
+  <link rel="alternate" type="application/rss+xml" title="Sid Shekhar — Writing" href="https://www.sidshekhar.com/rss.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css?v=w3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <script src="/js/site.js?v=w3" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Quantifying Vibes","description":"A data-driven look at what makes Farcaster engaging — question askers, reply guys, long-form lovers, tippers and builders, measured across a week of open cast data.","datePublished":"2024-02-27","dateModified":"2024-02-27","author":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"publisher":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sidshekhar.com/writing/quantifying-vibes/"},"url":"https://www.sidshekhar.com/writing/quantifying-vibes/","keywords":"data, farcaster, social","wordCount":815,"image":"https://www.sidshekhar.com/images/writing/quantifying-vibes/01-10fb2e01c856d9b3a08a98bc367b4b3e.jpg"}</script>
+</head>
+<body>
+  <!-- header:start -->
+  <header class="site-header container">
+    <a class="wordmark label" href="/">Sid Shekhar</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+  </header>
+  <!-- header:end -->
+
+  <main class="container">
+    <article class="post">
+      <header class="post__head reveal">
+        <a class="post__back label" href="/writing/">← Writing</a>
+        <h1>Quantifying Vibes</h1>
+        <p class="post__sub">A data-driven look into the gestation of a social network</p>
+        <p class="post__meta label">
+          <time datetime="2024-02-27">Feb 27, 2024</time>
+          <span aria-hidden="true">·</span>
+          <span>4 min read</span>
+        </p>
+      </header>
+
+      <!-- No .reveal here: the article body is the content, it should never be
+           gated behind JS or a scroll animation. -->
+      <div class="post__body">
+      <figure class="post__figure"><img src="/images/writing/quantifying-vibes/01-10fb2e01c856d9b3a08a98bc367b4b3e.jpg" alt="A week's worth of reactions on Farcaster" loading="lazy" decoding="async"><figcaption>A week's worth of reactions on Farcaster</figcaption></figure>
+      <p>Crypto has always been a community sport. Communities are what define meaning in this industry - whether it is the meme of Bitcoin being seen as a hard asset or an NFT project being feted as the next big IP to capture minds across the globe after Pokemon and Barbie.</p>
+      <p>The communities that form around these assets rally around shared schelling points of interest, creating vibrant, albeit transient, ecosystems. As fascinating as these formations are, several often face the inevitable entropy - shifts in interest, dwindling participation, and a loss of vision, eventually fading into echoes of a once-lively &quot;discord/telegram chat I used to know.&quot;</p>
+      <p>The fleeting nature of attention within these groups underscores a significant challenge: sustaining long-term engagement.</p>
+      <h2 id="how-does-farcaster-keep-people-engaged">How does Farcaster keep people engaged?</h2>
+      <p>What's been interesting with Farcaster, which now stands at 200K+ users, is that even after the hockey stick growth this month off the back of <a href="https://blog.spindl.xyz/p/why-farcaster-frames-are-important" target="_blank" rel="noopener">frame frenzy</a>, casts per day and engagement levels have not tailed off dramatically. While crypto is often a succession of financially motivated apps - where users strive after the next 10x or airdrop, Farcaster has had a different 'vibe'.</p>
+      <p>I dove into the <a href="https://neynar.com/" target="_blank" rel="noopener">open source cast data</a> to quantify what and who drives this vibe. A few of my favorite farcaster &quot;personas&quot; (with some fun stats along with it) below:</p>
+      <h3 id="question-askers">Question Askers</h3>
+      <p>Almost 38% of people who have ever casted, have asked a question on the network. Not just any question but often consistently thoughtful questions. Users are fundamentally interested in what others have to say and invite dialogue. In terms of sheer numbers: there nearly 400K casts with questions in them - around 6% of all casts!</p>
+      <figure class="post__figure"><img src="/images/writing/quantifying-vibes/02-efd428f883386414df710871b4b740d4.png" alt="A selection of questions from the /philosophy channel" loading="lazy" decoding="async"><figcaption>A selection of delectable questions from /philosophy channel</figcaption></figure>
+      <h3 id="reply-guys">Reply Guys</h3>
+      <p>In the true spirit of the <a href="https://warpcast.com/~/channel/replyguys" target="_blank" rel="noopener">/replyguys</a>, a whopping 64% of all casts on Farcaster are replies. When grouping users into how many times they reply, a large majority seem to fall under the multiple-reply segment (as shown in the chart below) with some <a href="https://warpcast.com/sidshekhar/0x210f44df" target="_blank" rel="noopener">extreme replyoors</a> racking up several thousand replies (after just a few weeks of activity).</p>
+      <figure class="post__figure"><img src="/images/writing/quantifying-vibes/03-d788f8562266eff88a1f2f62d8ee555e.png" alt="Distribution of users by number of replies sent" loading="lazy" decoding="async"></figure>
+      <h3 id="long-form-lovers">Long-form lovers</h3>
+      <p>We know that casters are <a href="https://warpcast.com/~/channel/books" target="_blank" rel="noopener">avid book readers</a>. Turns out the network as a whole also appreciates longer form writing in casts too. Looking at the data reveals that cast length significantly correlates with user engagement: longer casts generally receive more likes and recasts. Despite a general character limit of ~320 characters per cast, the data shows us that depth and detail resonate more with the Farcaster audience.</p>
+      <figure class="post__figure"><img src="/images/writing/quantifying-vibes/04-fa243ab46f4bc3ffe98e1df104dd5d4a.png" alt="Cast length plotted against likes and recasts" loading="lazy" decoding="async"></figure>
+      <h3 id="tippers">Tippers</h3>
+      <p>Last week a friend and I decided to hook up to a real-time stream of casts from a Farcaster Hub. We didn't have to have this up and running for too long to realize that much of our screen was filled with $DEGEN.</p>
+      <figure class="post__figure"><video src="/images/writing/quantifying-vibes/05-3e01bd9c83c1bb06195162ea8bc44943.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Live feed from a gRPC subscription to a Farcaster Hub"></video><figcaption>Live feed from a gRPC subscription to a Farcaster Hub</figcaption></figure>
+      <p>The most used word on Farcaster by far, $DEGEN and it's dominant use case as a form of tipping currency (where folks can reply to a cast with a number and $DEGEN to tip the person who made the cast) is a massive presence on the network. While projects like <a href="https://steemit.com/steemit/@steemitblog/steemit-update-february-26th-2024-steemit-engagement-challenge-season-16-week-1" target="_blank" rel="noopener">Steemit</a> did have features to pay nominal amounts for posts, tipping for social media content isn't something that has been explored at scale and achieved success.</p>
+      <p>Some high level stats around this phenomenon:</p>
+      <p>Over 37K users have tipped $DEGEN at some point in time and nearly 16% of all casts have had &quot;$DEGEN&quot; in them.</p>
+      <figure class="post__figure"><img src="/images/writing/quantifying-vibes/06-d7cfd19f9c3d101a725684561335877a.png" alt="$DEGEN tipping activity over time" loading="lazy" decoding="async"></figure>
+      <h3 id="builders">Builders</h3>
+      <p>Lastly, let's address the gorilla in the room. The launch of Frames and the frame-ification of NFT mints, apps, games, and more has unlocked a ton of creative and fun experiences on the feed both for users and developers. Not only have casts with Frames exploded this year (see below), but Frame casts received nearly 22% of all the likes given out on Farcaster in 2024.</p>
+      <figure class="post__figure"><img src="/images/writing/quantifying-vibes/07-735b9da52bcf5cdbfc4842e47aeaa144.png" alt="Growth in casts containing Frames through 2024" loading="lazy" decoding="async"><figcaption>Source: frames.spindl.xyz</figcaption></figure>
+      <h2 id="some-takeaways">Some takeaways</h2>
+      <p>a) At this stage of its growth, what's kept Farcaster engaging is a core culture of people giving generously - their questions, answers, likes, tips, and ideas. Deeper engagement &gt; shallow engagement.</p>
+      <p>b) The fact that the underlying protocol and its social graph are open and analyzable is awesome.</p>
+      <p>I'll likely be diving into more of this data down the line - including the evolving landscape of channels and how niche communities start to coalesce and grow. Feel free to comment here or shoot me a DM on <a href="https://warpcast.com/sidshekhar" target="_blank" rel="noopener">Warpcast</a> with ideas on what to explore next in this fascinating dataset.</p>
+      </div>
+
+      <p class="post__origin muted">Originally published on <a href="https://paragraph.com/@castaway/quantifying-vibes" target="_blank" rel="noopener">Castaway</a>.</p>
+    </article>
+
+    <section class="post__more reveal" aria-label="More writing">
+      <span class="label">More writing</span>
+      <ul class="post__more-list">
+        <li>
+          <a href="/writing/maximizing-ev-2026-world-cup/">
+            <span class="post__more-title">104 matches. 48 teams. 39 days. How to maximize EV from the 2026 World Cup.</span>
+            <time class="label" datetime="2026-06-12">Jun 12, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/18-months-building-agents-with-real-money/">
+            <span class="post__more-title">Lessons from 18 months of building agents that handle real money (at scale)</span>
+            <time class="label" datetime="2026-03-30">Mar 30, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/evaluating-6-llms-for-gina/">
+            <span class="post__more-title">From conversation to execution: lessons learned evaluating 6+ LLMs for Gina</span>
+            <time class="label" datetime="2025-02-14">Feb 14, 2025</time>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- footer:start -->
+  <footer class="site-footer container">
+    <span>© 2026 Sid Shekhar</span>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/writing/">Writing</a>
+      <a href="/gina/">Gina</a>
+      <a href="/coinbase/">Coinbase</a>
+      <a href="/tokenanalyst/">TokenAnalyst</a>
+      <a href="/rss.xml">RSS</a>
+    </nav>
+  </footer>
+  <!-- footer:end -->
+</body>
+</html>

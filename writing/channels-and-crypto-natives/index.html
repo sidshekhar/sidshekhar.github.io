@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f4f1">
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');var t;
+    try{t=localStorage.getItem('theme')}catch(e){}
+    if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+    d.dataset.theme=t;})();
+  </script>
+  <title>Channels &amp; Crypto Natives — Sid Shekhar</title>
+  <meta name="description" content="A data-driven examination of community formation via channels on Farcaster.">
+  <meta name="author" content="Sid Shekhar">
+  <link rel="canonical" href="https://www.sidshekhar.com/writing/channels-and-crypto-natives/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Channels &amp; Crypto Natives — Sid Shekhar">
+  <meta property="og:description" content="A data-driven examination of community formation via channels on Farcaster.">
+  <meta property="og:url" content="https://www.sidshekhar.com/writing/channels-and-crypto-natives/">
+  <meta property="og:site_name" content="Sid Shekhar">
+  <meta property="og:image" content="https://www.sidshekhar.com/images/writing/channels-and-crypto-natives/01-cacdcfff9a4dbbe43d147cfd2fa9b2a5.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@sidshekhar24">
+  <link rel="alternate" type="application/rss+xml" title="Sid Shekhar — Writing" href="https://www.sidshekhar.com/rss.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css?v=w3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <script src="/js/site.js?v=w3" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Channels & Crypto Natives","description":"A data-driven examination of community formation via channels on Farcaster.","datePublished":"2024-03-26","dateModified":"2024-03-26","author":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"publisher":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sidshekhar.com/writing/channels-and-crypto-natives/"},"url":"https://www.sidshekhar.com/writing/channels-and-crypto-natives/","keywords":"data, farcaster, social","wordCount":907,"image":"https://www.sidshekhar.com/images/writing/channels-and-crypto-natives/01-cacdcfff9a4dbbe43d147cfd2fa9b2a5.png"}</script>
+</head>
+<body>
+  <!-- header:start -->
+  <header class="site-header container">
+    <a class="wordmark label" href="/">Sid Shekhar</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+  </header>
+  <!-- header:end -->
+
+  <main class="container">
+    <article class="post">
+      <header class="post__head reveal">
+        <a class="post__back label" href="/writing/">← Writing</a>
+        <h1>Channels &amp; Crypto Natives</h1>
+        
+        <p class="post__meta label">
+          <time datetime="2024-03-26">Mar 26, 2024</time>
+          <span aria-hidden="true">·</span>
+          <span>4 min read</span>
+        </p>
+      </header>
+
+      <!-- No .reveal here: the article body is the content, it should never be
+           gated behind JS or a scroll animation. -->
+      <div class="post__body">
+      <p>We're been seeing an interesting phenomenon take shape over the past few weeks. Channels on Farcaster have become a central schelling point for grassroots community formation. Over 43% of people with a Farcaster account have never casted before. But of the people that have sent casts, almost 70% of them were in a channel. This week I dug into the open cast data on channels and their usage to see what the numbers say.</p>
+      <blockquote><p>The average number of channels a Farcaster user casts in is ~8 channels!</p></blockquote>
+      <p>While this is a number significantly skewed by the upper spectrum of users (like the <a href="https://warpcast.com/degentokenbase" target="_blank" rel="noopener">@degentokenbase</a> bot which has replied in over 2000 channels), this is still quite large for an average!</p>
+      <p>Taking a closer look, I took the top 15 channels by follower count, and saw 7 that are &quot;crypto native&quot; and/or related to Farcaster in some way and 8 that are general purpose non-crypto channels. A pretty even mix.</p>
+      <p>For folks who cast in multiple channels over time, what is the overlap in usage between channels?</p>
+      <figure class="post__figure"><img src="/images/writing/channels-and-crypto-natives/01-cacdcfff9a4dbbe43d147cfd2fa9b2a5.png" alt="Heatmap of user overlap between the top 15 Farcaster channels" loading="lazy" decoding="async"><figcaption>The top 15 channels on Farcaster and how much overlap in users they have</figcaption></figure>
+      <p>A few things jump out. Firstly there are a core 4 channels (<a href="https://warpcast.com/~/channel/base" target="_blank" rel="noopener">/base</a>, <a href="https://warpcast.com/~/channel/degen" target="_blank" rel="noopener">/degen</a>, <a href="https://warpcast.com/~/channel/farcaster" target="_blank" rel="noopener">/farcaster</a> and <a href="https://warpcast.com/~/channel/frames" target="_blank" rel="noopener">/frames</a>) that have a significantly high level of users who post in several of them. And on the other hand, there are some supremely uncorrelated non-crypto channels like <a href="https://warpcast.com/~/channel/tabletop" target="_blank" rel="noopener">/tabletop</a> (for board gamers) and <a href="https://warpcast.com/~/channel/frontend" target="_blank" rel="noopener">/front-end</a> with their own sub communities.</p>
+      <h2 id="prolific-channeloors">Prolific Channeloors</h2>
+      <p>If an average user posts in 8 channels, how does it actually break down? Bucketing by the number of channels that users post in shows this distribution:</p>
+      <figure class="post__figure"><img src="/images/writing/channels-and-crypto-natives/02-74c091f2c60ff9e8773871e3b7134c2c.png" alt="Distribution of users bucketed by number of channels they cast in" loading="lazy" decoding="async"></figure>
+      <p>The cognitive choice of what channel to place a cast in is understandably tough (when the menu of choices is so large) so 2-4 channels being the largest bucket here makes sense. It's akin to an all-you-can-eat menu in a restaurant - you eventually end up choosing the same few dishes over and over out of habitual grooves and comfort.</p>
+      <p>However, what's interesting is that:</p>
+      <ul><li>21% of users don't post on channels at all (mostly first time casters) and</li><li>Nearly as many (19%) of users are prolific channeloors (casting in 10+ channels)</li></ul>
+      <h2 id="topic-dispersion">Topic Dispersion</h2>
+      <p>So which channels are getting the most traction?</p>
+      <p>As we saw earlier, one way to segment channels is between &quot;crypto-native&quot; ones and more general purpose channels - as clustered on the right hand side of the visual below.</p>
+      <figure class="post__figure"><img src="/images/writing/channels-and-crypto-natives/03-5efc54e2c23208145ac4ac1f262e174d.jpg" alt="Bubble chart of Farcaster channels sized by follower count" loading="lazy" decoding="async"><figcaption>Farcaster Channels (larger bubbles meaning more followers)</figcaption></figure>
+      <p>What's been cool to see as an emergent feature of the crypto native channels on Farcaster is that they've organically sprouted highly engaged sub-communities. From large ones like <a href="https://warpcast.com/~/channel/degen" target="_blank" rel="noopener">/degen</a> and <a href="https://warpcast.com/~/channel/nouns" target="_blank" rel="noopener">/nouns</a> to several smaller ones that have sprung up over the past few weeks - <a href="https://warpcast.com/~/channel/higher" target="_blank" rel="noopener">/higher</a>, <a href="https://warpcast.com/~/channel/sendit" target="_blank" rel="noopener">/sendit</a>, and the notorious <a href="https://warpcast.com/~/channel/ticker" target="_blank" rel="noopener">/ticker</a> - many with a namesake memecoin or NFT collection to rally around.</p>
+      <p>While it's hard to see general-purpose non-crypto channels like /founders or /frontend coaelsce around a token, it's possible to see a world where every crypto-native channel on the network has some sort of token or on-chain asset associated with it.</p>
+      <h2 id="reddit-farcaster-the-road-ahead">Reddit, Farcaster, &amp; the road ahead</h2>
+      <p>This past week saw Reddit IPO at a $7B valuation - 19 years after its founding and millions of users and posts later. For a certain portion of the internet, Reddit is their defacto &quot;front page of the internet&quot; - a central hub for a vast variety of content - including news, discussions, opinions, and entertainment - all sourced and curated by its users. The similarities between Reddit and Farcaster have been <a href="https://onchainletters.xyz/channels?referrer=0x28a69640810fcdcf6adb7119edd64eed4612fa49" target="_blank" rel="noopener">well documented</a>.</p>
+      <p>Compared to the Farcaster topic space, how do subreddits compare?</p>
+      <figure class="post__figure"><img src="/images/writing/channels-and-crypto-natives/04-e2e8a8eae2da7ac5b600edecbced191e.jpg" alt="Bubble chart of subreddits sized by subscriber count" loading="lazy" decoding="async"><figcaption>Subreddits (larger bubbles meaning more subscribers)</figcaption></figure>
+      <p>Apart from <a href="https://www.reddit.com/r/funny/" target="_blank" rel="noopener">r/funny</a> which stands above the rest, you can see the wide range of general purpose topics across the spectrum all with 20M - 30M subscribers - many of whom gained their initial following from users getting auto subscribed to them upon joining Reddit.</p>
+      <p>Channels on Farcaster were initially described as &quot;<a href="https://twitter.com/dwr/status/1668327714317815808" target="_blank" rel="noopener">decentralized subreddits</a>&quot; when initially launched last year. For folks who get started with Farcaster, the platform as a whole looks and feels like one big <a href="https://warpcast.com/eugene/0xf86adc01" target="_blank" rel="noopener">cryptocurrency subreddit</a>. However, as the network has grown, what's been interesting is seeing the the growth of new channels in both &quot;crypto native&quot; topics to markedly more general purpose ones.</p>
+      <p>There are over 100K subreddits and close to 5K channels on Farcaster and there are several topics (like &quot;memes&quot;) that have large communities on both.</p>
+      <figure class="post__figure"><img src="/images/writing/channels-and-crypto-natives/05-4e3dd4bb713bd8b8ca6722c63e32cc7b.jpg" alt="Side-by-side comparison of a Farcaster channel and a subreddit" loading="lazy" decoding="async"><figcaption>Channel on Farcaster (left) vs Subreddit on Reddit (right)</figcaption></figure>
+      <p>As Farcaster matures, and the selection of feature-parity clients (not restricted to just Warpcast) grows, it will be interesting to see which path becomes more dominant - a network of specialized, crypto-native sub communities or more generalist channels with wider appeal akin to Reddit.</p>
+      <p>Channels, including how they're <a href="https://warpcast.com/jessepollak/0x1cd2a68d" target="_blank" rel="noopener">moderated and managed</a> (with channel passes), and the communities that form around them will play a crucial role in shaping the network's future direction and identity. As users continue to <a href="https://zora.co/collect/base:0x5a5f1562485c6a60fce364b5b088d222881eddd6/1" target="_blank" rel="noopener">tune in and out</a> of different channels, they will collectively determine the types of communities and conversations that define the Farcaster experience.</p>
+      </div>
+
+      <p class="post__origin muted">Originally published on <a href="https://paragraph.com/@castaway/channels-and-crypto-natives" target="_blank" rel="noopener">Castaway</a>.</p>
+    </article>
+
+    <section class="post__more reveal" aria-label="More writing">
+      <span class="label">More writing</span>
+      <ul class="post__more-list">
+        <li>
+          <a href="/writing/maximizing-ev-2026-world-cup/">
+            <span class="post__more-title">104 matches. 48 teams. 39 days. How to maximize EV from the 2026 World Cup.</span>
+            <time class="label" datetime="2026-06-12">Jun 12, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/18-months-building-agents-with-real-money/">
+            <span class="post__more-title">Lessons from 18 months of building agents that handle real money (at scale)</span>
+            <time class="label" datetime="2026-03-30">Mar 30, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/evaluating-6-llms-for-gina/">
+            <span class="post__more-title">From conversation to execution: lessons learned evaluating 6+ LLMs for Gina</span>
+            <time class="label" datetime="2025-02-14">Feb 14, 2025</time>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- footer:start -->
+  <footer class="site-footer container">
+    <span>© 2026 Sid Shekhar</span>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/writing/">Writing</a>
+      <a href="/gina/">Gina</a>
+      <a href="/coinbase/">Coinbase</a>
+      <a href="/tokenanalyst/">TokenAnalyst</a>
+      <a href="/rss.xml">RSS</a>
+    </nav>
+  </footer>
+  <!-- footer:end -->
+</body>
+</html>

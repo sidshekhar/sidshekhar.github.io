@@ -18,15 +18,37 @@
   <meta property="og:title" content="Sid Shekhar">
   <meta property="og:description" content="Co-founder of Gina, an AI agent with its own wallet. Previously Coinbase Blockchain Research and TokenAnalyst.">
   <meta property="og:url" content="https://www.sidshekhar.com/">
+  <link rel="alternate" type="application/rss+xml" title="Sid Shekhar — Writing" href="https://www.sidshekhar.com/rss.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="/css/style.css?v=a94053a">
+  <link rel="stylesheet" href="/css/style.css?v=w3">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="manifest" href="/images/site.webmanifest">
-  <script src="/js/site.js?v=a94053a" defer></script>
+  <script src="/js/site.js?v=w3" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Sid Shekhar",
+    "url": "https://www.sidshekhar.com/",
+    "jobTitle": "Co-founder",
+    "description": "Co-founder of Gina, an AI agent with its own wallet. Previously led Blockchain Research at Coinbase and co-founded TokenAnalyst.",
+    "worksFor": { "@type": "Organization", "name": "Ask Gina", "url": "https://www.askgina.ai/" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Cornell University" },
+      { "@type": "CollegeOrUniversity", "name": "University College London" }
+    ],
+    "knowsAbout": ["Agentic AI", "Blockchain analytics", "Ethereum", "DeFi", "On-chain data"],
+    "sameAs": [
+      "https://twitter.com/sidshekhar24",
+      "https://www.linkedin.com/in/sidshekhar/",
+      "https://t.me/sidshekhar"
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- header:start -->
@@ -141,15 +163,40 @@
               </a>
             </li>
             <li class="reveal" style="--d: 80ms">
-              <a class="card" href="https://medium.com/tokenanalyst/under-the-hood-of-the-world-computer-caf957fb8a4c" target="_blank" rel="noopener">
+              <a class="card" href="/writing/under-the-hood-of-the-world-computer/">
                 <img class="card__thumb" src="/images/writing/under-the-hood.jpg" alt="" loading="lazy" width="960" height="540">
-                <span class="card__body"><span class="label">Article · Medium</span><span class="card__title">Under the hood of the world computer</span></span>
+                <span class="card__body"><span class="label">Essay</span><span class="card__title">Under the hood of the world computer</span></span>
               </a>
             </li>
           </ul>
           <a class="more" href="/tokenanalyst/" target="_blank" rel="noopener">See all from TokenAnalyst →</a>
         </div>
       </article>
+    </section>
+
+    <section aria-labelledby="writing">
+      <div class="section-head reveal"><h2 id="writing">Writing</h2><span class="label">Latest</span></div>
+      <ul class="cards cards--wide">
+        <li class="reveal">
+          <a class="card" href="/writing/maximizing-ev-2026-world-cup/">
+            <img class="card__thumb" src="/images/writing/maximizing-ev-2026-world-cup/01-header.jpg" alt="" loading="lazy" width="960" height="540">
+            <span class="card__body"><span class="label">Essay · 2026</span><span class="card__title">104 matches. 48 teams. 39 days. How to maximize EV from the 2026 World Cup.</span></span>
+          </a>
+        </li>
+        <li class="reveal" style="--d: 80ms">
+          <a class="card" href="/writing/18-months-building-agents-with-real-money/">
+            <img class="card__thumb" src="/images/writing/18-months-building-agents-with-real-money/01-create-steps.png" alt="" loading="lazy" width="960" height="540">
+            <span class="card__body"><span class="label">Essay · 2026</span><span class="card__title">Lessons from 18 months of building agents that handle real money</span></span>
+          </a>
+        </li>
+        <li class="reveal" style="--d: 160ms">
+          <a class="card" href="/writing/evaluating-6-llms-for-gina/">
+            <img class="card__thumb" src="/images/writing/gina-llms.jpg" alt="" loading="lazy" width="960" height="540">
+            <span class="card__body"><span class="label">Essay · 2025</span><span class="card__title">From conversation to execution: evaluating 6+ LLMs for Gina</span></span>
+          </a>
+        </li>
+      </ul>
+      <a class="more" href="/writing/">All writing →</a>
     </section>
 
     <section class="contact reveal" id="contact">
@@ -179,9 +226,11 @@
     <span>© 2026 Sid Shekhar</span>
     <nav aria-label="Footer">
       <a href="/" target="_blank" rel="noopener">Home</a>
+      <a href="/writing/">Writing</a>
       <a href="/gina/" target="_blank" rel="noopener">Gina</a>
       <a href="/coinbase/" target="_blank" rel="noopener">Coinbase</a>
       <a href="/tokenanalyst/" target="_blank" rel="noopener">TokenAnalyst</a>
+      <a href="/rss.xml">RSS</a>
     </nav>
   </footer>
   <!-- footer:end -->

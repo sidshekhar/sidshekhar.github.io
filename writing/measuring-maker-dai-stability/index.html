@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f4f1">
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');var t;
+    try{t=localStorage.getItem('theme')}catch(e){}
+    if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+    d.dataset.theme=t;})();
+  </script>
+  <title>Measuring Maker-Dai stability — Sid Shekhar</title>
+  <meta name="description" content="One anomalous bar in MKR transfer data led to CDP #614 — a forensic walk through how the Maker-Dai system absorbed a large liquidation event in March 2018.">
+  <meta name="author" content="Sid Shekhar">
+  <link rel="canonical" href="https://www.sidshekhar.com/writing/measuring-maker-dai-stability/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Measuring Maker-Dai stability — Sid Shekhar">
+  <meta property="og:description" content="One anomalous bar in MKR transfer data led to CDP #614 — a forensic walk through how the Maker-Dai system absorbed a large liquidation event in March 2018.">
+  <meta property="og:url" content="https://www.sidshekhar.com/writing/measuring-maker-dai-stability/">
+  <meta property="og:site_name" content="Sid Shekhar">
+  <meta property="og:image" content="https://www.sidshekhar.com/images/writing/measuring-maker-dai-stability/01-1-6b8xrjd0xj6s7hvognjpvw.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@sidshekhar24">
+  <link rel="alternate" type="application/rss+xml" title="Sid Shekhar — Writing" href="https://www.sidshekhar.com/rss.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css?v=w3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <script src="/js/site.js?v=w3" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Measuring Maker-Dai stability","description":"One anomalous bar in MKR transfer data led to CDP #614 — a forensic walk through how the Maker-Dai system absorbed a large liquidation event in March 2018.","datePublished":"2018-03-28","dateModified":"2018-03-28","author":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"publisher":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sidshekhar.com/writing/measuring-maker-dai-stability/"},"url":"https://www.sidshekhar.com/writing/measuring-maker-dai-stability/","keywords":"ethereum, defi, stablecoins, on-chain data","wordCount":2387,"image":"https://www.sidshekhar.com/images/writing/measuring-maker-dai-stability/01-1-6b8xrjd0xj6s7hvognjpvw.png"}</script>
+</head>
+<body>
+  <!-- header:start -->
+  <header class="site-header container">
+    <a class="wordmark label" href="/">Sid Shekhar</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+  </header>
+  <!-- header:end -->
+
+  <main class="container">
+    <article class="post">
+      <header class="post__head reveal">
+        <a class="post__back label" href="/writing/">← Writing</a>
+        <h1>Measuring Maker-Dai stability</h1>
+        <p class="post__sub">A data-driven exploration into how the Maker-Dai stablecoin system handles a large CDP liquidation event</p>
+        <p class="post__meta label">
+          <time datetime="2018-03-28">Mar 28, 2018</time>
+          <span aria-hidden="true">·</span>
+          <span>11 min read</span>
+        </p>
+      </header>
+
+      <!-- No .reveal here: the article body is the content, it should never be
+           gated behind JS or a scroll animation. -->
+      <div class="post__body">
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/01-1-6b8xrjd0xj6s7hvognjpvw.png" alt="MKR on-chain token transfers, with an anomalous spike on 18 March 2018" loading="lazy" decoding="async"><figcaption>Data via TokenAnalyst</figcaption></figure>
+      <p>At first glance, what sticks out to you in the chart above?</p>
+      <p>Yes — that solitary purple bar on the right hand side, looming over it's peers, conspicuous as can be. That bar in particular represents the number of <em>on-chain</em> token transfers of the <a href="https://coinmarketcap.com/currencies/maker/" target="_blank" rel="noopener">MKR</a> token on 18/03/2018. What this bar is telling us is that on the 18th of March (a little over a week ago), something significant happened in the world of Maker.</p>
+      <p>Curious — we decided to dig a little deeper into the data to see what we could find.</p>
+      <h2 id="why-should-anyone-care">Why should anyone care?</h2>
+      <p>First off, you may be wondering, why should one care about the MKR token, let alone it's on-chain transaction patterns?</p>
+      <p>MKR is a core component of the Dai <em>stablecoin</em> ecosystem.</p>
+      <p>The concept of a &quot;stable&quot; coin is used to describe any cryptocurrency that does not have price volatility relative to a fiat currency. The majority of the cryptocurrencies available today — even the largest such as Bitcoin and Ethereum — exhibit significant price volatility. A cryptocurrency with price stability — one that can be used in a variety of decentralized applications as a unit of account — is sorely needed to enable the growth and maturity of the decentralized economy.</p>
+      <p>Of the available stablecoin options, Dai and others like it offer one of the most interesting and promising avenues forward as they are <strong>decentralized</strong>. As opposed to a token like <a href="https://tether.to/" target="_blank" rel="noopener">Tether</a>, where trust in the token is based on a centralized company holding in reserve the requisite amount of USD to back up the circulating Tether, the Dai stablecoin system is run completely on the blockchain — with its stability in the hands of carefully designed crypto-economic incentives and rigorous smart-contracts.</p>
+      <h2 id="digging-into-the-data">Digging into the data</h2>
+      <p>Let's come back to our original question at the beginning of this piece: what caused the number of on-chain transactions for the MKR token shoot up so dramatically on the 18th of March? Let's see some summary stats for the day before, the day of the 18th, and the day after (to provide some context):</p>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/02-1-lpfh76lnn1-wef2lgpg2qg.png" alt="Summary statistics for MKR token transfers across three days" loading="lazy" decoding="async"><figcaption>Token transfer refers to a token being transferred from one address to another</figcaption></figure>
+      <p>One can notice that the number of token transfers spikes on 18/03/2018, while the mean transfer amount and the maximum amount transferred on a given transaction shows a huge increase on 19/03/2018.</p>
+      <p>We thought of two different hypotheses to explain these different on-chain transaction patterns:</p>
+      <ol><li>One hypothesis for the 18/03/18 rise in the sheer number of MKR transfers is that there was an internal Dai-related phenomena that triggered smart contracts to increase the number of MKR transfers.</li><li>A possible explanation for the 19/03/18 spike in mean and max transfer amount is a few &quot;whales&quot; making big token transactions on-chain.</li></ol>
+      <p>To explore further — we decided it might be useful to see the split of token transfers in terms of frequency of transfers into and out of specific addresses:</p>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/03-1-8ce1gez37ajtl5qs9a1cya.png" alt="Most frequent MKR recipient addresses on 17 March" loading="lazy" decoding="async"></figure>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/04-1-zfnvmfu-mxeo11chayw91w.png" alt="Most frequent MKR recipient addresses on 18 March" loading="lazy" decoding="async"></figure>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/05-1-eb6pkuuycwirshnldsj6tq.png" alt="Most frequent MKR recipient addresses on 19 March" loading="lazy" decoding="async"></figure>
+      <p>The above three charts visualize the addresses most often listed as the recipient in MKR on-chain token transfers for the three dates mentioned (taking the days around 3/18 to see if any continuous patterns occur).</p>
+      <p>One aspect that stands out immediately is a more diversified distribution of addresses on 19/03/18. Diving deeper into each party that transacted — we can confirm our &quot;whale&quot; hypothesis (#2 above) — by discovering that the following non-contract addresses were responsible for the largest portion of token volume transferred on 19/03/18:</p>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/06-1-icui3v1fdvgdz6inq8pcw.png" alt="The largest non-contract addresses by MKR volume transferred" loading="lazy" decoding="async"></figure>
+      <p>While it is impossible to know exactly who these addresses represent — our initial classification algorithms offer a heuristic as to what type of entity they could be representing.</p>
+      <p>This evidence gives us a plausible explanation for the 19/03/18 increase in mean and max transfer amount — large &quot;whale&quot; addresses, most probably owned by the token team members themselves, making large MKR transactions.</p>
+      <p>We still don't have an answer for the 18/03/18 spike in the number of on-chain transfers.</p>
+      <p>Since the 18/03/18 distribution of addresses is more concentrated, it is useful to look at which ones are most frequently sent to. The largest (in terms of frequency) is a helper 'bot' address (0x0016BD4cb70Bd98CA07A341DA66450b5d22A55aa) that interacts with the primary Maker smart-contracts. The second and third most frequent addresses on average were the smart-contracts themselves.</p>
+      <p>To be specific — these two Maker smart-contracts are interchangeably most often the recipients of MKR token transfers in all three days (shown with contract address and name):</p>
+      <ul><li>0x14fbca95be7e99c15cc2996c6c9d841e54b79425 (MatchingMarket)</li><li>0x69076e44a9c70a67d5b79d95795aba299083c275 (GemPit)</li></ul>
+      <p>The MatchingMarket contract provides liquidity to users wanting to trade in and out of MKR — especially from the decentralized exchange OasisDex. Meanwhile, the GemPit contract serves as the contract that effectively burns the MKR used to pay for stability fees.</p>
+      <p>Exploring the address distributions of the addresses most often listed as the sender in MKR on-chain token transfers shows a similar pattern to the charts above.</p>
+      <p>Since the largest frequency (and volume) of token transfers occurred among these specific Maker smart contracts, it makes sense to test hypothesis #1 and check the status of the Maker-Dai ecosystem itself to see if any internal phenomena are occurring.</p>
+      <h2 id="mechanisms-that-keep-dai-stable">Mechanisms that keep Dai stable</h2>
+      <p>It is useful to get a little bit of context on the Maker-Dai stablecoin system as it has a lot of moving parts. For the purposes of this piece, we will take a slightly simplistic view of the ecosystem in order to cover the major components that we will observe in action.</p>
+      <p>The Dai stablecoin system consists of two different tokens:</p>
+      <ul><li><strong>Dai</strong>: The stable coin that is soft-pegged to the US Dollar</li><li><strong>MKR</strong>: A utility token used for payment of fees, recapitalization of resources, and governance of the Maker-Dai system</li></ul>
+      <h3 id="collateralized-debt-positions-cdps">Collateralized Debt Positions (CDPs)</h3>
+      <p>The fundamental construct at the heart of the Maker-Dai system are special smart contracts called Collateralized Debt Positions (or CDP's for short).</p>
+      <p>CDPs receive ether in a pooled form (called PETH) from users and in exchange give the user Dai tokens.</p>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/07-1-fhc3f0hoep1pinuc5hqseg.png" alt="How a CDP issues Dai against pooled ether collateral" loading="lazy" decoding="async"><figcaption>Icons made by Freepik from Flaticon</figcaption></figure>
+      <p>The CDP then stores this PETH as <em>collateral</em> for the Dai that has been issued. What this means is that the CDP essentially treats the Dai issued as a loan — creating a debt with the PETH given by the user taken as collateral, should the Dai not be returned. This PETH collateral is locked out of the user's access until the outstanding debt (the issued Dai) is paid back.</p>
+      <p>When the user wants to get their collateral back — they pay down the debt by sending back the borrowed Dai and also pay interest on their loan in the form of a 'stability fee'. This fee can only be paid in the MKR token.</p>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/08-1-lq0zxfazl2a-c7mylsrslw.png" alt="Paying down CDP debt and the stability fee in MKR" loading="lazy" decoding="async"></figure>
+      <p>Why does there need to be this system of collateral and stability fees in order to maintain a stable coin? Well, in the situation above, the Dai that is issued is essentially tied to a multiple of the value of Ether that was put up as collateral for it.</p>
+      <p>To keep the Dai price stable <em>in relation to USD</em>, when the price of the collateral (USD value of ETH) decreases, there has to be a larger amount of collateral taken per Dai token issued and vice versa when the price of the underlying collateral decreases.</p>
+      <h3 id="dealing-with-dai-price-volatility">Dealing with Dai price volatility</h3>
+      <p>Dai has a concept known as 'Target Price'. It represents what the price of Dai &quot;should&quot; strive to reach at any given time and is used to calculate the amount of collateral needed per Dai issued for a CDP. Since Dai is pegged to USD at a 1:1 rate, the Target Price (in USD) starts at 1.</p>
+      <p>While the <em>target</em> price is set by the Maker system, the <em>market</em> price of Dai (what it is actually traded for) is decided by the market.</p>
+      <p>At 17:19 UTC on 18/03/18, the <em>market</em> price of DAI was driven to a local maxima of $1.11. Over the course of 18/03/18 we see it dramatically dip to $0.96 before stabilizing again near $1.00 on 19/03/18.</p>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/09-1-iwjrp5dgzvhst7pfyddphq.png" alt="Dai market price over 18-19 March 2018" loading="lazy" decoding="async"><figcaption>Source: Coinmarketcap</figcaption></figure>
+      <p>We can assume that with this price spike, the market price of Dai went above the target price. According to the Maker-Dai whitepaper, when this situation occurs, Maker engages a mechanism known as the Target Rate Feedback Mechanism (edit: although this mechanism may have never been triggered in this case).</p>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/10-1-5n7isfxu4fjkjkwfmbairq.png" alt="The Target Rate Feedback Mechanism" loading="lazy" decoding="async"></figure>
+      <p>This mechanism makes it less expensive to create Dai (fewer Ether needs to be given as collateral for one Dai). This incentivizes more Dai creation (increased supply), and disincentivizes users from holding Dai — leading to a dampening of the market price to match the target price.</p>
+      <p>Seeing as the price immediately dropped after reaching it's local maxima, we can assume that the Maker-specific arbitrage seeking bots — called '<a href="https://github.com/makerdao/arbitrage-keeper" target="_blank" rel="noopener">Keepers</a>' — promptly snapped into action to rebalance the Dai price.</p>
+      <p>Regardless, we still haven't found an adequate explanation for the tremendous increase in MKR token transfers on the 18th however.</p>
+      <p>We also don't know <em>why</em> the price of Dai suddenly rose on the 18th.</p>
+      <p>Let's have a look at circulating Dai supply levels:</p>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/11-1-ubjbvyyjrcjgcmtz17rha.png" alt="Circulating Dai supply dropping on 18 March" loading="lazy" decoding="async"><figcaption>Source: mkr.tools</figcaption></figure>
+      <p>Herein we see a distinct pattern. From between 11:00–17:00 UTC on the 18th of March we see a reduction in DAI supply from approximately 21 million to 16 million!</p>
+      <p>During the same timeframe, we also see that the total locked up collateral (in CDPs in the form of WETH/PETH) in the Maker-Dai ecosystem declined dramatically:</p>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/12-1-vz7g8qele-lha0jg5hnhoa.png" alt="Locked WETH/PETH collateral declining over the same window" loading="lazy" decoding="async"><figcaption>Source: mkr.tools</figcaption></figure>
+      <p>Digging deeper, we finally discover that one of the largest CDP's in the Maker-Dai ecosystem, CDP #614, was actually <strong>liquidated</strong> at 10:52:37 AM UTC — approximately the time when the dip for both Dai and WETH/PETH supply began in earnest.</p>
+      <p>What do we mean when we say that the CDP was liquidated?</p>
+      <h3 id="liquidation">Liquidation</h3>
+      <p>While the TFRM is designed to keep the Dai price stable, there remains the possibility of the incentive structures not working as expected — especially when the price of ETH keeps dipping and its value is worth less than the amount of Dai that it is supposed to be backing.</p>
+      <p>This is what happened to CDP #614.</p>
+      <blockquote><p>The Dai issued by the CDP became <em><strong>undercollateralized</strong></em> due to the ETH market price dipping and the user not paying back his/her &quot;debt&quot; by re-exchanging their Dai for their collateral.</p></blockquote>
+      <p>In this situation, the Maker system triggers a liquidation of the CDP's collateral, automatically selling it off to the highest bidders for Dai as fast as possible to recapitalize and ensure that the Dai that it issued to the original user is fully collateralized.</p>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/13-1-hlw1y3cteeyvacy83zxsuw.png" alt="The liquidation flow for an undercollateralized CDP" loading="lazy" decoding="async"></figure>
+      <h2 id="domino-effect">Domino effect</h2>
+      <p>This liquidation event on the morning of 18th March appears to be the foundational event that then starts off the domino sequence of smart-contract actions that eventually lead to the number of MKR token transfers shooting up on that day.</p>
+      <ul><li>Dai that is received in the sale of the CDP's collateral in the liquidation event is burned and removed from the total supply. This explains the dip in the Dai supply and the rapid rise in Dai price.</li><li>It appears that Dai in excess of the debt shortfall was paid in return for the collateral during this liquidation event. In accordance with the Maker-Dai system mechanics, this Dai was then used to buy up more PETH and burn it — explaining the dip in PETH supply.</li><li>To coordinate the liquidity of PETH and Dai during this liquidation event, the liquidity providing contract for Dai appears to have called the helper address 0x0016BD4cb70Bd98CA07A341DA66450b5d22A55aa as identified in our pie charts above. This address then appears to repeatedly call the Maker &quot;MatchingMarket&quot; smart contract (0x14fbca95be7e99c15cc2996c6c9d841e54b79425) in order to use MKR tokens as a form of facilitating intra-system liquidity between Dai holders and the collateral that needed to be liquidated.</li></ul>
+      <p>This utilization of the MKR token as a form of liquidity provision by the internal Maker smart contracts gives us an answer for the question that began our data dive — why there so many MKR token transfers on 18/03/18.</p>
+      <p>As a result of the higher MKR <strong>token velocity</strong> on that day, the MKR token price also appears to dip slightly during the exact timeframe that the liquidity event took place:</p>
+      <figure class="post__figure"><img src="/images/writing/measuring-maker-dai-stability/14-1-7zexygnkpsshvzcyy0t8za.png" alt="MKR price dipping during the liquidation window" loading="lazy" decoding="async"><figcaption>Source: Coinmarketcap</figcaption></figure>
+      <p>The data points and observations above, combined with what we know about the Maker-Dai system leads us to some interesting higher level takeaways.</p>
+      <h2 id="high-level-takeaways">High level takeaways</h2>
+      <p>If we can take anything away from this data exploration — it is that the mechanisms in place to keep Dai stable and collateralized are in fact working.</p>
+      <p>Further inferences we can make from this analysis include:</p>
+      <ul><li>The <strong>strength</strong> of the Dai stablecoin system can heuristically be judged by the <em>speed</em> with which price stability is restored after a liquidation event or a market-to-target price adjustment. Dai stability, in this case, was restored within a few hours — which bodes as a good sign for the resilience of the system.</li><li>A significant percentage of MKR holders are large &quot;whale&quot; addresses that could easily shift the price based on a few large token transfers.</li><li>The utilization of the MKR token as a means for providing liquidity during a CDP liquidation event adds another element to consider when <em>valuing</em> the MKR token. This use case is in addition to MKR's use for paying stability fees (after which MKR is burned, reducing it's supply) as well as governance (key voting rights only offered to MKR holders).</li></ul>
+      <p><em>Note: This piece simplifies several aspects of the Maker-Dai stablecoin system. Refer to the <a href="https://makerdao.com/whitepaper/DaiDec17WP.pdf" target="_blank" rel="noopener">whitepaper</a> for in-depth details. The mechanics of how MKR is used will also change when multi-collateral Dai is introduced.</em></p>
+      </div>
+
+      <p class="post__origin muted">Originally published on <a href="https://medium.com/tokenanalyst/measuring-maker-dai-stability-f74c23108128" target="_blank" rel="noopener">the TokenAnalyst blog on Medium</a>.</p>
+    </article>
+
+    <section class="post__more reveal" aria-label="More writing">
+      <span class="label">More writing</span>
+      <ul class="post__more-list">
+        <li>
+          <a href="/writing/maximizing-ev-2026-world-cup/">
+            <span class="post__more-title">104 matches. 48 teams. 39 days. How to maximize EV from the 2026 World Cup.</span>
+            <time class="label" datetime="2026-06-12">Jun 12, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/18-months-building-agents-with-real-money/">
+            <span class="post__more-title">Lessons from 18 months of building agents that handle real money (at scale)</span>
+            <time class="label" datetime="2026-03-30">Mar 30, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/evaluating-6-llms-for-gina/">
+            <span class="post__more-title">From conversation to execution: lessons learned evaluating 6+ LLMs for Gina</span>
+            <time class="label" datetime="2025-02-14">Feb 14, 2025</time>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- footer:start -->
+  <footer class="site-footer container">
+    <span>© 2026 Sid Shekhar</span>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/writing/">Writing</a>
+      <a href="/gina/">Gina</a>
+      <a href="/coinbase/">Coinbase</a>
+      <a href="/tokenanalyst/">TokenAnalyst</a>
+      <a href="/rss.xml">RSS</a>
+    </nav>
+  </footer>
+  <!-- footer:end -->
+</body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sid Shekhar — Writing</title>
+    <link>https://www.sidshekhar.com/writing/</link>
+    <description>Essays and on-chain data analysis by Sid Shekhar.</description>
+    <language>en</language>
+    <lastBuildDate>Fri, 12 Jun 2026 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://www.sidshekhar.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>104 matches. 48 teams. 39 days. How to maximize EV from the 2026 World Cup.</title>
+      <link>https://www.sidshekhar.com/writing/maximizing-ev-2026-world-cup/</link>
+      <guid isPermaLink="true">https://www.sidshekhar.com/writing/maximizing-ev-2026-world-cup/</guid>
+      <pubDate>Fri, 12 Jun 2026 12:00:00 GMT</pubDate>
+      <description>The 2026 World Cup is a closed system — 48 teams, 104 matches, ~9,500 correlated Polymarket markets and a hard resolution date. What the Champions League data says about how to trade it.</description>
+    </item>
+    <item>
+      <title>Lessons from 18 months of building agents that handle real money (at scale)</title>
+      <link>https://www.sidshekhar.com/writing/18-months-building-agents-with-real-money/</link>
+      <guid isPermaLink="true">https://www.sidshekhar.com/writing/18-months-building-agents-with-real-money/</guid>
+      <pubDate>Mon, 30 Mar 2026 12:00:00 GMT</pubDate>
+      <description>What $5M+ in volume and 100K+ transactions taught us about building AI agents that execute with real capital — code for math, prompts for judgment, plans before code, and memory as plain files.</description>
+    </item>
+    <item>
+      <title>From conversation to execution: lessons learned evaluating 6+ LLMs for Gina</title>
+      <link>https://www.sidshekhar.com/writing/evaluating-6-llms-for-gina/</link>
+      <guid isPermaLink="true">https://www.sidshekhar.com/writing/evaluating-6-llms-for-gina/</guid>
+      <pubDate>Fri, 14 Feb 2025 12:00:00 GMT</pubDate>
+      <description>We evaluated six-plus LLMs on real user tasks in Gina — market data lookups, chart generation and on-chain swaps — measuring speed, tool-calling accuracy, transaction success and UX.</description>
+    </item>
+    <item>
+      <title>7 Years in Crypto</title>
+      <link>https://www.sidshekhar.com/writing/7-years-in-crypto/</link>
+      <guid isPermaLink="true">https://www.sidshekhar.com/writing/7-years-in-crypto/</guid>
+      <pubDate>Thu, 22 Aug 2024 12:00:00 GMT</pubDate>
+      <description>Seven years full-time in crypto — starting TokenAnalyst in the ICO era, getting acquired by Coinbase pre-IPO, and what comes next.</description>
+    </item>
+    <item>
+      <title>Channels &amp; Crypto Natives</title>
+      <link>https://www.sidshekhar.com/writing/channels-and-crypto-natives/</link>
+      <guid isPermaLink="true">https://www.sidshekhar.com/writing/channels-and-crypto-natives/</guid>
+      <pubDate>Tue, 26 Mar 2024 12:00:00 GMT</pubDate>
+      <description>A data-driven examination of community formation via channels on Farcaster.</description>
+    </item>
+    <item>
+      <title>Quantifying Vibes</title>
+      <link>https://www.sidshekhar.com/writing/quantifying-vibes/</link>
+      <guid isPermaLink="true">https://www.sidshekhar.com/writing/quantifying-vibes/</guid>
+      <pubDate>Tue, 27 Feb 2024 12:00:00 GMT</pubDate>
+      <description>A data-driven look at what makes Farcaster engaging — question askers, reply guys, long-form lovers, tippers and builders, measured across a week of open cast data.</description>
+    </item>
+    <item>
+      <title>Under the hood of the world computer</title>
+      <link>https://www.sidshekhar.com/writing/under-the-hood-of-the-world-computer/</link>
+      <guid isPermaLink="true">https://www.sidshekhar.com/writing/under-the-hood-of-the-world-computer/</guid>
+      <pubDate>Wed, 06 Feb 2019 12:00:00 GMT</pubDate>
+      <description>Most blockchain analysis stops at transactions. A look at Ethereum through traces, sub-traces and decoded function calls — and what it takes to gather that data at scale.</description>
+    </item>
+    <item>
+      <title>Jackpot — A Fomo3D adventure</title>
+      <link>https://www.sidshekhar.com/writing/jackpot-a-fomo3d-adventure/</link>
+      <guid isPermaLink="true">https://www.sidshekhar.com/writing/jackpot-a-fomo3d-adventure/</guid>
+      <pubDate>Thu, 23 Aug 2018 12:00:00 GMT</pubDate>
+      <description>On-chain forensics on the address that won 10,469 ETH from Fomo3D — was it a bot, a coordinated scheme, or just very well prepared?</description>
+    </item>
+    <item>
+      <title>Measuring Maker-Dai stability</title>
+      <link>https://www.sidshekhar.com/writing/measuring-maker-dai-stability/</link>
+      <guid isPermaLink="true">https://www.sidshekhar.com/writing/measuring-maker-dai-stability/</guid>
+      <pubDate>Wed, 28 Mar 2018 12:00:00 GMT</pubDate>
+      <description>One anomalous bar in MKR transfer data led to CDP #614 — a forensic walk through how the Maker-Dai system absorbed a large liquidation event in March 2018.</description>
+    </item>
+    <item>
+      <title>Dissecting Blocks</title>
+      <link>https://www.sidshekhar.com/writing/dissecting-blocks/</link>
+      <guid isPermaLink="true">https://www.sidshekhar.com/writing/dissecting-blocks/</guid>
+      <pubDate>Thu, 08 Mar 2018 12:00:00 GMT</pubDate>
+      <description>The case for why examining who is transacting on-chain — not just how much — is the key to fundamentally understanding and valuing cryptoassets.</description>
+    </item>
+  </channel>
+</rss>

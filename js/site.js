@@ -54,19 +54,27 @@
       el.classList.add("is-visible");
     });
   } else {
-    var io = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -8% 0px" }
-    );
+    function makeObserver(threshold) {
+      var io = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: threshold, rootMargin: "0px 0px -8% 0px" }
+      );
+      return io;
+    }
+    // An element taller than the viewport can never show 10% of itself, so it
+    // would stay hidden forever. Those get a zero threshold instead.
+    var ioShort = makeObserver(0.1);
+    var ioTall = makeObserver(0);
     revealItems.forEach(function (el) {
-      io.observe(el);
+      var tall = el.getBoundingClientRect().height > window.innerHeight * 0.9;
+      (tall ? ioTall : ioShort).observe(el);
     });
   }
 

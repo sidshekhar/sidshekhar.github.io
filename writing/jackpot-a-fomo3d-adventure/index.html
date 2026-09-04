@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f4f1">
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');var t;
+    try{t=localStorage.getItem('theme')}catch(e){}
+    if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+    d.dataset.theme=t;})();
+  </script>
+  <title>Jackpot — A Fomo3D adventure — Sid Shekhar</title>
+  <meta name="description" content="On-chain forensics on the address that won 10,469 ETH from Fomo3D — was it a bot, a coordinated scheme, or just very well prepared?">
+  <meta name="author" content="Sid Shekhar">
+  <link rel="canonical" href="https://www.sidshekhar.com/writing/jackpot-a-fomo3d-adventure/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Jackpot — A Fomo3D adventure — Sid Shekhar">
+  <meta property="og:description" content="On-chain forensics on the address that won 10,469 ETH from Fomo3D — was it a bot, a coordinated scheme, or just very well prepared?">
+  <meta property="og:url" content="https://www.sidshekhar.com/writing/jackpot-a-fomo3d-adventure/">
+  <meta property="og:site_name" content="Sid Shekhar">
+  <meta property="og:image" content="https://www.sidshekhar.com/images/writing/jackpot-a-fomo3d-adventure/01-0-vq-syf6om2nquhoe.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@sidshekhar24">
+  <link rel="alternate" type="application/rss+xml" title="Sid Shekhar — Writing" href="https://www.sidshekhar.com/rss.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css?v=w3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <script src="/js/site.js?v=w3" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Jackpot — A Fomo3D adventure","description":"On-chain forensics on the address that won 10,469 ETH from Fomo3D — was it a bot, a coordinated scheme, or just very well prepared?","datePublished":"2018-08-23","dateModified":"2018-08-23","author":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"publisher":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sidshekhar.com/writing/jackpot-a-fomo3d-adventure/"},"url":"https://www.sidshekhar.com/writing/jackpot-a-fomo3d-adventure/","keywords":"ethereum, on-chain data, forensics","wordCount":1239,"image":"https://www.sidshekhar.com/images/writing/jackpot-a-fomo3d-adventure/01-0-vq-syf6om2nquhoe.png"}</script>
+</head>
+<body>
+  <!-- header:start -->
+  <header class="site-header container">
+    <a class="wordmark label" href="/">Sid Shekhar</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+  </header>
+  <!-- header:end -->
+
+  <main class="container">
+    <article class="post">
+      <header class="post__head reveal">
+        <a class="post__back label" href="/writing/">← Writing</a>
+        <h1>Jackpot — A Fomo3D adventure</h1>
+        <p class="post__sub">Examining the data behind the game's first big winner</p>
+        <p class="post__meta label">
+          <time datetime="2018-08-23">Aug 23, 2018</time>
+          <span aria-hidden="true">·</span>
+          <span>6 min read</span>
+        </p>
+      </header>
+
+      <!-- No .reveal here: the article body is the content, it should never be
+           gated behind JS or a scroll animation. -->
+      <div class="post__body">
+      <figure class="post__figure"><img src="/images/writing/jackpot-a-fomo3d-adventure/01-0-vq-syf6om2nquhoe.png" alt="Fomo3D" loading="lazy" decoding="async"></figure>
+      <p>On August 22nd, at 7:04:12 AM UTC, some person or set of people, somewhere in the world, received a sudden windfall of just under $3 million (or 10,469.66 ETH to be specific) by winning the jackpot of a game that is perhaps one of the most intriguing sociological experiments in Ethereum's history.</p>
+      <p>Questions abound as to the methodology utilized to arrive at the hotly contested victory and to the legitimacy of the winner. Did he/she &quot;cheat&quot; the system in some way? Is the PoWH3D team somehow connected to the winner? Were the blocks artificially stuffed with extraneous transactions in order to ensure no one else had a chance of winning? Was there a bot used to control the flow of the game?</p>
+      <p>We decided to take a slightly deeper look into the on-chain data to help make more sense of the event.</p>
+      <h2 id="what-is-fomo3d">What is Fomo3D?</h2>
+      <p>Described by its creators as a parody of the crypto/ICO industry, Fomo3D is an intricate lottery game run by smart contracts on Ethereum that has grown to become one of the most popular decentralized applications in the industry today.</p>
+      <p>The primary game mechanics for the 'long' running version of the game are as follows:</p>
+      <ul><li>To play, one buys a 'key' from the Fomo3D smart contract in exchange for ETH, which goes into a central pot.</li><li>There exists a countdown clock which is constantly ticking down but is increased every time a new key is bought.</li><li>Each time a new key is bought, all existing holders of keys get a portion of the new key sale's funds, proportionate to the number of keys they hold.</li><li>The round ends when the clock ticks to zero. The last person who bought a key before the clock winds down is the winner of the round.</li><li>Every key buyer can also choose a 'team', which is effectively a choice as to how the central pot will be split (amongst the winner and other sectors of the Fomo3D ecosystem), should they be the last person to buy a key.</li><li>All the ETH earned from the game is stored in a user's 'vault', from where withdrawals can be made at any point.</li></ul>
+      <p>Have a look at the detailed rules <a href="https://fomo3d.hostedwiki.co/pages/Fomo3D%20Explained#pot-distribution" target="_blank" rel="noopener">here</a>.</p>
+      <h2 id="examining-the-jackpot-winner">Examining the jackpot winner</h2>
+      <p>It is a significant event that someone actually won the round in Fomo3D because firstly, there were several thousand users (with vast war chests) competing for the chance to be the last key in.</p>
+      <p>Adding to this, the pyramid-scheme-like nature of the game had many convinced that there would always be another key buyer (seeing as keys are relatively inexpensive) that would be drawn to the game as it had such a tantalizing possibility of victory.</p>
+      <p>Examining the data for the winning address for this round of Fomo3D, we will refer to the winner as <em>JackpotWinner</em>. It appears like <em>JackpotWinner</em> has only been truly active for a little over a week, receiving his/her initial ETH funds in chunks from Shapeshift transactions. It's important to realize here that we cannot know for sure whether there is one or multiple human beings behind <em>JackpotWinner</em> or if it's an automated bot entity whose aim is to systematically win the game.</p>
+      <figure class="post__figure"><img src="/images/writing/jackpot-a-fomo3d-adventure/02-1-hna5jhg2sebogflndkxcsq.png" alt="The transfer of the spoils between the Fomo3D smart contract and the winner" loading="lazy" decoding="async"><figcaption>The transfer of the spoils between the Fomo3D smart contract and the winner. Source: Etherscan</figcaption></figure>
+      <p>First we examine the possibility that <em>JackpotWinner</em> somehow managed to bombard the blockchain with transactions such that the miners had no choice but to include his/her transactions above others. The payout of the winnings happened in block number 6191962. Looking closer at the block, it appears to have been mined by an established, operating, mining pool and contains many seemingly independent addresses that also have had interactions with Fomo3D at a very similar time as <em>JackpotWinner</em>. The gas pricing is also well within normal bounds. Additionally, on a surface-level network analysis, there appear to be no material connection between <em>JackpotWinner</em> and the mining entity.</p>
+      <p>Over the course of 5 hours on August 22nd however, we notice <em>JackpotWinner</em> making a series of calls to the Fomo3D smart contract — 46 to be exact.</p>
+      <p>We see <em>JackpotWinner</em> successively hitting the FOMO3D:Long contract, calling the <code>buyXid(uint256 _affCode, uint256 _team)</code> function — to effectively buy a key with each transaction during this time period of intense competition with other players.</p>
+      <blockquote><p>He/she only directly paid around 2.76 ETH (1.96 ETH in transaction fees and 0.8 ETH to purchase keys) to win a whopping 10,469.66 ETH.</p></blockquote>
+      <p>Taking this into consideration, another, more insidious possibility to explore through the data is to see whether <em>JackpotWinner</em> is in any way related to a bigger entity (such as the <a href="https://twitter.com/PoWH3D" target="_blank" rel="noopener">PoWH3D</a> team themselves). The first place to look is the distribution of addresses that <em>JackpotWinner</em> transacts with and sends ETH to.</p>
+      <figure class="post__figure"><img src="/images/writing/jackpot-a-fomo3d-adventure/03-1-bcc39wpz82eqemg4sx7dfw.png" alt="Jackpot Winner ETH transaction recipients" loading="lazy" decoding="async"><figcaption>Jackpot Winner ETH transaction recipients</figcaption></figure>
+      <p>What is striking about this distribution is the there exist 46.6% of transactions where the address 0x18e1B664C6a2E88b93C1b71F61Cbf76a726B7801 is the recipient of funds from the <em>JackpotWinner</em>. Looking into this address, we see that it is in fact a contract that was created by <em>JackpotWinner</em> on Aug 18th, 2018 at 10:49:31 PM UTC. The vast majority of transactions to this address are merely calls to the Fomo3D:Long contract (or to related auxiliary contracts for the game) that are effectively routed through this 'routing' address (see below).</p>
+      <figure class="post__figure"><img src="/images/writing/jackpot-a-fomo3d-adventure/04-1-dlexlbhba5b5s7xlreu8tg.png" alt="Transactions routed through the winner's helper contract" loading="lazy" decoding="async"><figcaption>Source: Etherscan</figcaption></figure>
+      <p>The other addresses that make up a large percentage of the recipient base for <em>JackpotWinner</em> are also either Fomo3D contracts or auxiliary supporting addresses. This fact indicates that <em>JackpotWinner</em> is either a component of an automated botnet that systematically interacts with the Fomo3D contract ecosystem and/or a part of an elaborate scheme by the <a href="https://twitter.com/PoWH3D" target="_blank" rel="noopener">PoWH3D</a> team themselves to funnel money through their own creation.</p>
+      <p>Another data point that serves as a clue is the Fomo3D leaderboard, which states the number of keys owned by <em>JackpotWinner</em> and the teams he/she has chosen. It is intriguing that the 'bear' team is one of the choices as it is the option that is meant to be chosen by those that want <a href="https://fomo3d.hostedwiki.co/pages/Fomo3D%20Explained#pot-distribution" target="_blank" rel="noopener">0% of a round's winnings to go to P3D token holders</a> (PoWH3D's own token).</p>
+      <figure class="post__figure"><img src="/images/writing/jackpot-a-fomo3d-adventure/05-1-lz0hhngiuxp4cjxwf88e4q.png" alt="The Fomo3D leaderboard showing the winner's keys and team choices" loading="lazy" decoding="async"><figcaption>Source: fomo3d.eu</figcaption></figure>
+      <p>If <em>JackpotWinner</em> was in fact connected to PoWH3D, it would not make rational sense for the organization to devalue the contribution of their own P3D token (albeit it being outside the scope of the game) merely for the sake of leading us all on a wild goose chase.</p>
+      <h2 id="takeaways">Takeaways</h2>
+      <ul><li>While a closer examination of the winning address and the corresponding transactional relationships does shed some light into what could be going on, to truly uncover any substantial pattern-recognition in the game, we need to go through more rounds and cycles of winnings.</li><li><em>JackpotWinner</em>, with its systematic interactions with the Fomo3D infrastructure <strong>and</strong> <code>0x2c389A86A686AC7Ee98Ac2606802b5bB4a2186C1</code>, which is the recipient of a <a href="https://etherscan.io/address/0x2c389A86A686AC7Ee98Ac2606802b5bB4a2186C1" target="_blank" rel="noopener">large chunk</a> of <em>JackpotWinner's</em> funds, appear to have been expressly set up in the past week and a half to prepare for this moment in time, when they could claim the winnings for round 1.</li><li>As always, it is easier to rationalize a logical sequence of steps after the fact but much harder to predict the same before the occurrence itself (especially in such an early, developing game ecosystem).</li></ul>
+      </div>
+
+      <p class="post__origin muted">Originally published on <a href="https://medium.com/tokenanalyst/jackpot-a-fomo3d-adventure-793f6e94dc75" target="_blank" rel="noopener">the TokenAnalyst blog on Medium</a>.</p>
+    </article>
+
+    <section class="post__more reveal" aria-label="More writing">
+      <span class="label">More writing</span>
+      <ul class="post__more-list">
+        <li>
+          <a href="/writing/maximizing-ev-2026-world-cup/">
+            <span class="post__more-title">104 matches. 48 teams. 39 days. How to maximize EV from the 2026 World Cup.</span>
+            <time class="label" datetime="2026-06-12">Jun 12, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/18-months-building-agents-with-real-money/">
+            <span class="post__more-title">Lessons from 18 months of building agents that handle real money (at scale)</span>
+            <time class="label" datetime="2026-03-30">Mar 30, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/evaluating-6-llms-for-gina/">
+            <span class="post__more-title">From conversation to execution: lessons learned evaluating 6+ LLMs for Gina</span>
+            <time class="label" datetime="2025-02-14">Feb 14, 2025</time>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- footer:start -->
+  <footer class="site-footer container">
+    <span>© 2026 Sid Shekhar</span>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/writing/">Writing</a>
+      <a href="/gina/">Gina</a>
+      <a href="/coinbase/">Coinbase</a>
+      <a href="/tokenanalyst/">TokenAnalyst</a>
+      <a href="/rss.xml">RSS</a>
+    </nav>
+  </footer>
+  <!-- footer:end -->
+</body>
+</html>

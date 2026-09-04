@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f8f4f1">
+  <script>
+    (function(){var d=document.documentElement;d.classList.add('js');var t;
+    try{t=localStorage.getItem('theme')}catch(e){}
+    if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+    d.dataset.theme=t;})();
+  </script>
+  <title>Lessons from 18 months of building agents that handle real money (at scale) — Sid Shekhar</title>
+  <meta name="description" content="What $5M+ in volume and 100K+ transactions taught us about building AI agents that execute with real capital — code for math, prompts for judgment, plans before code, and memory as plain files.">
+  <meta name="author" content="Sid Shekhar">
+  <link rel="canonical" href="https://www.sidshekhar.com/writing/18-months-building-agents-with-real-money/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Lessons from 18 months of building agents that handle real money (at scale) — Sid Shekhar">
+  <meta property="og:description" content="What $5M+ in volume and 100K+ transactions taught us about building AI agents that execute with real capital — code for math, prompts for judgment, plans before code, and memory as plain files.">
+  <meta property="og:url" content="https://www.sidshekhar.com/writing/18-months-building-agents-with-real-money/">
+  <meta property="og:site_name" content="Sid Shekhar">
+  <meta property="og:image" content="https://www.sidshekhar.com/images/writing/18-months-building-agents-with-real-money/01-create-steps.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@sidshekhar24">
+  <link rel="alternate" type="application/rss+xml" title="Sid Shekhar — Writing" href="https://www.sidshekhar.com/rss.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css?v=w3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <script src="/js/site.js?v=w3" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Lessons from 18 months of building agents that handle real money (at scale)","description":"What $5M+ in volume and 100K+ transactions taught us about building AI agents that execute with real capital — code for math, prompts for judgment, plans before code, and memory as plain files.","datePublished":"2026-03-30","dateModified":"2026-03-30","author":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"publisher":{"@type":"Person","name":"Sid Shekhar","url":"https://www.sidshekhar.com/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sidshekhar.com/writing/18-months-building-agents-with-real-money/"},"url":"https://www.sidshekhar.com/writing/18-months-building-agents-with-real-money/","keywords":"ai, agents, gina, crypto","wordCount":1308,"image":"https://www.sidshekhar.com/images/writing/18-months-building-agents-with-real-money/01-create-steps.png"}</script>
+</head>
+<body>
+  <!-- header:start -->
+  <header class="site-header container">
+    <a class="wordmark label" href="/">Sid Shekhar</a>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+  </header>
+  <!-- header:end -->
+
+  <main class="container">
+    <article class="post">
+      <header class="post__head reveal">
+        <a class="post__back label" href="/writing/">← Writing</a>
+        <h1>Lessons from 18 months of building agents that handle real money (at scale)</h1>
+        
+        <p class="post__meta label">
+          <time datetime="2026-03-30">Mar 30, 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>6 min read</span>
+        </p>
+      </header>
+
+      <!-- No .reveal here: the article body is the content, it should never be
+           gated behind JS or a scroll animation. -->
+      <div class="post__body">
+      <p>We launched Ask Gina in early 2024 as one of the first AI agents that could execute transactions with real capital.</p>
+      <p>Since then: $5M+ in volume and 100K+ transactions, across Polymarket, Hyperliquid perps, and 12+ blockchains. We've seen hundreds of strategies, edge cases, and prompt variations - all with real money on the line.</p>
+      <p>Experiencing this first hand has changed how we think about using AI in finance: from how to structure prompts, how to handle memory, and how to represent complex strategy logic within a robust harness that works consistently.</p>
+      <p>Here's what 18 months of building agents that handle real money taught us.</p>
+      <h2 id="financial-automations-prompts-vs-code">Financial automations: prompts vs code</h2>
+      <p>In mid 2025, we launched &quot;Recipes&quot;. The concept was simple: a natural language prompt, scheduled to execute autonomously at any time interval or through a trigger:</p>
+      <ul><li>Every day at 9am.</li><li>Every 5 minutes.</li><li>Every time BTC drops 10%.</li></ul>
+      <p>This enables everything from very simple atomic tasks like &quot;get me a morning report&quot; to advanced multi-step trading strategies.</p>
+      <p>For a surprisingly long time, this was enough. If you can break a strategy into steps simple enough that a sharp 15-year-old could read each one and execute it reliably, you can build robust multi-prompt workflows. Especially when each step stays within what a language model handles well: clear input, clear output, zero ambiguity.</p>
+      <p>The cracks appeared when we started running strategies that required exact math.</p>
+      <p>Position sizing to basis points. Multi-condition filters with deterministic sequencing. A language model predicts the next token - fundamentally, it's just a really good <em>guess</em>.</p>
+      <p>When you're scaling into a Hyperliquid perp position with leverage, you don't want to be doing really good guesses on exact math.</p>
+      <h2 id="code-based-execution-for-complex-mathematical-logic">Code-based execution for complex mathematical logic</h2>
+      <p>In early 2026, something clicked. We've seen coding agents like Claude Code and Codex see a step change in quality improvement. And the broader evolution in agentic harnesses - has made it obvious: what frontier models are genuinely exceptional at is generating reliable, testable <em>code</em>.</p>
+      <p>So instead of asking a LLM model to <em>do</em> the math for a financial automation, we instead changed our approach to ask it to <em>write code</em> that does the math. That code is then run as the automation logic.</p>
+      <p>We built <code>/create</code> around this. It's an opinionated harness that enables you to build your own agent with an automation. Where each automation is a sequence of discrete, executable steps. For example, you can have within one workflow:</p>
+      <ul><li><strong>Step 1: Scanner</strong> — find markets, assets, or conditions matching your criteria</li><li><strong>Step 2: Filter</strong> — apply logic, rank by signal, remove noise</li><li><strong>Step 3: Executor</strong> — take the action</li><li><strong>Step 4: Monitor</strong> — track outcome, log results, adjust</li></ul>
+      <p>Each step is isolated. Each step has an associated piece of code which runs. This allows each step to be tested independently before it touches live capital.</p>
+      <p>Because it's code, it's deterministic — it does exactly what you told it, every time, whether the venue is Polymarket, Hyperliquid, or a spot swap on Base.</p>
+      <figure class="post__figure"><img src="/images/writing/18-months-building-agents-with-real-money/01-create-steps.png" alt="An automation broken into discrete scanner, filter, executor and monitor steps" loading="lazy" decoding="async"></figure>
+      <h2 id="if-you-use-prompts-make-each-one-atomic-then-combine-together">If you use prompts, make each one atomic then combine together</h2>
+      <p>Prompts aren't going away. For strategies that need genuine interpretation, reading a news event, assessing sentiment, deciding whether a situation is anomalous, language models are the right tool.</p>
+      <p>The mistake is packing too much into one prompt.</p>
+      <p>One prompt should do one job. Runnable in isolation, independently testable, and able to be understood by the smallest LLM. If your prompt handles five different things and one fails, you just due to the nature of LLM reasoning hops, you have no idea why one aspect of it broke, how often it breaks, or under what conditions.</p>
+      <p>Split every prompt-based strategy into atomic units. One input, one output, one purpose. Built out separately and then chain together as one overarching &quot;strategy&quot;.</p>
+      <p>Same principle as good software engineering. Functions, not monoliths.</p>
+      <figure class="post__figure"><img src="/images/writing/18-months-building-agents-with-real-money/02-atomic-prompts.png" alt="Atomic prompts chained together into a single strategy" loading="lazy" decoding="async"></figure>
+      <h2 id="plan-before-code-always">Plan before code (always)</h2>
+      <p>The vast majority of humans don't read code in 2026. At best you may get a skim through, but more likely than not, code that is generated is being delegated to an AI to review.</p>
+      <p>When you're building financial automations that rely on code as execution logic, it's incredibly important to have a &quot;plan&quot; that actually <em>gets read by humans</em> before implementing any code.</p>
+      <p>Before writing a single line of code, Gina generates a plan: goal, scope, steps, risks, open questions - all in plain English. The user reads it and approves it before anything gets built.</p>
+      <p>This does two things. It catches bad assumptions before they are baked into working code that is hard to unwind. And it gives the person running the strategy a moment to actually understand what is about to execute with their capital.</p>
+      <p>One example: one strategy plan called for &quot;buy if funding rate is negative.&quot; Reading the plan, the user caught that it didn't specify <em>how</em> negative - meaning it would trigger on -0.001% the same as -2%. Two seconds of reading saved countless bad entries and wasted AI credits.</p>
+      <p>The plan step has caught more problems than any other guardrail we have built. Bad logic is obvious in plain bullet point English. Much harder when its just pure code.</p>
+      <figure class="post__figure"><img src="/images/writing/18-months-building-agents-with-real-money/03-plan-step.jpg" alt="A generated plan showing goal, scope, steps, risks and open questions in plain English" loading="lazy" decoding="async"></figure>
+      <h2 id="memory-is-just-files-stop-overcomplicating-it">Memory is just files. Stop overcomplicating it.</h2>
+      <p>Agents don't have persistent memory by default. Every session starts fresh. Most teams try to solve this with vector databases, RAG pipelines, or elaborate context injection schemes.</p>
+      <p>Here's what actually works: treat your agent like a computer user. Because that's what it is. Agents can read and write files natively. That's your memory layer. Simple, durable, no context window dependency.</p>
+      <p>The workflow we've seen work consistently for researching unfamiliar markets or evaluating strategies:</p>
+      <ol><li>Search for the relevant market (HYPE, BTC 15 minute market, NBA games etc)</li><li>Ask your agent to record key details to a file. Liquidity, volatility, historical price action, notable events.</li><li>Come back a few days later.</li><li>Ask it to open the file and analyze what it logged. What's the volatility profile? Where's the liquidity? Does a pattern emerge? Can we create a repeatable strategy to trade this?</li></ol>
+      <p>You've done a lightweight backtest without a data pipeline or a quant team. Just an agent, a filesystem, and time.</p>
+      <p>Every Gina user gets their own personal agent filesystem with 250 MB of free file storage.</p>
+      <p>The strategies that improve over time are the ones that record key details in a file and keep learning from them.</p>
+      <figure class="post__figure"><img src="/images/writing/18-months-building-agents-with-real-money/04-agent-filesystem.png" alt="An agent's personal filesystem holding market research notes" loading="lazy" decoding="async"></figure>
+      <h2 id="the-model-is-table-stakes-the-harness-around-it-is-the-edge">The model is table stakes. The harness around it is the edge.</h2>
+      <p>Every team in this space has access to the same frontier models. Same API. Same capabilities. Best in class models are table stakes.</p>
+      <p>The edge is the infrastructure built around it: the data it can access, the structure you give its execution, the memory it accumulates over time, and the guardrails that keep it from doing something expensive when conditions shift.</p>
+      <p>We learned every one of these lessons by having real money on the line with Gina moving several hundred thousand dollars a day in value.</p>
+      <p>The playbook is simple but hard-won: use code for math, prompts for judgment. Keep each unit atomic. Plan before you build. Give your agent a filesystem and let memory compound.</p>
+      <p>None of this requires our platform. These are patterns that work across different sectors of agent-led work regardless of what you're building with.</p>
+      <p>That said - <code>/create</code> is where we've encoded all of it. If you want a harness that just works out of the box without the scar tissue: <a href="https://askgina.ai/create" target="_blank" rel="noopener">askgina.ai/create</a></p>
+      <figure class="post__figure"><img src="/images/writing/18-months-building-agents-with-real-money/05-create-harness.jpg" alt="The /create harness in Ask Gina" loading="lazy" decoding="async"></figure>
+      </div>
+
+      <p class="post__origin muted">Originally published on <a href="https://x.com/sidshekhar24/status/2038651145841684811" target="_blank" rel="noopener">X</a>.</p>
+    </article>
+
+    <section class="post__more reveal" aria-label="More writing">
+      <span class="label">More writing</span>
+      <ul class="post__more-list">
+        <li>
+          <a href="/writing/maximizing-ev-2026-world-cup/">
+            <span class="post__more-title">104 matches. 48 teams. 39 days. How to maximize EV from the 2026 World Cup.</span>
+            <time class="label" datetime="2026-06-12">Jun 12, 2026</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/evaluating-6-llms-for-gina/">
+            <span class="post__more-title">From conversation to execution: lessons learned evaluating 6+ LLMs for Gina</span>
+            <time class="label" datetime="2025-02-14">Feb 14, 2025</time>
+          </a>
+        </li>
+        <li>
+          <a href="/writing/7-years-in-crypto/">
+            <span class="post__more-title">7 Years in Crypto</span>
+            <time class="label" datetime="2024-08-22">Aug 22, 2024</time>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- footer:start -->
+  <footer class="site-footer container">
+    <span>© 2026 Sid Shekhar</span>
+    <nav aria-label="Footer">
+      <a href="/">Home</a>
+      <a href="/writing/">Writing</a>
+      <a href="/gina/">Gina</a>
+      <a href="/coinbase/">Coinbase</a>
+      <a href="/tokenanalyst/">TokenAnalyst</a>
+      <a href="/rss.xml">RSS</a>
+    </nav>
+  </footer>
+  <!-- footer:end -->
+</body>
+</html>
