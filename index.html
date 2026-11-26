@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f8f4f1">
+  <meta name="theme-color" content="#000000">
   <script>
     (function(){var d=document.documentElement;d.classList.add('js');var t;
     try{t=localStorage.getItem('theme')}catch(e){}
-    if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+    if(t!=='light'&&t!=='dark'){t='dark'}
     d.dataset.theme=t;})();
   </script>
   <title>Sid Shekhar</title>
@@ -21,13 +21,13 @@
   <link rel="alternate" type="application/rss+xml" title="Sid Shekhar — Writing" href="https://www.sidshekhar.com/rss.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="/css/style.css?v=w4">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="/css/style.css?v=w5">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="manifest" href="/images/site.webmanifest">
-  <script src="/js/site.js?v=w4" defer></script>
+  <script src="/js/site.js?v=w5" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -50,189 +50,117 @@
   }
   </script>
 </head>
-<body>
-  <!-- header:start -->
-  <header class="site-header container">
-    <a class="wordmark label" href="/" target="_blank" rel="noopener">Sid Shekhar</a>
-    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-    </button>
+<body class="home">
+  <header class="bar">
+    <div class="bar__in">
+      <a class="mark" href="/">ss<span>.</span></a>
+      <nav class="bar__nav" aria-label="Sections">
+        <a href="#writing">writing</a>
+        <a href="#talks">talks</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="true">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </nav>
+    </div>
   </header>
-  <!-- header:end -->
 
-  <main class="container">
-    <section class="intro reveal">
-      <h1>Hi, I'm Sid 👋🏽</h1>
+  <main class="page">
+    <section class="about">
+      <h1>Sid Shekhar</h1>
       <p>
-        I'm currently building <a href="https://www.askgina.ai/" target="_blank" rel="noopener">Ask Gina</a>,
-        an agentic finance harness that gives you an AI agent equipped with a wallet. Gina can transact
-        across 12+ blockchains, prediction markets, perpetuals, and can intelligently get you exposure to
-        tokens, stocks, indices and more.
+        I'm building <a href="https://www.askgina.ai/" target="_blank" rel="noopener" data-site="askgina.ai" data-desc="An AI agent equipped with its own wallet.">Ask Gina</a>,
+        an agentic finance harness that gives you an AI agent with its own wallet. Gina transacts across
+        12+ blockchains, prediction markets and perps, and can get you exposure to tokens, stocks,
+        indices and more.
       </p>
       <p>
-        Before this I led the Blockchain Research team at <a href="/coinbase/" target="_blank" rel="noopener">Coinbase</a>, and before
-        that I co-founded <a href="/tokenanalyst/" target="_blank" rel="noopener">TokenAnalyst</a>, a London blockchain analytics startup
-        that Coinbase acquired.
+        Before this I led Blockchain Research at <a href="#coinbase">Coinbase</a>, and before that
+        co-founded <a href="#tokenanalyst">TokenAnalyst</a>, a London onchain analytics startup that
+        Coinbase acquired. Cornell and UCL alum; lived and worked in 8+ countries.
       </p>
-      <p>
-        I'm an alum of Cornell and UCL and have lived and worked in over 8 different countries across
-        the world.
-      </p>
-    </section>
-
-    <section class="timeline" aria-label="Career timeline">
-      <span class="label">Timeline</span>
-
-      <article class="chapter chapter--current reveal">
-        <div class="chapter__year"><span>2024</span><span>now</span></div>
-        <div class="chapter__body">
-          <h2 class="chapter__title"><a href="/gina/" target="_blank" rel="noopener">Ask Gina</a> <span class="badge">Current</span></h2>
-          <p class="chapter__role">Co-founder</p>
-          <p class="chapter__blurb">
-            Agentic wallet infrastructure. Gina is an AI agent equipped with its own wallet: describe a
-            strategy and Gina executes, monitors and automates it 24/7 across 12+ blockchains, all of
-            Polymarket, every Hyperliquid perp, and now stocks, commodities and indices.
-          </p>
-          <ul class="cards">
-            <li class="reveal">
-              <a class="card" href="https://www.youtube.com/watch?v=XEFNsa06Kes" target="_blank" rel="noopener">
-                <img class="card__thumb" src="https://img.youtube.com/vi/XEFNsa06Kes/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
-                <span class="card__body"><span class="label">Video</span><span class="card__title">Introducing Gina</span></span>
-              </a>
-            </li>
-            <li class="reveal" style="--d: 80ms">
-              <a class="card" href="https://www.youtube.com/watch?v=44359d-1JuQ" target="_blank" rel="noopener">
-                <img class="card__thumb" src="https://img.youtube.com/vi/44359d-1JuQ/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
-                <span class="card__body"><span class="label">Video</span><span class="card__title">What if your wallet worked for you?</span></span>
-              </a>
-            </li>
-            <li class="reveal" style="--d: 160ms">
-              <a class="card" href="https://www.youtube.com/watch?v=EfuySf1xC2g" target="_blank" rel="noopener">
-                <img class="card__thumb" src="https://img.youtube.com/vi/EfuySf1xC2g/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
-                <span class="card__body"><span class="label">Video</span><span class="card__title">Behind the scenes: the AI startup redefining how the world invests</span></span>
-              </a>
-            </li>
-          </ul>
-          <a class="more" href="/gina/" target="_blank" rel="noopener">See all from Ask Gina</a>
-        </div>
-      </article>
-
-      <article class="chapter reveal">
-        <div class="chapter__year"><span>2020</span><span>2024</span></div>
-        <div class="chapter__body">
-          <h2 class="chapter__title"><a href="/coinbase/" target="_blank" rel="noopener">Coinbase</a></h2>
-          <p class="chapter__role">Led Blockchain Research</p>
-          <p class="chapter__blurb">
-            Built and led the Blockchain Research team, publishing onchain analysis on Layer 2s, ETH 2.0
-            and DeFi, and hosted a weekly institutional markets call on Web3 and DeFi.
-          </p>
-          <ul class="cards">
-            <li class="reveal">
-              <a class="card" href="https://www.youtube.com/watch?v=8EOAwmXUs3Q" target="_blank" rel="noopener">
-                <img class="card__thumb" src="https://img.youtube.com/vi/8EOAwmXUs3Q/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
-                <span class="card__body"><span class="label">Talk · ETHCC 2023</span><span class="card__title">Trends in liquidity provisioning behavior across DEXs</span></span>
-              </a>
-            </li>
-            <li class="reveal" style="--d: 80ms">
-              <a class="card" href="https://www.coinbase.com/blog/examining-layer-2-usage-using-onchain-data" target="_blank" rel="noopener">
-                <img class="card__thumb" src="/images/writing/coinbase-l2.jpg" alt="" loading="lazy" width="960" height="540">
-                <span class="card__body"><span class="label">Article · Coinbase</span><span class="card__title">Examining Layer 2 activity using onchain data</span></span>
-              </a>
-            </li>
-          </ul>
-          <a class="more" href="/coinbase/" target="_blank" rel="noopener">See all from Coinbase</a>
-        </div>
-      </article>
-
-      <article class="chapter reveal">
-        <div class="chapter__year"><span>2017</span><span>2020</span></div>
-        <div class="chapter__body">
-          <h2 class="chapter__title"><a href="/tokenanalyst/" target="_blank" rel="noopener">TokenAnalyst</a></h2>
-          <p class="chapter__role">Co-founder · London · Acquired by Coinbase</p>
-          <p class="chapter__blurb">
-            Co-founded a blockchain analytics startup that turned raw onchain data into signals for
-            traders and institutions. Covered by Bloomberg and Business Insider, acquired by Coinbase
-            in 2020.
-          </p>
-          <ul class="cards">
-            <li class="reveal">
-              <a class="card" href="https://www.youtube.com/watch?v=OtodaT1mZJU" target="_blank" rel="noopener">
-                <img class="card__thumb" src="https://img.youtube.com/vi/OtodaT1mZJU/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
-                <span class="card__body"><span class="label">Talk</span><span class="card__title">How we use data science at TokenAnalyst</span></span>
-              </a>
-            </li>
-            <li class="reveal" style="--d: 80ms">
-              <a class="card" href="/writing/under-the-hood-of-the-world-computer/">
-                <img class="card__thumb" src="/images/writing/under-the-hood.jpg" alt="" loading="lazy" width="960" height="540">
-                <span class="card__body"><span class="label">Essay</span><span class="card__title">Under the hood of the world computer</span></span>
-              </a>
-            </li>
-          </ul>
-          <a class="more" href="/tokenanalyst/" target="_blank" rel="noopener">See all from TokenAnalyst</a>
-        </div>
-      </article>
-    </section>
-
-    <section aria-labelledby="writing">
-      <div class="section-head reveal"><h2 id="writing">Writing</h2><span class="label">Latest</span></div>
-      <ul class="cards cards--wide">
-        <li class="reveal">
-          <a class="card" href="/writing/maximizing-ev-2026-world-cup/">
-            <img class="card__thumb" src="/images/writing/maximizing-ev-2026-world-cup/01-header.jpg" alt="" loading="lazy" width="960" height="540">
-            <span class="card__body"><span class="label">Essay · 2026</span><span class="card__title">104 matches. 48 teams. 39 days. How to maximize EV from the 2026 World Cup.</span></span>
-          </a>
-        </li>
-        <li class="reveal" style="--d: 80ms">
-          <a class="card" href="/writing/18-months-building-agents-with-real-money/">
-            <img class="card__thumb" src="/images/writing/18-months-building-agents-with-real-money/01-create-steps.png" alt="" loading="lazy" width="960" height="540">
-            <span class="card__body"><span class="label">Essay · 2026</span><span class="card__title">Lessons from 18 months of building agents that handle real money</span></span>
-          </a>
-        </li>
-        <li class="reveal" style="--d: 160ms">
-          <a class="card" href="/writing/evaluating-6-llms-for-gina/">
-            <img class="card__thumb" src="/images/writing/gina-llms.jpg" alt="" loading="lazy" width="960" height="540">
-            <span class="card__body"><span class="label">Essay · 2025</span><span class="card__title">From conversation to execution: evaluating 6+ LLMs for Gina</span></span>
-          </a>
-        </li>
+      <ul class="social">
+        <li><a class="ext" href="https://twitter.com/sidshekhar24" target="_blank" rel="noopener">x</a></li>
+        <li><a class="ext" href="https://www.linkedin.com/in/sidshekhar/" target="_blank" rel="noopener">linkedin</a></li>
+        <li><a class="ext" href="https://t.me/sidshekhar" target="_blank" rel="noopener">telegram</a></li>
+        <li><a class="ext" href="https://www.askgina.ai/" target="_blank" rel="noopener">ask gina</a></li>
       </ul>
-      <a class="more" href="/writing/">All writing</a>
     </section>
 
-    <section class="contact reveal" id="contact">
-      <h2>Get in touch</h2>
-      <ul>
-        <li>
-          <a href="https://twitter.com/sidshekhar24" target="_blank" rel="noopener" aria-label="X (Twitter)" title="X">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/sidshekhar/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="https://t.me/sidshekhar" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          </a>
-        </li>
+    <section class="block" id="writing" aria-labelledby="writing-h">
+      <h2 id="writing-h">writing</h2>
+      <ul class="list">
+        <li><a href="/writing/maximizing-ev-2026-world-cup/" target="_blank" rel="noopener" data-site="sidshekhar.com" data-img="/images/writing/maximizing-ev-2026-world-cup/01-header.jpg" data-desc="The 2026 World Cup is a closed system — 48 teams, 104 matches, ~9,500 correlated Polymarket markets and a hard resolution date. What the Champions League data says about how to trade it."><span class="t">104 matches. 48 teams. 39 days. How to maximize EV from the 2026 World Cup.</span></a><span class="m">Jun 2026</span></li>
+        <li><a href="/writing/18-months-building-agents-with-real-money/" target="_blank" rel="noopener" data-site="sidshekhar.com" data-img="/images/writing/18-months-building-agents-with-real-money/01-create-steps.png" data-desc="What $5M+ in volume and 100K+ transactions taught us about building AI agents that execute with real capital — code for math, prompts for judgment, plans before code, and memory as plain files."><span class="t">Lessons from 18 months of building agents that handle real money (at scale)</span></a><span class="m">Mar 2026</span></li>
+        <li><a href="/writing/evaluating-6-llms-for-gina/" target="_blank" rel="noopener" data-site="sidshekhar.com" data-img="/images/writing/gina-llms.jpg" data-desc="We evaluated six-plus LLMs on real user tasks in Gina — market data lookups, chart generation and on-chain swaps — measuring speed, tool-calling accuracy, transaction success and UX."><span class="t">From conversation to execution: lessons learned evaluating 6+ LLMs for Gina</span></a><span class="m">Feb 2025</span></li>
+        <li><a href="/writing/7-years-in-crypto/" target="_blank" rel="noopener" data-site="sidshekhar.com" data-img="/images/writing/7-years-in-crypto/01-756b965f0920403445b429550a522b6a.jpg" data-desc="Seven years full-time in crypto — starting TokenAnalyst in the ICO era, getting acquired by Coinbase pre-IPO, and what comes next."><span class="t">7 Years in Crypto</span></a><span class="m">Aug 2024</span></li>
+        <li><a href="/writing/channels-and-crypto-natives/" target="_blank" rel="noopener" data-site="sidshekhar.com" data-img="/images/writing/channels-and-crypto-natives/02-74c091f2c60ff9e8773871e3b7134c2c.png" data-desc="A data-driven examination of community formation via channels on Farcaster."><span class="t">Channels &amp; Crypto Natives</span></a><span class="m">Mar 2024</span></li>
+        <li><a href="/writing/quantifying-vibes/" target="_blank" rel="noopener" data-site="sidshekhar.com" data-img="/images/writing/quantifying-vibes.jpg" data-desc="A data-driven look at what makes Farcaster engaging — question askers, reply guys, long-form lovers, tippers and builders, measured across a week of open cast data."><span class="t">Quantifying Vibes</span></a><span class="m">Feb 2024</span></li>
+        <li><a href="/writing/under-the-hood-of-the-world-computer/" target="_blank" rel="noopener" data-site="sidshekhar.com" data-img="/images/writing/under-the-hood.jpg" data-desc="Most blockchain analysis stops at transactions. A look at Ethereum through traces, sub-traces and decoded function calls — and what it takes to gather that data at scale."><span class="t">Under the hood of the world computer</span></a><span class="m">Feb 2019</span></li>
+        <li><a href="/writing/jackpot-a-fomo3d-adventure/" target="_blank" rel="noopener" data-site="sidshekhar.com" data-img="/images/writing/fomo3d.jpg" data-desc="On-chain forensics on the address that won 10,469 ETH from Fomo3D — was it a bot, a coordinated scheme, or just very well prepared?"><span class="t">Jackpot — A Fomo3D adventure</span></a><span class="m">Aug 2018</span></li>
+        <li><a href="/writing/measuring-maker-dai-stability/" target="_blank" rel="noopener" data-site="sidshekhar.com" data-img="/images/writing/maker-dai.jpg" data-desc="One anomalous bar in MKR transfer data led to CDP #614 — a forensic walk through how the Maker-Dai system absorbed a large liquidation event in March 2018."><span class="t">Measuring Maker-Dai stability</span></a><span class="m">Mar 2018</span></li>
+        <li><a href="/writing/dissecting-blocks/" target="_blank" rel="noopener" data-site="sidshekhar.com" data-img="/images/writing/dissecting-blocks.jpg" data-desc="The case for why examining who is transacting on-chain — not just how much — is the key to fundamentally understanding and valuing cryptoassets."><span class="t">Dissecting Blocks</span></a><span class="m">Mar 2018</span></li>
+      </ul>
+    </section>
+
+    <section class="block" id="ask-gina" aria-labelledby="ask-gina-h">
+      <h2 id="ask-gina-h"><img class="logo" src="https://www.google.com/s2/favicons?domain=askgina.ai&amp;sz=64" alt="" width="16" height="16" loading="lazy">ask gina</h2>
+      <ul class="list">
+        <li><a href="https://www.askgina.ai/" target="_blank" rel="noopener" data-site="askgina.ai" data-desc="An AI agent equipped with its own wallet. Describe a strategy and Gina executes, monitors and automates it 24/7."><img class="fav" src="https://www.google.com/s2/favicons?domain=askgina.ai&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Ask Gina</span></a><span class="m">web app</span></li>
+        <li><a href="https://docs.askgina.ai/" target="_blank" rel="noopener" data-site="docs.askgina.ai" data-desc="Plug Gina into your own agents and tools via MCP."><img class="fav" src="https://www.google.com/s2/favicons?domain=docs.askgina.ai&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Gina MCP &amp; docs</span></a><span class="m">docs</span></li>
+        <li><a href="https://www.youtube.com/watch?v=XEFNsa06Kes" target="_blank" rel="noopener" data-site="youtube.com" data-img="https://img.youtube.com/vi/XEFNsa06Kes/mqdefault.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Introducing Gina</span></a><span class="m">video</span></li>
+        <li><a href="https://www.youtube.com/watch?v=44359d-1JuQ" target="_blank" rel="noopener" data-site="youtube.com" data-img="https://img.youtube.com/vi/44359d-1JuQ/mqdefault.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">What if your wallet worked for you?</span></a><span class="m">video</span></li>
+        <li><a href="https://www.youtube.com/watch?v=l_X7xrDYJWg" target="_blank" rel="noopener" data-site="youtube.com" data-img="https://img.youtube.com/vi/l_X7xrDYJWg/mqdefault.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Stocks now live on Ask Gina</span></a><span class="m">video</span></li>
+        <li><a href="https://www.youtube.com/watch?v=EfuySf1xC2g" target="_blank" rel="noopener" data-site="youtube.com" data-img="https://img.youtube.com/vi/EfuySf1xC2g/mqdefault.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Behind the scenes: the AI startup redefining how the world invests</span></a><span class="m">video</span></li>
+        <li><a href="https://www.youtube.com/@ask_gina" target="_blank" rel="noopener" data-site="youtube.com" data-desc="Product demos, launches and walkthroughs."><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Ask Gina on YouTube</span></a><span class="m">channel</span></li>
+        <li><a href="https://www.askgina.ai/blog" target="_blank" rel="noopener" data-site="askgina.ai" data-desc="Updates and long-form posts from the Gina team."><img class="fav" src="https://www.google.com/s2/favicons?domain=askgina.ai&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Team blog</span></a><span class="m">blog</span></li>
+      </ul>
+    </section>
+
+    <section class="block" id="talks" aria-labelledby="talks-h">
+      <h2 id="talks-h">talks &amp; podcasts</h2>
+      <ul class="list">
+        <li><a href="https://www.youtube.com/watch?v=9PDEBBc9rUY" target="_blank" rel="noopener" data-site="youtube.com" data-img="https://img.youtube.com/vi/9PDEBBc9rUY/mqdefault.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">How to talk to your wallet</span></a><span class="m">ETHCC 2025</span></li>
+        <li><a href="https://www.youtube.com/watch?v=IXYQeB_SWa4" target="_blank" rel="noopener" data-site="youtube.com" data-img="https://img.youtube.com/vi/IXYQeB_SWa4/mqdefault.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Simplifying crypto with agents</span></a><span class="m">Autonolas</span></li>
+        <li><a href="https://www.youtube.com/watch?v=Bq6MQToFAZQ" target="_blank" rel="noopener" data-site="youtube.com" data-img="https://img.youtube.com/vi/Bq6MQToFAZQ/mqdefault.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">On building Gina</span></a><span class="m">Startupradar</span></li>
+        <li><a href="https://www.youtube.com/watch?v=8EOAwmXUs3Q" target="_blank" rel="noopener" data-site="youtube.com" data-img="https://img.youtube.com/vi/8EOAwmXUs3Q/mqdefault.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Trends in liquidity provisioning behavior across DEXs</span></a><span class="m">ETHCC 2023</span></li>
+        <li><a href="https://www.youtube.com/watch?v=ry1lis558tQ" target="_blank" rel="noopener" data-site="youtube.com" data-img="https://img.youtube.com/vi/ry1lis558tQ/mqdefault.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Examining user bridging behavior using onchain analytics</span></a><span class="m">talk</span></li>
+        <li><a href="https://www.youtube.com/watch?v=MH-tmcpp24U" target="_blank" rel="noopener" data-site="youtube.com" data-img="https://img.youtube.com/vi/MH-tmcpp24U/mqdefault.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Analyzing DeFi trading strategies onchain</span></a><span class="m">talk</span></li>
+        <li><a href="https://www.youtube.com/watch?v=OtodaT1mZJU" target="_blank" rel="noopener" data-site="youtube.com" data-img="https://img.youtube.com/vi/OtodaT1mZJU/mqdefault.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">How we use data science at TokenAnalyst</span></a><span class="m">talk</span></li>
+        <li><a href="https://www.youtube.com/watch?v=RXH0TiJ3RnI" target="_blank" rel="noopener" data-site="youtube.com" data-img="https://img.youtube.com/vi/RXH0TiJ3RnI/mqdefault.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=youtube.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Intelligent investing using onchain data</span></a><span class="m">webinar</span></li>
+      </ul>
+    </section>
+
+    <section class="block" id="coinbase" aria-labelledby="coinbase-h">
+      <h2 id="coinbase-h"><img class="logo" src="https://www.google.com/s2/favicons?domain=coinbase.com&amp;sz=64" alt="" width="16" height="16" loading="lazy">coinbase</h2>
+      <ul class="list">
+        <li><a href="https://www.coinbase.com/institutional/research-insights" target="_blank" rel="noopener" data-site="coinbase.com" data-desc="Led the Blockchain Research team: onchain analysis on Layer 2s, ETH 2.0 and DeFi."><img class="fav" src="https://www.google.com/s2/favicons?domain=coinbase.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Coinbase Institutional Research</span></a><span class="m">2020–2024</span></li>
+        <li><a href="https://www.coinbase.com/institutional/research-insights/media/market-calls" target="_blank" rel="noopener" data-site="coinbase.com" data-desc="Hosted a weekly institutional call on Web3 and DeFi markets."><img class="fav" src="https://www.google.com/s2/favicons?domain=coinbase.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Weekly institutional markets call</span></a><span class="m">video</span></li>
+        <li><a href="https://open.spotify.com/show/6ou0VOA8V5TfasroWARWm2" target="_blank" rel="noopener" data-site="open.spotify.com" data-desc="The weekly markets call, as a podcast."><img class="fav" src="https://www.google.com/s2/favicons?domain=open.spotify.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Markets call podcast</span></a><span class="m">spotify</span></li>
+        <li><a href="https://www.coinbase.com/blog/examining-layer-2-usage-using-onchain-data" target="_blank" rel="noopener" data-site="coinbase.com" data-img="/images/writing/coinbase-l2.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=coinbase.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Examining Layer 2 activity using onchain data</span></a><span class="m">article</span></li>
+        <li><a href="https://eth2data.github.io/" target="_blank" rel="noopener" data-site="eth2data.github.io" data-img="/images/writing/eth2data.jpg"><img class="fav" src="https://www.google.com/s2/favicons?domain=eth2data.github.io&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">ETH 2.0 data deep dive</span></a><span class="m">article</span></li>
+      </ul>
+    </section>
+
+    <section class="block" id="tokenanalyst" aria-labelledby="tokenanalyst-h">
+      <h2 id="tokenanalyst-h"><img class="logo" src="https://www.google.com/s2/favicons?domain=tokenanalyst.io&amp;sz=64" alt="" width="16" height="16" loading="lazy">tokenanalyst</h2>
+      <ul class="list">
+        <li><a href="https://www.tokenanalyst.io/" target="_blank" rel="noopener" data-site="tokenanalyst.io" data-img="/images/tokenanalyst.jpg" data-desc="Co-founded in London. Turned raw onchain data into signals for traders and institutions. Acquired by Coinbase in 2020."><img class="fav" src="https://www.google.com/s2/favicons?domain=tokenanalyst.io&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">TokenAnalyst</span></a><span class="m">2017–2020</span></li>
+        <li><a href="https://www.bloomberg.com/news/articles/2019-08-15/bitcoin-drop-not-likely-triggered-by-scam-dump-researcher-says" target="_blank" rel="noopener" data-site="bloomberg.com"><img class="fav" src="https://www.google.com/s2/favicons?domain=bloomberg.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Bitcoin drop not likely triggered by scam dump, researcher says</span></a><span class="m">Bloomberg</span></li>
+        <li><a href="https://www.businessinsider.com/bitcoin-spike-led-by-market-whales-tokenanalyst-2019-4" target="_blank" rel="noopener" data-site="businessinsider.com"><img class="fav" src="https://www.google.com/s2/favicons?domain=businessinsider.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">Bitcoin&#x27;s spike was led by market whales</span></a><span class="m">Business Insider</span></li>
+        <li><a href="https://finimize.com/content/coinbase-how-to-earn-passive-income-on-crypto" target="_blank" rel="noopener" data-site="finimize.com"><img class="fav" src="https://www.google.com/s2/favicons?domain=finimize.com&amp;sz=64" alt="" width="14" height="14" loading="lazy"><span class="t">How to earn passive income on crypto</span></a><span class="m">Finimize</span></li>
       </ul>
     </section>
   </main>
 
-  <!-- footer:start -->
-  <footer class="site-footer container">
-    <span>© 2026 Sid Shekhar</span>
-    <nav aria-label="Footer">
-      <a href="/" target="_blank" rel="noopener">Home</a>
-      <a href="/writing/">Writing</a>
-      <a href="/gina/" target="_blank" rel="noopener">Gina</a>
-      <a href="/coinbase/" target="_blank" rel="noopener">Coinbase</a>
-      <a href="/tokenanalyst/" target="_blank" rel="noopener">TokenAnalyst</a>
-      <a href="/rss.xml">RSS</a>
-    </nav>
+  <footer class="foot">
+    <span>&copy; 2026 sid shekhar</span>
+    <a href="/rss.xml" target="_blank" rel="noopener">rss</a>
   </footer>
-  <!-- footer:end -->
+
+  <div class="peek" id="peek" aria-hidden="true">
+    <img class="peek__img" alt="">
+    <div class="peek__body"><span class="peek__site"></span><span class="peek__title"></span><span class="peek__desc"></span></div>
+  </div>
 </body>
 </html>

@@ -173,11 +173,11 @@ const head = ({ title, description, canonical, image, jsonld, ogType }) => `<!DO
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f8f4f1">
+  <meta name="theme-color" content="#000000">
   <script>
     (function(){var d=document.documentElement;d.classList.add('js');var t;
     try{t=localStorage.getItem('theme')}catch(e){}
-    if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+    if(t!=='light'&&t!=='dark'){t='dark'}
     d.dataset.theme=t;})();
   </script>
   <title>${esc(title)}</title>
