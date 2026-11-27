@@ -940,6 +940,7 @@ main > section + section {
 .mark {
   font-weight: 600;
   text-decoration: none;
+  text-transform: lowercase;
 }
 body:not(.home) .bar__in,
 body:not(.home) .foot {
@@ -965,7 +966,7 @@ body:not(.home) .foot {
 .home h1.mark {
   margin: 0;
   font-weight: 600;
-  text-transform: none;
+  text-transform: lowercase;
 }
 .mark a {
   text-decoration: none;
