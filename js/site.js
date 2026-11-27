@@ -6,7 +6,7 @@
 
   /* ---------- Theme ---------- */
   var STORAGE_KEY = "theme";
-  var THEME_COLORS = { light: "#fafaf9", dark: "#000000" };
+  var THEME_COLORS = { light: "#fff1e5", dark: "#000000" };
   var toggle = document.querySelector(".theme-toggle");
   var themeMeta = document.querySelector('meta[name="theme-color"]');
 
