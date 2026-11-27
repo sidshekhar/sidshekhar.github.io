@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f8f4f1">
+  <meta name="theme-color" content="#000000">
   <script>
     (function(){var d=document.documentElement;d.classList.add('js');var t;
     try{t=localStorage.getItem('theme')}catch(e){}
-    if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}
+    if(t!=='light'&&t!=='dark'){t='dark'}
     d.dataset.theme=t;})();
   </script>
   <title>Not found · Sid Shekhar</title>
@@ -21,22 +21,28 @@
   <link rel="alternate" type="application/rss+xml" title="Sid Shekhar — Writing" href="https://www.sidshekhar.com/rss.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="/css/style.css?v=w4">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/style.css?v=w7">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="manifest" href="/images/site.webmanifest">
-  <script src="/js/site.js?v=w4" defer></script>
+  <script src="/js/site.js?v=w6" defer></script>
 </head>
 <body>
   <!-- header:start -->
-  <header class="site-header container">
-    <a class="wordmark label" href="/" target="_blank" rel="noopener">Sid Shekhar</a>
-    <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-    </button>
+  <header class="bar">
+    <div class="bar__in">
+      <a class="mark" href="/">Sid Shekhar</a>
+      <nav class="bar__nav" aria-label="Site">
+        <a href="/writing/">writing</a>
+        <a href="/#talks">talks</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="true">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </nav>
+    </div>
   </header>
   <!-- header:end -->
 
@@ -49,16 +55,9 @@
   </main>
 
   <!-- footer:start -->
-  <footer class="site-footer container">
-    <span>© 2026 Sid Shekhar</span>
-    <nav aria-label="Footer">
-      <a href="/" target="_blank" rel="noopener">Home</a>
-      <a href="/writing/">Writing</a>
-      <a href="/gina/" target="_blank" rel="noopener">Gina</a>
-      <a href="/coinbase/" target="_blank" rel="noopener">Coinbase</a>
-      <a href="/tokenanalyst/" target="_blank" rel="noopener">TokenAnalyst</a>
-      <a href="/rss.xml">RSS</a>
-    </nav>
+  <footer class="foot">
+    <span>&copy; 2026 Sid Shekhar</span>
+    <a href="/rss.xml">rss</a>
   </footer>
   <!-- footer:end -->
 </body>

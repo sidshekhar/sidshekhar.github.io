@@ -6,18 +6,9 @@
 
   /* ---------- Theme ---------- */
   var STORAGE_KEY = "theme";
-  var THEME_COLORS = { light: "#f8f4f1", dark: "#161311" };
-  var darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  var THEME_COLORS = { light: "#fafaf9", dark: "#000000" };
   var toggle = document.querySelector(".theme-toggle");
   var themeMeta = document.querySelector('meta[name="theme-color"]');
-
-  function storedTheme() {
-    try {
-      return localStorage.getItem(STORAGE_KEY);
-    } catch (e) {
-      return null;
-    }
-  }
 
   function applyTheme(theme) {
     root.dataset.theme = theme;
@@ -26,7 +17,7 @@
   }
 
   // The inline head script already set data-theme; sync the button + meta.
-  applyTheme(root.dataset.theme || (darkQuery.matches ? "dark" : "light"));
+  applyTheme(root.dataset.theme || "dark");
 
   if (toggle) {
     toggle.addEventListener("click", function () {
@@ -37,13 +28,6 @@
       } catch (e) {}
     });
   }
-
-  // Follow the OS until the visitor picks a theme explicitly.
-  function onSystemChange(e) {
-    if (!storedTheme()) applyTheme(e.matches ? "dark" : "light");
-  }
-  if (darkQuery.addEventListener) darkQuery.addEventListener("change", onSystemChange);
-  else if (darkQuery.addListener) darkQuery.addListener(onSystemChange);
 
   /* ---------- Reveal on scroll ---------- */
   var revealItems = document.querySelectorAll(".reveal");
@@ -102,6 +86,52 @@
     window.addEventListener("resize", requestTimeline);
     updateTimeline();
   }
+
+
+  /* ---------- Link hover preview (mouse only) ---------- */
+  var peek = document.getElementById("peek");
+  if (peek && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var pImg = peek.querySelector(".peek__img");
+    var pSite = peek.querySelector(".peek__site");
+    var pTitle = peek.querySelector(".peek__title");
+    var pDesc = peek.querySelector(".peek__desc");
+    var current = null;
+
+    function place(x, y) {
+      var w = peek.offsetWidth, h = peek.offsetHeight, pad = 16;
+      var left = Math.min(x + pad, window.innerWidth - w - 8);
+      var top = y + pad + h > window.innerHeight ? y - h - pad : y + pad;
+      peek.style.left = Math.max(8, left) + "px";
+      peek.style.top = Math.max(8, top) + "px";
+    }
+    function show(a, e) {
+      current = a;
+      var img = a.dataset.img;
+      peek.classList.toggle("has-img", !!img);
+      if (img) pImg.src = img;
+      var t = a.querySelector(".t");
+      pTitle.textContent = (t || a).textContent.trim();
+      pSite.textContent = a.dataset.site || "";
+      pDesc.textContent = a.dataset.desc || "";
+      place(e.clientX, e.clientY);
+      peek.classList.add("is-on");
+    }
+    function hide() {
+      current = null;
+      peek.classList.remove("is-on");
+    }
+    document.querySelectorAll("a[data-site]").forEach(function (a) {
+      a.addEventListener("mouseenter", function (e) { show(a, e); });
+      a.addEventListener("mousemove", function (e) { if (current === a) place(e.clientX, e.clientY); });
+      a.addEventListener("mouseleave", hide);
+    });
+    window.addEventListener("scroll", hide, { passive: true });
+  }
+
+  /* ---------- Hide logos that fail to load ---------- */
+  document.querySelectorAll("img.fav, img.logo").forEach(function (img) {
+    img.addEventListener("error", function () { img.remove(); });
+  });
 
   /* ---------- Click-to-load YouTube embed ---------- */
   document.querySelectorAll(".yt[data-id]").forEach(function (box) {
