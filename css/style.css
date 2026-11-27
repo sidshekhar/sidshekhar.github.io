@@ -937,12 +937,13 @@ main > section + section {
   justify-content: space-between;
   height: 3.5rem;
 }
-.mark {
-  text-decoration: none;
-  font-weight: 400;
+.home h1.mark {
+  margin: 0;
+  font-weight: 700;
+  text-transform: none;
 }
-.mark span {
-  color: var(--fg-faint);
+.mark a {
+  text-decoration: none;
 }
 .bar__nav {
   display: flex;
@@ -974,7 +975,7 @@ main > section + section {
 }
 
 .page {
-  padding-block: 2.5rem 3rem;
+  padding-block: 2rem 3rem;
 }
 .home h1,
 .home h2 {
@@ -1137,7 +1138,7 @@ main > section + section {
     font-size: 15px;
   }
   .page {
-    padding-top: 4rem;
+    padding-top: 3rem;
   }
 }
 @media (max-width: 480px) {
