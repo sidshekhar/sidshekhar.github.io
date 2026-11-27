@@ -1003,6 +1003,33 @@ main > section + section {
   gap: 0.5rem 1.5rem;
   margin-top: 1.5rem;
 }
+.social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--fg-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.social a:hover,
+.social a:focus-visible {
+  color: var(--fg);
+}
+.social svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  flex: none;
+}
+.social a span {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.3em;
+  transition: text-decoration-color 0.15s;
+}
+.social a:hover span {
+  text-decoration-color: currentColor;
+}
 .ext::after {
   content: " \2197";
   font-size: 0.85em;
