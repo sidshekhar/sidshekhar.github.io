@@ -18,7 +18,7 @@
   --accent-soft: #1f1f1f;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.5), 0 12px 32px rgb(0 0 0 / 0.5);
 
-  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --radius: 10px;
   --container: 52rem;
@@ -105,7 +105,7 @@ p + p {
   margin-top: 1em;
 }
 .label {
-  font: 500 0.6875rem/1.4 var(--font-mono);
+  font: 500 0.6875rem/1.4 var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--fg-faint);
@@ -276,7 +276,7 @@ main > section + section {
   align-self: start;
 }
 .chapter__year span {
-  font: 500 0.8125rem/1.3 var(--font-mono);
+  font: 500 0.8125rem/1.3 var(--font-sans);
   letter-spacing: 0.04em;
   color: var(--fg-faint);
 }
@@ -303,7 +303,7 @@ main > section + section {
   background: none;
 }
 .badge {
-  font: 500 0.625rem/1 var(--font-mono);
+  font: 500 0.625rem/1 var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--accent);
@@ -336,7 +336,7 @@ main > section + section {
   border-radius: 999px;
   background: var(--bg-elev);
   color: var(--fg-muted);
-  font: 500 0.75rem/1 var(--font-mono);
+  font: 500 0.75rem/1 var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   text-decoration: none;
@@ -575,7 +575,7 @@ main > section + section {
 }
 .site-footer,
 .site-footer a {
-  font: 400 0.75rem/1.6 var(--font-mono);
+  font: 400 0.75rem/1.6 var(--font-sans);
   color: var(--fg-faint);
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -897,7 +897,7 @@ main > section + section {
 }
 .post__table thead th {
   background: var(--bg-muted);
-  font: 500 0.6875rem/1.4 var(--font-mono);
+  font: 500 0.6875rem/1.4 var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--fg-faint);
@@ -936,6 +936,31 @@ main > section + section {
   align-items: center;
   justify-content: space-between;
   height: 3.5rem;
+}
+.mark {
+  font-weight: 600;
+  text-decoration: none;
+}
+body:not(.home) .bar__in,
+body:not(.home) .foot {
+  max-width: var(--container);
+}
+.bar .theme-toggle {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--fg-muted);
+}
+.bar .theme-toggle:hover {
+  color: var(--fg);
+  border: 0;
+  background: none;
+}
+.bar .theme-toggle svg {
+  width: 15px;
+  height: 15px;
 }
 .home h1.mark {
   margin: 0;
