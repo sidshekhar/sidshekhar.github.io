@@ -914,9 +914,9 @@ main > section + section {
    Home — one-page, mono, dark-first.
    ========================================================================== */
 .home {
-  --font-home: "Space Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  font: 400 14px/1.75 var(--font-home);
-  letter-spacing: -0.01em;
+  --font-home: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font: 400 15.5px/1.7 var(--font-home);
+  letter-spacing: -0.005em;
 }
 .home a {
   text-underline-offset: 0.3em;
@@ -939,7 +939,7 @@ main > section + section {
 }
 .home h1.mark {
   margin: 0;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: none;
 }
 .mark a {
@@ -979,7 +979,7 @@ main > section + section {
 }
 .home h1,
 .home h2 {
-  font: 700 1em/1.4 var(--font-home);
+  font: 600 1em/1.4 var(--font-home);
   letter-spacing: 0;
   text-transform: lowercase;
 }
@@ -1162,7 +1162,7 @@ main > section + section {
 
 @media (min-width: 720px) {
   .home {
-    font-size: 15px;
+    font-size: 16.5px;
   }
   .page {
     padding-top: 3rem;
